@@ -1,0 +1,8 @@
+.app {
+  @apply flex flex-col min-h-screen;
+}
+
+.app-main {
+  @apply flex-1;
+}
+
