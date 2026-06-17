@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navigation } from "./components/layout/Navbar";
-import Home from "./pages/Home";
+import Home from "./app/pages/home";
 import { Footer } from "./components/layout/Footer";
 
 function App() {

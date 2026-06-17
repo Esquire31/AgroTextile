@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
-import ContactForm from '@/components/sections/ContactForm';
+import ContactForm from './components/ContactForm';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
