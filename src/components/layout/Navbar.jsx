@@ -1,34 +1,35 @@
 'use client'
 
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export function Navigation({ isDark, setIsDark }) {
 const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
 const navItems = [
-'About Us',
-'Products',
-'Clients',
-'Contact Us',
+  { label: 'About Us', href: '/about' },
+  { label: 'Products', href: '/products' },
+  { label: 'Services', href: '/services' },
+  { label: 'Contact Us', href: '/contact' },
 ]
 
 return (
 <> <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] sm:w-[calc(100%-48px)] lg:w-[calc(100%-128px)] max-w-295 z-50 bg-background/80 backdrop-blur-md border border-outline-variant/30 h-14 px-4 sm:px-6 lg:px-8 rounded-full flex items-center shadow-lg"> <div className="w-full flex justify-between items-center gap-4">
 
-      <div className="font-headline-lg text-title-md font-bold text-primary tracking-tighter cursor-pointer shrink-0">
+      <Link to="/" className="font-headline-lg text-title-md font-bold text-primary tracking-tighter cursor-pointer shrink-0 hover:opacity-80 transition-opacity">
         7 HORSE'S EXPORT INDIA PVT LTD
-      </div>
+      </Link>
 
       {/* Desktop Navigation */}
       <div className="hidden lg:flex ml-12 gap-6 xl:gap-10 items-center">
         {navItems.map((item) => (
-          <a
-            key={item}
+          <Link
+            key={item.label}
+            to={item.href}
             className="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md whitespace-nowrap"
-            href="#"
           >
-            {item}
-          </a>
+            {item.label}
+          </Link>
         ))}
       </div>
 
@@ -71,14 +72,14 @@ return (
       <div className="flex flex-col gap-5">
 
         {navItems.map((item) => (
-          <a
-            key={item}
-            href="#"
+          <Link
+            key={item.label}
+            to={item.href}
             onClick={() => setMobileMenuOpen(false)}
             className="text-on-surface font-medium hover:text-primary transition-colors"
           >
-            {item}
-          </a>
+            {item.label}
+          </Link>
         ))}
 
         <div className="pt-4 border-t border-outline-variant flex flex-col gap-3">

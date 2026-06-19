@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { Navigation } from "./components/layout/Navbar";
-import Home from "./app/pages/home";
+import AppRoutes from "./routes/AppRoutes";
 import { Footer } from "./components/layout/Footer";
 
 function App() {
@@ -13,15 +14,17 @@ function App() {
   }, [isDark]);
 
   return (
-    <>
-      <Navigation
-        isDark={isDark}
-        setIsDark={setIsDark}
-      />
+    <BrowserRouter>
+      <>
+        <Navigation
+          isDark={isDark}
+          setIsDark={setIsDark}
+        />
 
-      <Home />
-      <Footer/>
-    </>
+        <AppRoutes />
+        <Footer/>
+      </>
+    </BrowserRouter>
   );
 }
 
