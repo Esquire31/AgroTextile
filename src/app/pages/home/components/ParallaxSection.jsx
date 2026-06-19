@@ -5,9 +5,9 @@ export default function ParallaxSection() {
     <section className="relative h-96 sm:h-125 md:h-175 flex items-center justify-center overflow-hidden mx-2 sm:mx-4 rounded-xl my-12 md:my-24 shadow-lg">
       <div className="absolute inset-0 z-0">
         <img
-          alt="Indian seaport"
+          
           className="w-full h-full object-cover scale-110"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9FYzuTI4U3A0KOEzQNFMqmkK8HGMDN2ZfNmuER2IMai7l75jo6KBTSeoTlWbYrQRlPPcRfaK9n-VfCc7c2dgfKdXSOQGC5vEYBEyf4x6vXCNbo27GWpK4LZKJuOLTy4nGw6CqswrBhbhPIwlEVeF_AMYyWVFDowezxvG7WVO4hzumh0nxH5nX9PUMNrP_Fws78mtJ6pGYEMH7WN0UX9FHjrCo3pX6GxHmkf4GU2Q4aF5O0FbAYEQQaqalURJ5i_Fj5TKM2oOAqQ"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9FYzuTI4U3A0KOEzQNFMqmkK8HGMDN2ZfNmuER2IMai7l75jo6KBTSeoTlWbYrQRlPPcRfaK9n-VfCc7c2dgfKdXSOQGC5vEYBEyf4x6vXCNbo27GWpK4LZKJuOLTy4qjGw6CqswrBhbhPIwlEVeF_AMYyWVFDowezxvG7WVO4hzumh0nxH5nX9PUMNrP_Fws78mtJ6pGYEMH7WN0UX9FHjrCo3pX6GxHmkf4GU2Q4aF5O0FbAYEQQaqalURJ5i_Fj5TKM2oOAqQ"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#006241]/60 via-background/60 to-background/40"></div>
       </div>

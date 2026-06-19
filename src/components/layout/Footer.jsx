@@ -4,7 +4,7 @@ export function Footer() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
         <div className="col-span-1">
           <div className="font-headline-lg text-lg md:text-title-md font-bold text-[#006241] mb-4 md:mb-8 tracking-tighter">
-            AgriTex Global
+            7 HORSE'S EXPORT INDIA PVT LTD
           </div>
           <p className="text-on-surface-variant font-body-md text-sm md:text-base mb-6 md:mb-8 leading-relaxed">
             Precision Sourcing. Sustainable Scale. India&apos;s bridge to the global market.
