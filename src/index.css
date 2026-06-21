@@ -333,6 +333,39 @@ direction: ltr;
 --sidebar-ring: oklch(0.556 0 0);
 }
 
+.light {
+  --color-background: #ffffff;
+  --color-on-background: #111827;
+
+  --color-surface: #f8f9f8;
+  --color-surface-dim: #eef2f0;
+
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f7f9f8;
+  --color-surface-container: #f1f4f2;
+  --color-surface-container-high: #e8ece9;
+  --color-surface-container-highest: #dde3df;
+
+  --color-on-surface: #111827;
+  --color-on-surface-variant: #4b5563;
+
+  --color-outline: #d1d5db;
+  --color-outline-variant: #e5e7eb;
+
+  --color-secondary: #4b5563;
+  --color-secondary-container: #eef2f0;
+
+  --color-primary: #006241;
+  --color-primary-container: #00754a;
+  --color-on-primary: #ffffff;
+
+  --color-tertiary: #6b7280;
+  --color-tertiary-container: #f3f4f6;
+
+  --color-inverse-surface: #1f2937;
+  --color-inverse-on-surface: #f9fafb;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

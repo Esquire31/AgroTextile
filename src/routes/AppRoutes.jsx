@@ -9,6 +9,7 @@ import Contact from '@/app/pages/contact';
 
 export default function AppRoutes() {
   return (
+    
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />

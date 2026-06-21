@@ -24,7 +24,7 @@ export default function HeroSection() {
 
       </div>
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center px-4 sm:px-8">
+      <div className="relative z-10 max-w-5xl mx-auto text-center px-4 sm:px-8 overflow-hidden">
         
         {/* <span className="text-primary font-label-sm uppercase tracking-widest mb-6 inline-block bg-primary/10 px-4 py-2 rounded-full border border-primary/20 text-sm">
           India To The World

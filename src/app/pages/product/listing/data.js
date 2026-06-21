@@ -1,6 +1,7 @@
 export const PRODUCTS = [
   {
     id: "prod-1",
+    slug: "premium-cotton-fibers",
     name: "Premium Cotton Fibers",
     category: "Textiles",
     tag: "In Stock",

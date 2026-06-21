@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useNavigate } from "react-router-dom";
 import {
   Factory,
   Search,
@@ -40,6 +41,7 @@ import { ALL_INITIAL_PRODUCTS, ALL_AVAILABLE_PRODUCTS } from "./data";
 export default function ProductListing() {
   // Navigation
   const [activeTab, setActiveTab] = useState("Sourcing");
+  const navigate = useNavigate();
 
   // Global search & UI states
   const [searchOpen, setSearchOpen] = useState(false);
@@ -225,128 +227,10 @@ export default function ProductListing() {
       </AnimatePresence>
 
       {/* Global Interactive Header */}
-      <header className="sticky top-0 w-full z-40 bg-surface-container/70 backdrop-blur-md border-b border-outline-variant/20 shadow-2xl transition-all duration-300">
-        <div className="flex justify-between items-center px-4 md:px-16 py-4 max-w-7xl mx-auto">
-          
-          {/* Logo */}
-          <div 
-            onClick={() => { setActiveTab("Sourcing"); clearFilters(); }}
-            className="font-title-md text-title-md font-bold text-primary flex items-center gap-2 cursor-pointer group active:scale-95 transition-transform"
-          >
-            <div className="bg-primary-container/20 p-2.5 rounded-xl group-hover:bg-primary-container/40 transition-colors border border-primary/10">
-              <Factory className="w-5 h-5 text-primary animate-pulse" />
-            </div>
-            <div className="flex flex-col">
-              <span className="leading-none tracking-tight text-xl font-extrabold text-white">AgroTextile</span>
-              <span className="text-xs text-primary/80 font-mono tracking-widest font-semibold">GLOBAL HUB</span>
-            </div>
-          </div>
-
-          {/* Interactive Navigation links */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-on-surface-variant">
-            {[
-              { id: "Sourcing", icon: Layers, label: "Sourcing" },
-              { id: "Logistics", icon: Truck, label: "Logistics Hub" },
-              { id: "Sustainability", icon: Leaf, label: "Eco Sustainability" },
-              { id: "Compliance", icon: Scale, label: "Customs & Trade" },
-              { id: "Network", icon: Network, label: "Global Network" }
-            ].map(item => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id)}
-                  className="flex items-center gap-1.5 py-1.5 px-3 rounded-full transition-all duration-300 relative group"
-                >
-                  <Icon className={`w-4 h-4 transition-transform group-hover:scale-110 ${isActive ? "text-primary" : "text-on-surface-variant/70"}`} />
-                  <span className={`${isActive ? "text-primary font-bold" : "text-on-surface-variant hover:text-white"}`}>
-                    {item.label}
-                  </span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeTabIndicator"
-                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </nav>
-
-          {/* Action Center with dynamic active toggler */}
-          <div className="flex items-center gap-3">
-            {/* Live Search Icon */}
-            <div className="relative">
-              <button 
-                onClick={() => setSearchOpen(!searchOpen)} 
-                className={`p-2.5 rounded-full transition-all border ${
-                  searchOpen 
-                    ? "bg-primary text-on-primary border-primary" 
-                    : "bg-surface-container-high text-on-surface-variant hover:text-primary border-outline-variant/20 hover:border-primary/25"
-                }`}
-                title="Search catalogs"
-              >
-                <Search className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Quick Inquiry action */}
-            <button
-              onClick={() => handleOpenQuoteForm(null)}
-              className="bg-primary text-on-primary text-xs md:text-sm font-bold py-2 px-5 rounded-full hover:scale-105 active:scale-95 transition-all shadow-primary/20 shadow-lg border border-primary-fixed-dim/20 hover:shadow-primary/35 flex items-center gap-1.5 cursor-pointer"
-            >
-              <Activity className="w-4 h-4 animate-pulse text-on-primary" />
-              <span>Instant Quote</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Real-time search bar roll-out */}
-        <AnimatePresence>
-          {searchOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="bg-surface-container-high border-b border-outline-variant/30 overflow-hidden"
-            >
-              <div className="max-w-4xl mx-auto px-6 py-4 flex gap-3 items-center">
-                <Search className="text-primary w-5 h-5 shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Query premium cotton, hemp, pomegranates, specifications, or transit origin zones..."
-                  className="bg-transparent text-white border-0 outline-none w-full text-base focus:ring-0 placeholder-on-surface-variant/50 py-1"
-                  value={globalSearchTerm}
-                  onChange={(e) => {
-                    setGlobalSearchTerm(e.target.value);
-                    if (activeTab !== "Sourcing") setActiveTab("Sourcing");
-                  }}
-                  autoFocus
-                />
-                {globalSearchTerm && (
-                  <button 
-                    onClick={() => setGlobalSearchTerm("")}
-                    className="p-1 hover:bg-surface-container-highest rounded-full text-on-surface-variant"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                )}
-                <button
-                  onClick={() => setSearchOpen(false)}
-                  className="text-xs text-primary bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-full hover:bg-primary/20 transition-colors font-mono"
-                >
-                  ESC
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+      
 
       {/* Main Content Area */}
-      <main className="flex-grow w-full max-w-7xl mx-auto px-4 md:px-16 py-10">
+      <main className="grow w-full max-w-7xl mx-auto px-4 md:px-16 py-24">
 
         {/* RENDER TAB 1: SOURCING PAGE (PRODUCT HUB) */}
         {activeTab === "Sourcing" && (
@@ -601,6 +485,7 @@ export default function ProductListing() {
                         return (
                           <motion.div
                             key={product.id}
+                            onClick={() => navigate(`/products/${product.slug}`)}
                             layout
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -645,11 +530,11 @@ export default function ProductListing() {
                             {/* View Specs action buttons */}
                             <div className="px-5 pb-5 pt-1 flex gap-2 items-center">
                               <button
-                                onClick={() => setViewingSpecProduct(product)}
-                                className="flex-1 py-1.5 text-xs text-center border border-outline-variant/40 rounded-full hover:border-primary hover:text-primary transition-all font-semibold active:scale-95 cursor-pointer bg-surface-container/20 hover:bg-primary/5"
-                              >
-                                View Specs
-                              </button>
+                                  onClick={() => navigate(`/products/${product.slug}`)}
+                                  className="flex-1 py-1.5 text-xs text-center border border-outline-variant/40 rounded-full hover:border-primary hover:text-primary transition-all font-semibold active:scale-95 cursor-pointer bg-surface-container/20 hover:bg-primary/5"
+                                >
+                                  View Specs
+                                </button>
                               <button
                                 onClick={() => handleOpenQuoteForm(product)}
                                 className="px-3.5 py-2 bg-primary text-on-primary rounded-full hover:scale-105 active:scale-95 transition-all text-xs font-bold cursor-pointer hover:shadow-md hover:shadow-primary/20"
