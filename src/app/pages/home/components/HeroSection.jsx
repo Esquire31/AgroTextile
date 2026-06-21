@@ -38,21 +38,21 @@ export default function HeroSection() {
           Markets
         </h1>
 
-        <p className="max-w-3xl mx-auto text-on-surface-variant text-lg md:text-xl leading-relaxed mb-10">
+        <p className="max-w-3xl mx-auto text-text-secondary text-lg md:text-xl leading-relaxed mb-10">
           Trusted sourcing partner for premium textiles and fresh produce,
           delivering quality products from India to international markets
           across Europe, North America, the Middle East and Asia-Pacific.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-          <button className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold spring-hover spring-active flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+          <button className="bg-primary text-text-on-primary px-8 py-4 rounded-full font-bold spring-hover spring-active flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
             Start Sourcing
             <span className="material-symbols-outlined">
               arrow_forward
             </span>
           </button>
 
-          <button className="border border-outline bg-background/40 backdrop-blur-sm text-on-surface px-8 py-4 rounded-full font-bold hover:bg-surface-variant transition-colors spring-active">
+          <button className="border border-outline bg-card-bg backdrop-blur-sm text-text-primary px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors spring-active">
             View Catalogue
           </button>
         </div>

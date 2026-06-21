@@ -25,7 +25,7 @@ export default function StatsSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="max-w-[1280px] mx-auto bg-card-header border border-primary/20 rounded-xl py-8 md:py-12"
+        className="max-w-[1280px] mx-auto bg-stats-primary border border-primary/20 rounded-xl py-8 md:py-12"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
@@ -39,7 +39,7 @@ export default function StatsSection() {
               }}
               className="flex flex-col items-center"
             >
-              <div className="text-primary font-bold text-3xl sm:text-4xl md:text-[56px] leading-none tabular-nums">
+              <div className="text-stats-text font-bold text-3xl sm:text-4xl md:text-[56px] leading-none tabular-nums">
                 {inView ? (
                   <>
                     <CountUp
@@ -61,7 +61,7 @@ export default function StatsSection() {
                 )}
               </div>
 
-              <div className="mt-3 text-on-surface-variant uppercase tracking-widest text-xs md:text-sm">
+              <div className="mt-3 text-text-on-primary uppercase tracking-widest text-xs md:text-sm">
                 {stat.label}
               </div>
             </motion.div>
