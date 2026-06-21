@@ -1,0 +1,183 @@
+// Base Colors (extracted from code.html)
+$white: #ededec;
+$black: #1A1C1A;
+$green: #006241;
+$grey-light: #9ba79f;
+$grey-dark: #323633;
+$black-green: #0f1412;
+$grey-green: #1d2521;
+$grey-green-light: #1d2521b3;
+$grey-bg: #f3f4f3;
+
+// Status Colors (RAG Pattern)
+$status-success: #006241;
+$status-warning: #ffb4ab;
+$status-danger: #93000a;
+
+// Semantic Variable Mappings
+$primary: $green;
+$secondary: $grey-dark;
+$success: $status-success;
+$warning: $status-warning;
+$danger: $status-danger;
+$light: $white;
+$dark: $black;
+
+
+// Color Usage Map (extracted from code.html element usage)
+// 
+// $green (#006241) - PRIMARY BRAND COLOR:
+//   - CTA buttons (class="bg-primary", "bg-[#006241]")
+//   - Section backgrounds (class="bg-[#006241]")
+//   - Text accents (class="text-[#006241]")
+//   - Icon colors (class="text-[#006241]")
+//   - Left borders on cards (class="border-l-[#006241]")
+//   - Status indicators (class="bg-[#006241]" pulsing dots)
+//   - Icon backgrounds (class="bg-[#006241]/10" opacity variants)
+//
+// $white (#FFFFFF) - CARD & TEXT:
+//   - Card backgrounds (class="glass-card bg-white")
+//   - Text on primary/dark backgrounds (class="text-white")
+//   - Light surfaces and overlays
+//
+// $black (#1A1C1A) - BODY TEXT:
+//   - Body text (class="text-on-surface")
+//   - Heading text (class="text-on-background")
+//   - Primary foreground color
+//
+// $gray-light (#F3F4F3) - SURFACE TINTS:
+//   - Light surface containers
+//   - Glass morphism card tints
+//   - Light hover states
+
+// Web Pages & Components Color Map
+//
+// HERO SECTION:
+//   - Background: $white (#FFFFFF)
+//   - Text: $black (#1A1C1A)
+//   - Primary CTA: $green (#006241) with $white text
+//   - Badge/Label: $green with opacity
+//   - Carousel card border: $green
+//
+// SCALE BAR SECTION:
+//   - Background: $green (#006241)
+//   - Text: $white (#FFFFFF)
+//   - Stats display: $white with opacity
+//
+// INDUSTRY PANELS (HOVER EFFECT):
+//   - Default overlay: rgba(0,0,0,0.4)
+//   - Hover overlay: $green (#006241) with opacity 0.8
+//   - Text: $white (#FFFFFF)
+//   - Tags/Badges: rgba(255,255,255,0.2)
+//
+// CARDS (Glass Morphism):
+//   - Background: $white (#FFFFFF)
+//   - Border: $green with opacity
+//   - Heading: $green (#006241)
+//   - Body text: $gray-dark (#c3c8c1)
+//   - Box shadow: rgba(0,0,0,0.1)
+//
+// BUTTONS & CTAs:
+//   - Primary: $green (#006241) background with $white text
+//   - Secondary: transparent with border outline
+//   - Hover: brightness adjustment
+//   - Shadow: $green with opacity rgba(0,98,65,0.3)
+//
+// BADGES & LABELS:
+//   - Background: $green with 10% opacity rgba(0,98,65,0.1)
+//   - Text: $green (#006241)
+//   - Border: $green with 20% opacity
+//
+// ICONS:
+//   - Color: $green (#006241)
+//   - Background circle: $green with 10% opacity
+//   - Hover state: $green with opacity adjustment
+//
+// TIMELINE STEPS:
+//   - Step number: $white (#FFFFFF) text
+//   - Progress bar fill: $green (#006241)
+//   - Progress bar background: $gray-light
+//   - Hover number color: $green (#006241)
+//
+// STATUS INDICATORS:
+//   - Success/Active: $green (#006241)
+//   - Pulsing dot: $green (#006241)
+//   - System operational badge: $green background with border
+//
+// NAVIGATION:
+//   - Active link: $green (#006241)
+//   - Hover text: $green (#006241)
+//   - Text: $black (#1A1C1A)
+//   - Button: $green background with $white text
+//
+// ERROR/WARNING STATES:
+//   - Error color: #ffb4ab (light coral)
+//   - Error background: #93000a (dark red)
+
+// Core colors map
+$core-colors: (
+  "green": $green,
+  "white": $white,
+  "black": $black,
+  "grey-light": $grey-light,
+  "grey-dark": $grey-dark,
+);
+
+
+// Light mode overrides
+.light,
+.theme-light {
+  --color-background: #{$white};
+  --color-card-bg: #{$grey-bg};
+  --color-card-header: #{$grey-bg};
+  --color-card-secondary: #{$grey-bg};
+  --color-primary: #{$green};
+  --color-badge-success: #{$status-success};
+  --color-badge-warning: #{$status-warning};
+  --color-badge-danger: #{$status-danger};
+  --color-border: #{$green};
+  --color-text-highlight: #{$green};
+  --color-text-primary: #{$black};
+  --color-text-secondary: #{$grey-dark};
+  --color-text-tertiary: #{$grey-light};
+}
+
+// Dark mode overrides
+.dark,
+.theme-dark {
+  --color-background: #{$black-green};
+  --color-card-bg: #{$grey-green-light};
+  --color-card-header: #{$grey-green};
+  --color-card-secondary: #{$grey-green-light};
+  --color-primary: #{$green};
+  --color-badge-success: #{$status-success};
+  --color-badge-warning: #{$status-warning};
+  --color-badge-danger: #{$status-danger};
+  --color-border: #{$green};
+  --color-text-highlight: #{$green};
+  --color-text-primary: #{$white};
+  --color-text-secondary: #{$grey-dark};
+  --color-text-tertiary: #{$grey-light};
+}
+
+
+// Base Typography Variables
+$font-family-base: 'Inter', sans-serif;
+
+$font-size-base: 1rem; // 16px
+$font-size-sm: 0.875rem; // 14px
+$font-size-md: 1.25rem; // 20px
+$font-size-lg: 1.5rem; // 24px
+$font-size-xl: 2rem; // 32px
+$font-size-2xl: 3rem; // 48px
+
+$font-weight-lighter: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-weight-base: $font-weight-normal;
+
+

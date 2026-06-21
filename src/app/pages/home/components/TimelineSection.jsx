@@ -4,7 +4,7 @@ export default function TimelineSection() {
   const steps = ['Inquiry', 'Sourcing', 'QC Control', 'Packaging', 'Freight'];
 
   return (
-    <section className="py-24 overflow-x-auto hide-scrollbar whitespace-nowrap bg-background">
+    <section className="py-24 overflow-x-auto hide-scrollbar whitespace-nowrap bg-card-bg">
       <div className="px-4 sm:px-8 md:px-16 inline-flex gap-4 md:gap-6 min-w-full pb-8">
         {steps.map((step, idx) => (
           <div key={step} className="w-64 sm:w-72 md:w-80 shrink-0 group p-6 md:p-8 rounded-xl hover:bg-surface-container transition-all">

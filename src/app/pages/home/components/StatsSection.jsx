@@ -25,7 +25,7 @@ export default function StatsSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="max-w-[1280px] mx-auto bg-surface-container border border-primary/20 rounded-xl py-8 md:py-12"
+        className="max-w-[1280px] mx-auto bg-card-header border border-primary/20 rounded-xl py-8 md:py-12"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (

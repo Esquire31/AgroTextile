@@ -4,29 +4,64 @@ import { Navigation } from "./components/layout/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 import { Footer } from "./components/layout/Footer";
 import ScrollToTop from "./components/layout/ScrolltoTop";
+import SplashCursor from "./components/ui/cursor/SplashCursor";
+import FairyDustCursor from "./components/ui/cursor/FairyDust";
+import Lenis from "lenis";
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
-  return localStorage.getItem("theme") !== "light";
-});
+    if (typeof window === "undefined") return true;
+    const stored = localStorage.getItem("theme");
+    if (stored === "light") return false;
+    if (stored === "dark") return true;
+    return window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+  });
 
   useEffect(() => {
-  const root = document.documentElement;
+    const root = document.documentElement;
 
-  if (isDark) {
-    root.classList.add("dark");
-    root.classList.remove("light");
-    localStorage.setItem("theme", "dark");
-  } else {
-    root.classList.add("light");
-    root.classList.remove("dark");
-    localStorage.setItem("theme", "light");
-  }
-}, [isDark]);
+    root.classList.toggle("dark", isDark);
+    root.classList.toggle("light", !isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }, [isDark]);
+
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <BrowserRouter>
     <ScrollToTop />
+    <SplashCursor
+      DENSITY_DISSIPATION={3.5}
+      VELOCITY_DISSIPATION={2}
+      PRESSURE={0.1}
+      CURL={3}
+      SPLAT_RADIUS={0.2}
+      SPLAT_FORCE={6000}
+      COLOR_UPDATE_SPEED={10}
+      SHADING
+      RAINBOW_MODE={false}
+      COLOR="#006241"
+    />
+    <FairyDustCursor />
       <>
         <Navigation
           isDark={isDark}

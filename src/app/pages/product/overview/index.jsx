@@ -1,11 +1,11 @@
 'use client';
 
-import ProductHero from '../components/ProductHero';
-import TechnicalSpecs from '../components/TechnicalSpecs';
-import Traceability from '../components/Traceability';
-import Logistics from '../components/Logistics';
-import RelatedProducts from '../components/RelatedProducts';
-import FloatingFAB from '../components/FloatingFAB';
+import ProductHero from './components/ProductHero';
+import TechnicalSpecs from './components/TechnicalSpecs';
+import Traceability from './components/Traceability';
+import Logistics from './components/Logistics';
+import RelatedProducts from './components/RelatedProducts';
+import FloatingFAB from './components/FloatingFAB';
 
 export default function ProductDetails() {
   return (

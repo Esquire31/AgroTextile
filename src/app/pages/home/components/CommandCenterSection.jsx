@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CommandCenterSection() {
   return (
-    <section className="py-12 md:py-24 relative overflow-hidden bg-background">
+    <section className="py-12 md:py-24 relative overflow-hidden bg-card-bg">
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
         <div className="flex flex-col gap-6 md:gap-8 mb-8 md:mb-16">
           <div>
@@ -20,12 +20,12 @@ export default function CommandCenterSection() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 glass-card rounded-xl overflow-hidden h-100 flex flex-col border border-outline-variant/30">
-            <div className="p-6 border-b border-outline-variant/30 flex justify-between bg-surface-container">
+            <div className="p-6 border-b border-outline-variant/30 flex justify-between bg-card-header">
               <span className="font-bold font-label-sm">LIVE CARGO MANIFEST</span>
               <span className="text-xs opacity-50 font-label-sm">REFRESHED: JUST NOW</span>
             </div>
             <div className="flex-1 overflow-y-auto p-6 space-y-4 tabular-nums">
-              <div className="flex justify-between items-center py-4 px-6 bg-surface-container-low rounded-xl border border-outline-variant/10">
+              <div className="flex justify-between items-center py-4 px-6 bg-card-secondary rounded-xl border border-outline-variant/10">
                 <div className="flex gap-4 items-center">
                   <span className="material-symbols-outlined text-[#006241] p-2 bg-[#006241]/10 rounded-full">
                     shop
@@ -40,7 +40,7 @@ export default function CommandCenterSection() {
                   <div className="text-[10px] uppercase text-[#006241] font-label-sm">ETA: 4 Days</div>
                 </div>
               </div>
-              <div className="flex justify-between items-center py-4 px-6 bg-surface-container-low rounded-xl border border-outline-variant/10">
+              <div className="flex justify-between items-center py-4 px-6 bg-card-secondary rounded-xl border border-outline-variant/10">
                 <div className="flex gap-4 items-center">
                   <span className="material-symbols-outlined text-secondary p-2 bg-secondary/10 rounded-full">
                     flight

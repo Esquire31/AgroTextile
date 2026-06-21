@@ -10,7 +10,7 @@ export default function CalculatorSection() {
 
   return (
     <section className="py-12 md:py-24 px-4 sm:px-8 md:px-16 max-w-[1280px] mx-auto">
-      <div className="bg-surface-container-high rounded-xl p-6 md:p-12 lg:p-20 grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center shadow-lg border border-outline-variant/20">
+      <div className="bg-card-header rounded-xl p-6 md:p-12 lg:p-20 grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center shadow-lg border border-outline-variant/20">
         <div>
           <h2 className="text-2xl sm:text-3xl md:text-[48px] leading-tight md:leading-14 font-headline-lg mb-4 md:mb-8 font-bold">
             Estimate Your <span className="text-[#006241] italic">Scale</span>
@@ -27,7 +27,7 @@ export default function CalculatorSection() {
                 </span>
               </div>
               <input
-                className="w-full h-3 bg-surface-variant rounded-full appearance-none cursor-pointer accent-[#006241]"
+                className="w-full h-3 bg-text-tertiary rounded-full appearance-none cursor-pointer accent-[#006241]"
                 max="2"
                 min="0"
                 step="1"
@@ -42,11 +42,11 @@ export default function CalculatorSection() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3 md:gap-6">
-              <div className="bg-surface-container p-4 md:p-6 rounded-xl border border-outline-variant/30 flex flex-col gap-1">
+              <div className="bg-card-secondary p-4 md:p-6 rounded-xl border border-outline-variant/30 flex flex-col gap-1">
                 <div className="text-xs opacity-50 uppercase font-label-sm tracking-widest">Payload (Max)</div>
                 <div className="text-lg md:text-2xl font-bold tabular-nums">{containerData[sliderValue].payload}</div>
               </div>
-              <div className="bg-surface-container p-4 md:p-6 rounded-xl border border-outline-variant/30 flex flex-col gap-1">
+              <div className="bg-card-secondary p-4 md:p-6 rounded-xl border border-outline-variant/30 flex flex-col gap-1">
                 <div className="text-xs opacity-50 uppercase font-label-sm tracking-widest">Capacity</div>
                 <div className="text-lg md:text-2xl font-bold tabular-nums">{containerData[sliderValue].capacity}</div>
               </div>

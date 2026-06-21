@@ -30,7 +30,7 @@ export default function HeroSection() {
           India To The World
         </span> */}
 
-        <h1 className="text-4xl sm:text-6xl lg:text-[88px] leading-[1.05] font-bold font-display-lg tracking-[-0.03em] mb-8">
+        <h1 className="text-4xl text-text-primary sm:text-6xl lg:text-[88px] leading-[1.05] font-bold font-display-lg tracking-[-0.03em] mb-8">
           Connecting Indian
           <br />
           Excellence To Global
