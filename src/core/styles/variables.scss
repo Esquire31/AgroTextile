@@ -55,6 +55,12 @@ $theme-color-values: (
     text-on-primary: $white,
     stats-primary: $green,
     stats-text: $white,
+    on-surface: $black,
+    on-surface-variant: $grey-dark,
+    surface-container: $grey-bg,
+    surface-container-high: $white,
+    outline-variant: $grey-light,
+    on-primary: $white,
   ),
   dark: (
     background: $black-green,
@@ -73,6 +79,12 @@ $theme-color-values: (
     text-on-primary: $white,
     stats-primary: $grey-green-light,
     stats-text: $green,
+    on-surface: $white,
+    on-surface-variant: $grey-light,
+    surface-container: $grey-green,
+    surface-container-high: $grey-green-light,
+    outline-variant: $grey-dark,
+    on-primary: $white,
   ),
 );
 
@@ -109,9 +121,10 @@ $theme-color-values: (
 .theme-dark {
   @include emit-theme-vars(dark);
 }
-
 $light-theme-colors: map.get($theme-color-values, light);
-@include emit-color-utilities($light-theme-colors);
+$dark-theme-colors: map.get($theme-color-values, dark);
+$all-theme-tokens: map.merge($light-theme-colors, $dark-theme-colors);
+@include emit-color-utilities($all-theme-tokens);
 
 
 // Base Typography Variables
@@ -132,5 +145,3 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 $font-weight-base: $font-weight-normal;
-
-

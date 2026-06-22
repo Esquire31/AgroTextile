@@ -14,11 +14,17 @@ export default function Logistics() {
 
             {/* Infrastructure List */}
             <div className="space-y-6">
-              <div className="flex justify-between items-center border-b border-outline-variant/30 pb-4">
+              <div
+                className="flex justify-between items-center border-b pb-4"
+                style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
+              >
                 <span className="text-body-lg text-on-surface">Cold Chain Integration</span>
                 <span className="text-body-lg text-secondary font-mono">Available for Produce</span>
               </div>
-              <div className="flex justify-between items-center border-b border-outline-variant/30 pb-4">
+              <div
+                className="flex justify-between items-center border-b pb-4"
+                style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
+              >
                 <span className="text-body-lg text-on-surface">Customs Clearance</span>
                 <span className="text-body-lg text-secondary font-mono">Direct Port Liaison</span>
               </div>
@@ -30,7 +36,13 @@ export default function Logistics() {
           </div>
 
           {/* Right Column - Current Status */}
-          <div className="bg-background/60 p-8 rounded-xl border border-outline-variant/30">
+          <div
+            className="p-8 rounded-xl border"
+            style={{
+              backgroundColor: 'color-mix(in srgb, var(--color-background) 60%, transparent)',
+              borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)',
+            }}
+          >
             <h3 className="text-headline-lg font-bold text-primary mb-8">Current Logistics Status</h3>
 
             {/* Status Items */}
