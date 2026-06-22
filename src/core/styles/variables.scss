@@ -1,0 +1,136 @@
+@use "sass:map";
+
+// Base Colors (extracted from code.html)
+$white: #ededec;
+$black: #1A1C1A;
+$green: #006241;
+$grey-light: #9ba79f;
+$grey-dark: #323633;
+$black-green: #0f1412;
+$grey-green: #1d2521;
+$grey-green-light: #1d2521b3;
+$grey-bg: #f3f4f3;
+
+// Status Colors (RAG Pattern)
+$status-success: #006241;
+$status-warning: #ffb4ab;
+$status-danger: #93000a;
+
+// Semantic Variable Mappings
+$primary: $green;
+$secondary: $grey-dark;
+$success: $status-success;
+$warning: $status-warning;
+$danger: $status-danger;
+$light: $white;
+$dark: $black;
+
+
+// Core colors map
+$core-colors: (
+  "green": $green,
+  "white": $white,
+  "black": $black,
+  "grey-light": $grey-light,
+  "grey-dark": $grey-dark,
+);
+
+
+// Light mode overrides
+$theme-color-values: (
+  light: (
+    background: $white,
+    card-bg: $grey-bg,
+    card-header: $grey-bg,
+    card-secondary: $grey-bg,
+    primary: $green,
+    badge-success: $status-success,
+    badge-warning: $status-warning,
+    badge-danger: $status-danger,
+    border: $green,
+    text-highlight: $green,
+    text-primary: $black,
+    text-secondary: $grey-dark,
+    text-tertiary: $grey-light,
+    text-on-primary: $white,
+    stats-primary: $green,
+    stats-text: $white,
+  ),
+  dark: (
+    background: $black-green,
+    card-bg: $grey-green-light,
+    card-header: $grey-green,
+    card-secondary: $grey-green-light,
+    primary: $green,
+    badge-success: $status-success,
+    badge-warning: $status-warning,
+    badge-danger: $status-danger,
+    border: $green,
+    text-highlight: $green,
+    text-primary: $white,
+    text-secondary: $grey-dark,
+    text-tertiary: $grey-light,
+    text-on-primary: $white,
+    stats-primary: $grey-green-light,
+    stats-text: $green,
+  ),
+);
+
+@mixin emit-theme-vars($mode) {
+  $colors: map.get($theme-color-values, $mode);
+
+  @each $token, $value in $colors {
+    --color-#{$token}: #{$value};
+  }
+}
+
+@mixin emit-color-utilities($colors) {
+  @each $token, $value in $colors {
+    .bg-#{$token} {
+      background-color: var(--color-#{$token});
+    }
+
+    .text-#{$token} {
+      color: var(--color-#{$token});
+    }
+
+    .border-#{$token} {
+      border-color: var(--color-#{$token});
+    }
+  }
+}
+
+.light,
+.theme-light {
+  @include emit-theme-vars(light);
+}
+
+.dark,
+.theme-dark {
+  @include emit-theme-vars(dark);
+}
+
+$light-theme-colors: map.get($theme-color-values, light);
+@include emit-color-utilities($light-theme-colors);
+
+
+// Base Typography Variables
+$font-family-base: 'Inter', sans-serif;
+
+$font-size-base: 1rem; // 16px
+$font-size-sm: 0.875rem; // 14px
+$font-size-md: 1.25rem; // 20px
+$font-size-lg: 1.5rem; // 24px
+$font-size-xl: 2rem; // 32px
+$font-size-2xl: 3rem; // 48px
+
+$font-weight-lighter: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-weight-base: $font-weight-normal;
+
+

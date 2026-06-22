@@ -1,0 +1,6 @@
+{
+  "name": "AgroTextile Global",
+  "description": "A high-precision industrial sourcing platform for technical agro-textiles, packaging, and premium agricultural exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
