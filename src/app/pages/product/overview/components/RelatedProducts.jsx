@@ -38,6 +38,11 @@ export default function RelatedProducts() {
 
   return (
     <section className="py-10 mb-15">
+      <style>{`
+        .related-product-card:hover {
+          border-color: color-mix(in srgb, var(--color-outline-variant) 40%, transparent);
+        }
+      `}</style>
       <div className="flex items-center justify-between mb-12">
         <h2 className="text-headline-lg font-bold text-on-surface">Related Commodities</h2>
         <div className="flex gap-3">
@@ -59,7 +64,11 @@ export default function RelatedProducts() {
       {/* Product Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product, idx) => (
-          <div key={idx} className="glass-card rounded-2xl overflow-hidden flex flex-col border border-outline-variant/20 hover:border-outline-variant/40 transition-all spring-hover group cursor-pointer">
+          <div
+            key={idx}
+            className="glass-card rounded-2xl overflow-hidden flex flex-col border transition-all spring-hover group cursor-pointer related-product-card"
+            style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 20%, transparent)' }}
+          >
             {/* Display Area */}
             <div className="relative h-64 overflow-hidden">
               <img
@@ -69,7 +78,13 @@ export default function RelatedProducts() {
               />
 
               {/* Category Badge */}
-              <span className="absolute top-4 right-4 bg-surface-container/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold text-on-surface border border-outline-variant/30">
+              <span
+                className="absolute top-4 right-4 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold text-on-surface border"
+                style={{
+                  backgroundColor: 'color-mix(in srgb, var(--color-surface-container) 90%, transparent)',
+                  borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)',
+                }}
+              >
                 {product.category}
               </span>
             </div>
@@ -89,7 +104,10 @@ export default function RelatedProducts() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-outline-variant/30 flex items-center justify-between">
+              <div
+                className="pt-4 border-t flex items-center justify-between"
+                style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
+              >
                 <span className="text-primary font-bold">View Specs</span>
                 <ArrowUpRight size={18} className="text-primary" />
               </div>

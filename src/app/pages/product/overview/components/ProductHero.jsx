@@ -24,10 +24,19 @@ export default function ProductHero() {
             alt="Premium long-staple Indian cotton"
             className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent"></div>
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to top, color-mix(in srgb, var(--color-background) 10%, transparent), transparent)' }}
+          ></div>
 
           {/* Verified Badge */}
-          <div className="absolute bottom-6 left-6 flex items-center gap-3 bg-surface-container/70 backdrop-blur-md p-3 rounded-xl border border-outline-variant/20">
+          <div
+            className="absolute bottom-6 left-6 flex items-center gap-3 backdrop-blur-md p-3 rounded-xl border"
+            style={{
+              backgroundColor: 'color-mix(in srgb, var(--color-surface-container) 70%, transparent)',
+              borderColor: 'color-mix(in srgb, var(--color-outline-variant) 20%, transparent)',
+            }}
+          >
             <div className="bg-primary/30 p-1.5 rounded-lg">
               <CheckCircle className="text-primary" size={20} />
             </div>
@@ -47,8 +56,13 @@ export default function ProductHero() {
               className={`aspect-square rounded-xl overflow-hidden border-2 transition-all spring-hover bg-surface-container-high ${
                 selectedImage === idx
                   ? 'border-primary ring-2 ring-primary/30'
-                  : 'border-outline-variant/30 hover:border-primary'
+                  : 'hover:border-primary'
               }`}
+              style={
+                selectedImage === idx
+                  ? undefined
+                  : { borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }
+              }
             >
               <img src={src} alt={`Cotton detail view ${idx + 1}`} className="w-full h-full object-cover" />
             </button>
@@ -72,15 +86,15 @@ export default function ProductHero() {
         {/* Procurement & Logistics Summary */}
         <div className="glass-card p-6 sm:p-8 rounded-2xl mb-8">
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-background/40 rounded-xl">
+            <div className="p-4 rounded-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--color-background) 40%, transparent)' }}>
               <p className="text-xs text-on-surface-variant font-bold mb-2 uppercase tracking-wide">Min. Order</p>
               <p className="text-4xl font-bold text-on-surface tabular-nums">50 MT</p>
             </div>
-            <div className="p-4 bg-background/40 rounded-xl">
+            <div className="p-4 rounded-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--color-background) 40%, transparent)' }}>
               <p className="text-xs text-on-surface-variant font-bold mb-2 uppercase tracking-wide">Lead Time</p>
               <p className="text-4xl font-bold text-on-surface tabular-nums">14-21 Days</p>
             </div>
-            <div className="p-4 bg-background/40 rounded-xl col-span-2">
+            <div className="p-4 rounded-xl col-span-2" style={{ backgroundColor: 'color-mix(in srgb, var(--color-background) 40%, transparent)' }}>
               <p className="text-xs text-on-surface-variant font-bold mb-3 uppercase tracking-wide">Primary Shipping Port</p>
               <div className="flex items-center gap-3">
                 <Ship className="text-primary" size={24} />
