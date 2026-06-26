@@ -5,7 +5,6 @@ import LiveTradeDesk from '../contact/components/LiveTradeDesk';
 import ProcurementForm from '../contact/components/ProcurementForm';
 import RegionalOffices from '../contact/components/RegionalOffices';
 import FAQSection from '../contact/components/FAQSection';
-// import CTAMarquee from '../contact/components/CTAMarquee';
 
 export default function ContactPage() {
   return (
@@ -15,7 +14,6 @@ export default function ContactPage() {
       <ProcurementForm />
       <RegionalOffices />
       <FAQSection />
-      {/* <CTAMarquee /> */}
     </main>
   );
 }
