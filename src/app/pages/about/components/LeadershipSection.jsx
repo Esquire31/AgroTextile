@@ -102,7 +102,7 @@ const thirdColumn = testimonials.slice(6, 9);
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-section-gap relative overflow-hidden" style={{ backgroundColor: `var(--color-background)` }}>
+    <section className="py-16 sm:py-section-gap relative overflow-hidden" style={{ backgroundColor: `var(--color-background)` }}>
       {/* Quiet ambient glow, consistent with the glass treatment
           used across Certifications/Impact/Hero, so this section
           no longer feels like a copied-in component. */}
@@ -114,13 +114,13 @@ export default function TestimonialsSection() {
         }}
       ></div>
 
-      <div className="container z-10 mx-auto px-margin-mobile sm:px-4 relative">
+      <div className="container z-10 mx-auto px-margin-mobile sm:px-margin-desktop relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
+          className="flex flex-col items-center justify-center max-w-135 mx-auto"
         >
           <div className="flex justify-center">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-widest">
@@ -142,7 +142,7 @@ export default function TestimonialsSection() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-4 sm:gap-6 mt-12 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden relative z-10">
+        <div className="flex justify-center gap-4 sm:gap-6 mt-10 sm:mt-12 px-2 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-120 sm:max-h-150 lg:max-h-185 overflow-hidden relative z-10">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />

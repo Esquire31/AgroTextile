@@ -35,7 +35,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-24 sm:py-28">
+    <section className="relative overflow-hidden py-24 sm:py-28 h-screen">
       {/* Ambient background motion — slow, quiet drifting shapes so
           the space around the headline doesn't feel empty. Kept
           well behind the content (z-0, soft opacity, blurred) so it
@@ -210,7 +210,7 @@ export default function HeroSection() {
 
                   <div className="sm:mt-5">
                     <h3 className="font-title-md text-title-md text-on-surface mb-1.5">{step.title}</h3>
-                    <p className="text-sm text-on-surface-variant leading-relaxed max-w-[220px] sm:mx-auto">
+                    <p className="text-sm text-on-surface-variant leading-relaxed max-w-55 sm:mx-auto">
                       {step.detail}
                     </p>
                   </div>

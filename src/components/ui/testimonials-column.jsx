@@ -24,20 +24,23 @@ export const TestimonialsColumn = (props) => {
               {props.testimonials.map(({ text, image, name, role }, i) => (
                 <div
                   key={i}
-                  className="glass-card relative p-8 rounded-3xl max-w-xs w-full transition-all duration-300 hover:-translate-y-1"
+                  className="glass-card relative p-6 sm:p-8 rounded-3xl w-72 sm:max-w-xs sm:w-full transition-all duration-300 hover:-translate-y-1"
                   style={{
                     boxShadow: '0 10px 30px var(--color-shadow)',
                   }}
                 >
                   <Quote
-                    size={28}
-                    className="text-primary/25 absolute top-6 right-6"
+                    size={24}
+                    className="text-primary/25 absolute top-5 sm:top-6 right-5 sm:right-6"
                     strokeWidth={1.5}
                   />
-                  <p className="text-on-surface leading-relaxed relative z-10 mb-6">
+                  <p className="text-on-surface leading-relaxed relative z-10 mb-5 sm:mb-6 text-sm sm:text-base">
                     {text}
                   </p>
-                  <div className="flex items-center gap-3 pt-5 border-t border-outline-variant/20">
+                  <div
+                    className="flex items-center gap-3 pt-4 sm:pt-5 border-t"
+                    style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 20%, transparent)' }}
+                  >
                     <img
                       width={44}
                       height={44}

@@ -28,10 +28,10 @@ const timelineItems = [
 
 export default function TimelineSection() {
   return (
-    <section className="py-section-gap px-margin-mobile sm:px-margin-desktop bg-surface-container-low">
+    <section className="py-16 sm:py-section-gap px-margin-mobile sm:px-margin-desktop bg-surface-container-low">
       <div className="max-w-container-max mx-auto">
         <motion.div
-          className="flex flex-col items-center text-center mb-24"
+          className="flex flex-col items-center text-center mb-16 sm:mb-24"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -44,30 +44,74 @@ export default function TimelineSection() {
         </motion.div>
 
         <div className="relative">
+          {/* Desktop spine — centered, full height */}
           <div
             className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full hidden md:block"
+            style={{ backgroundColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
+          ></div>
+
+          {/* Mobile spine — left-aligned, since the card stacks
+              single-column below md */}
+          <div
+            className="absolute left-5 top-0 bottom-0 w-0.5 md:hidden"
             style={{ backgroundColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
           ></div>
 
           {timelineItems.map((item, index) => (
             <motion.div
               key={index}
-              className={`relative grid md:grid-cols-2 gap-gutter mb-20 ${item.position === 'right' ? 'md:direction-rtl' : ''}`}
+              className={`relative grid md:grid-cols-2 gap-6 md:gap-gutter mb-12 md:mb-20 ${item.position === 'right' ? 'md:direction-rtl' : ''}`}
               initial={{ opacity: 0, x: item.position === 'left' ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-100px' }}
             >
-              <div className={item.position === 'right' ? 'md:order-2 md:text-left md:pl-12' : 'md:text-right md:pr-12'}>
+              {/* Mobile marker dot, sits on the left spine */}
+              <div className="absolute left-5 top-1 -translate-x-1/2 w-3 h-3 bg-primary rounded-full border-2 border-surface-container-low z-10 md:hidden"></div>
+
+              <div
+                className={`pl-12 md:pl-0 ${
+                  item.position === 'right' ? 'md:order-2 md:text-left md:pl-12' : 'md:text-right md:pr-12'
+                }`}
+              >
                 <span className="tabular-nums text-primary text-display-lg opacity-50 block mb-2">{item.year}</span>
-                <h3 className="font-title-md text-title-md text-on-surface mb-4">{item.title}</h3>
+                <h3 className="font-title-md text-title-md text-on-surface mb-3 md:mb-4">{item.title}</h3>
                 <p className="text-on-surface-variant">{item.description}</p>
               </div>
 
-              <div className={`hidden md:flex items-center ${item.position === 'right' ? 'md:order-1 md:justify-end md:pr-12' : 'justify-start md:pl-12'} relative`}>
-                <div className={`absolute ${item.position === 'right' ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'} w-4 h-4 bg-primary rounded-full border-4 border-background z-10`}></div>
-                <div className="glass-card p-2 rounded-xl w-64 h-40">
-                  <img className="w-full h-full object-cover rounded-lg opacity-80" alt={item.title} src={item.image} />
+              {/* Photo — now visible at every breakpoint instead of
+                  hidden below md, and the previous flat opacity-80
+                  on the image (which looked blurry/washed-out
+                  specifically in light theme, since a translucent
+                  image loses far more contrast against a light
+                  background than a dark one) is replaced with a
+                  full-opacity image plus a thin theme-aware scrim
+                  layered on top via an absolutely-positioned div.
+                  Same "doesn't look like a raw stock photo" softness,
+                  but the photo itself stays crisp in both themes. */}
+              <div
+                className={`flex items-center pl-12 md:pl-0 ${
+                  item.position === 'right' ? 'md:order-1 md:justify-end md:pr-12' : 'justify-start md:pl-12'
+                } relative`}
+              >
+                <div
+                  className={`hidden md:block absolute ${
+                    item.position === 'right' ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'
+                  } w-4 h-4 bg-primary rounded-full border-4 border-background z-10`}
+                ></div>
+                <div className="glass-card p-2 rounded-xl w-full max-w-xs sm:max-w-none sm:w-64 h-40 relative overflow-hidden">
+                  <img
+                    className="w-full h-full object-cover rounded-lg"
+                    alt={item.title}
+                    src={item.image}
+                  />
+                  <div
+                    className="absolute inset-2 rounded-lg pointer-events-none"
+                    style={{
+                      background:
+                        'linear-gradient(to top, color-mix(in srgb, var(--color-background) 18%, transparent), transparent 60%)',
+                    }}
+                  ></div>
                 </div>
               </div>
             </motion.div>

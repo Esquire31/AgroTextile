@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { Package, Leaf, Send, ArrowRight, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js';
+import en from 'react-phone-number-input/locale/en.json';
 
 // ─────────────────────────────────────────────────────────────────
 // EMAIL DELIVERY SETUP (read this before deploying)
@@ -27,18 +29,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 // ─────────────────────────────────────────────────────────────────
 const WEB3FORMS_ACCESS_KEY = '1e678b49-c3d8-460e-bff5-3683e95c36ab';
 
-const COUNTRY_CODES = [
-  { code: '+91', country: 'India' },
-  { code: '+1', country: 'USA/Canada' },
-  { code: '+44', country: 'UK' },
-  { code: '+971', country: 'UAE' },
-  { code: '+65', country: 'Singapore' },
-  { code: '+49', country: 'Germany' },
-  { code: '+61', country: 'Australia' },
-  { code: '+86', country: 'China' },
-  { code: '+81', country: 'Japan' },
-  { code: '+27', country: 'South Africa' },
-];
+// Full country list built from libphonenumber-js's real metadata —
+// every ISO country code it supports, each with its actual dial
+// code and an English display name. This replaces a hand-typed
+// 10-country list with the complete, accurate set (240+ countries),
+// in "IN +91 India" style. libphonenumber-js itself ships no React
+// component and no CSS, so this works identically regardless of
+// React version and never touches any existing styling — only the
+// <select>/<option> markup below (built with the site's existing
+// classes) renders it.
+const COUNTRY_LIST = getCountries()
+  .map((isoCode) => ({
+    isoCode,
+    dialCode: `+${getCountryCallingCode(isoCode)}`,
+    name: en[isoCode] || isoCode,
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 export default function ProcurementForm() {
   const [focusedLabel, setFocusedLabel] = useState(null);
@@ -47,7 +53,7 @@ export default function ProcurementForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    countryCode: '+91',
+    countryIso: 'IN',
     phone: '',
     sector: 'Industrial Textiles & Protective Gear',
     details: '',
@@ -73,13 +79,24 @@ export default function ProcurementForm() {
   // type="email" check, which would accept "a@b" with no TLD.
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-  // Phone: exactly 10 digits, no letters/symbols. The input itself
-  // strips non-digits as you type (see handlePhoneChange), this is
-  // the final length check before submit.
-  const validatePhone = (value) => /^\d{10}$/.test(value);
+  // Phone: validated against the selected country's real numbering
+  // rules via libphonenumber-js, instead of a flat "exactly 10
+  // digits" check — 10 digits is only correct for India; UK, UAE,
+  // Germany, and most other countries use different lengths.
+  const validatePhone = (value, countryIso) => {
+    if (!value) return false;
+    try {
+      return isValidPhoneNumber(value, countryIso);
+    } catch {
+      return false;
+    }
+  };
 
   const handlePhoneChange = (e) => {
-    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
+    // Strip everything except digits as the person types — still
+    // digits-only input, just no longer capped at a fixed length,
+    // since the correct length depends on which country is selected.
+    const digitsOnly = e.target.value.replace(/\D/g, '');
     setFormData((prev) => ({ ...prev, phone: digitsOnly }));
     if (errors.phone) setErrors((prev) => ({ ...prev, phone: null }));
   };
@@ -93,7 +110,9 @@ export default function ProcurementForm() {
     const next = {};
     if (!formData.name.trim()) next.name = 'Required';
     if (!validateEmail(formData.email)) next.email = 'Enter a valid email (e.g. name@company.com)';
-    if (!validatePhone(formData.phone)) next.phone = 'Enter exactly 10 digits';
+    if (!validatePhone(formData.phone, formData.countryIso)) {
+      next.phone = `Enter a valid phone number for ${en[formData.countryIso] || formData.countryIso}`;
+    }
     if (!formData.details.trim()) next.details = 'Required';
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -106,6 +125,7 @@ export default function ProcurementForm() {
     setStatus('submitting');
 
     try {
+      const dialCode = `+${getCountryCallingCode(formData.countryIso)}`;
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -115,7 +135,7 @@ export default function ProcurementForm() {
           from_name: formData.name,
           name: formData.name,
           email: formData.email,
-          phone: `${formData.countryCode} ${formData.phone}`,
+          phone: `${dialCode} ${formData.phone}`,
           sector: formData.sector,
           message: formData.details,
         }),
@@ -128,7 +148,7 @@ export default function ProcurementForm() {
         setFormData({
           name: '',
           email: '',
-          countryCode: '+91',
+          countryIso: 'IN',
           phone: '',
           sector: 'Industrial Textiles & Protective Gear',
           details: '',
@@ -258,8 +278,11 @@ export default function ProcurementForm() {
                 </div>
               </div>
 
-              {/* Phone — country code selector (default India) +
-                  10-digit number input, styled as one connected unit */}
+              {/* Phone — country selector (default India, IN +91)
+                  using real libphonenumber-js data for every
+                  supported country, + a number input validated
+                  against that specific country's actual numbering
+                  rules (not a flat 10-digit assumption) */}
               <div className="space-y-2">
                 <label
                   className={`font-label-sm text-label-sm uppercase text-on-surface-variant transition-colors ${
@@ -270,16 +293,16 @@ export default function ProcurementForm() {
                 </label>
                 <div className="flex">
                   <select
-                    value={formData.countryCode}
-                    onChange={handleChange('countryCode')}
+                    value={formData.countryIso}
+                    onChange={handleChange('countryIso')}
                     onFocus={() => setFocusedLabel('phone')}
                     onBlur={() => setFocusedLabel(null)}
-                    className="procurement-field bg-surface-container text-on-surface border rounded-l-lg pl-3 pr-2 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none shrink-0"
+                    className="procurement-field bg-surface-container text-on-surface border rounded-l-lg pl-3 pr-2 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none shrink-0 w-28 sm:w-36 truncate"
                     style={{ borderColor: fieldBorder(errors.phone), borderRight: 'none' }}
                   >
-                    {COUNTRY_CODES.map((c) => (
-                      <option key={c.code} value={c.code}>
-                        {c.code} {c.country}
+                    {COUNTRY_LIST.map((c) => (
+                      <option key={c.isoCode} value={c.isoCode}>
+                       {c.dialCode} {c.name}
                       </option>
                     ))}
                   </select>
@@ -292,8 +315,7 @@ export default function ProcurementForm() {
                     style={{ borderColor: fieldBorder(errors.phone) }}
                     type="tel"
                     inputMode="numeric"
-                    placeholder="10-digit number"
-                    maxLength={10}
+                    placeholder="Phone number"
                   />
                 </div>
                 {errors.phone && (
