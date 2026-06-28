@@ -9,7 +9,6 @@ const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 const navItems = [
   { label: 'About Us', href: '/about' },
   { label: 'Products', href: '/products' },
-  { label: 'Services', href: '/services' },
   { label: 'Contact Us', href: '/contact' },
 ]
 

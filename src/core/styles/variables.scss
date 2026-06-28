@@ -61,6 +61,17 @@ $theme-color-values: (
     surface-container-high: $white,
     outline-variant: $grey-light,
     on-primary: $white,
+
+    // Added for LiveTradeDesk / RegionalOffices: these components
+    surface-container-low: $white,
+    surface-container-lowest: $white,
+    error: $status-danger,
+
+    // Added for ImpactSection/testimonials: these components
+    secondary-container: $grey-bg,
+    on-secondary: $black,
+    secondary-fixed: $grey-dark,
+    shadow: rgba(26, 28, 26, 0.08),
   ),
   dark: (
     background: $black-green,
@@ -85,6 +96,17 @@ $theme-color-values: (
     surface-container-high: $grey-green-light,
     outline-variant: $grey-dark,
     on-primary: $white,
+
+    // Dark-mode counterparts of the LiveTradeDesk / RegionalOffices tokens.
+    surface-container-low: $black-green,
+    surface-container-lowest: $black-green,
+    error: $status-danger,
+
+    // Dark-mode counterparts of the ImpactSection/testimonials tokens.
+    secondary-container: $grey-green,
+    on-secondary: $white,
+    secondary-fixed: $grey-light,
+    shadow: rgba(0, 0, 0, 0.35),
   ),
 );
 
@@ -110,6 +132,11 @@ $theme-color-values: (
       border-color: var(--color-#{$token});
     }
   }
+}
+
+
+:root {
+  @include emit-theme-vars(light);
 }
 
 .light,
@@ -145,3 +172,38 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 $font-weight-base: $font-weight-normal;
+
+$glass-bg-light: rgba(255, 255, 255, 0.6);
+$glass-border-light: rgba(0, 98, 65, 0.12);
+$glass-bg-dark: rgba(29, 32, 30, 0.6);
+$glass-border-dark: rgba(64, 73, 67, 0.1);
+$glass-blur: blur(12px);
+$text-glow-color: rgba(144, 213, 176, 0.3);
+
+
+$glass-panel-light: (
+  background: $glass-bg-light,
+  backdrop-filter: $glass-blur,
+  border-color: $glass-border-light,
+);
+
+$glass-panel-dark: (
+  background: $glass-bg-dark,
+  backdrop-filter: $glass-blur,
+  border-color: $glass-border-dark,
+);
+
+
+.light .glass-panel,
+.theme-light .glass-panel {
+  background: map.get($glass-panel-light, background);
+  backdrop-filter: map.get($glass-panel-light, backdrop-filter);
+  border: 1px solid map.get($glass-panel-light, border-color);
+}
+
+.dark .glass-panel,
+.theme-dark .glass-panel {
+  background: map.get($glass-panel-dark, background);
+  backdrop-filter: map.get($glass-panel-dark, backdrop-filter);
+  border: 1px solid map.get($glass-panel-dark, border-color);
+}
