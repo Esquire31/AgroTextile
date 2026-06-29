@@ -1,6 +1,8 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 export default function PanelsSection() {
+  const { formatMessage } = useIntl();
   return (
     <section className="py-12 md:py-24 px-4 sm:px-8 md:px-16 max-w-[1280px] mx-auto">
       <div className="flex flex-col md:flex-row gap-4 md:gap-8 h-auto md:h-175">
@@ -12,14 +14,14 @@ export default function PanelsSection() {
           />
           <div className="absolute inset-0 bg-black/40 group-hover:bg-[#006241]/80 transition-colors duration-500 flex flex-col justify-end p-6 md:p-12">
             <h3 className="text-2xl sm:text-3xl md:text-[48px] leading-tight md:leading-14 font-headline-lg text-white mb-2 md:mb-4 font-bold">
-              Textile & Apparel
+              {formatMessage({ id: 'app.pages.home.panels.textile.title' })}
             </h3>
             <p className="text-white/80 max-w-md mb-8 transform translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 font-body-md">
-              From high-tensile technical yarns to premium organic cotton, we source the foundation of global fashion.
+              {formatMessage({ id: 'app.pages.home.panels.textile.subtitle' })}
             </p>
             <ul className="text-white flex gap-4 transform translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 font-label-sm">
-              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">Raw Fiber</li>
-              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">Technical Yarn</li>
+              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">{formatMessage({ id: 'app.pages.home.panels.textile.badge.raw_fiber' })}</li>
+              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">{formatMessage({ id: 'app.pages.home.panels.textile.badge.technical_yarn' })}</li>
             </ul>
           </div>
         </div>
@@ -31,14 +33,14 @@ export default function PanelsSection() {
           />
           <div className="absolute inset-0 bg-black/40 group-hover:bg-[#006241]/80 transition-colors duration-500 flex flex-col justify-end p-12">
             <h3 className="text-[48px] leading-14 font-headline-lg text-white mb-4 font-bold">
-              Agro Commodities
+              {formatMessage({ id: 'app.pages.home.panels.agro.title' })}
             </h3>
             <p className="text-white/80 max-w-md mb-8 transform translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 font-body-md">
-              Sourcing the finest Indian produce, spices, and grains with end-to-end cold chain integrity.
+              {formatMessage({ id: 'app.pages.home.panels.agro.subtitle' })}
             </p>
             <ul className="text-white flex gap-4 transform translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 font-label-sm">
-              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">Fresh Fruit</li>
-              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">Spices</li>
+              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">{formatMessage({ id: 'app.pages.home.panels.agro.badge.fresh_fruit' })}</li>
+              <li className="bg-white/20 px-4 py-1 rounded-full backdrop-blur-md uppercase">{formatMessage({ id: 'app.pages.home.panels.agro.badge.spices' })}</li>
             </ul>
           </div>
         </div>

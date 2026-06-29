@@ -16,7 +16,7 @@ export default function Home() {
       <PanelsSection />
       <TimelineSection />
       <MarqueeSection />
-      <CommandCenterSection />
+      {/* <CommandCenterSection /> */}
       <CalculatorSection />
       <ParallaxSection />
     </main>

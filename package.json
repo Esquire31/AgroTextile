@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "i18n:fill": "node scripts/fill-missing-translations.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.9",
@@ -26,6 +27,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.2.6",
     "react-intersection-observer": "^10.0.3",
+    "react-intl": "^10.1.14",
     "react-phone-number-input": "^3.4.17",
     "react-router-dom": "^6.20.0",
     "shadcn": "^4.11.0",

@@ -1,6 +1,9 @@
 import React from "react";
+import { useIntl } from "react-intl";
 
 export default function HeroSection() {
+  const { formatMessage } = useIntl();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       
@@ -31,29 +34,23 @@ export default function HeroSection() {
         </span> */}
 
         <h1 className="text-4xl text-text-primary sm:text-6xl lg:text-[88px] leading-[1.05] font-bold font-display-lg tracking-[-0.03em] mb-8">
-          Connecting Indian
-          <br />
-          Excellence To Global
-          <br />
-          Markets
+          <span dangerouslySetInnerHTML={{ __html: formatMessage({ id: 'app.pages.home.hero.title' }) }} />
         </h1>
 
         <p className="max-w-3xl mx-auto text-text-secondary text-lg md:text-xl leading-relaxed mb-10">
-          Trusted sourcing partner for premium textiles and fresh produce,
-          delivering quality products from India to international markets
-          across Europe, North America, the Middle East and Asia-Pacific.
+          {formatMessage({ id: 'app.pages.home.hero.subtitle' })}
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <button className="bg-primary text-text-on-primary px-8 py-4 rounded-full font-bold spring-hover spring-active flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
-            Start Sourcing
+            {formatMessage({ id: 'app.pages.home.hero.btn.start_sourcing' })}
             <span className="material-symbols-outlined">
               arrow_forward
             </span>
           </button>
 
           <button className="border border-outline bg-card-bg backdrop-blur-sm text-text-primary px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors spring-active">
-            View Catalogue
+            {formatMessage({ id: 'app.pages.home.hero.btn.view_catalogue' })}
           </button>
         </div>
       </div>

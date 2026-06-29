@@ -1,13 +1,15 @@
 import React from "react";
+import { useIntl } from "react-intl";
 
 export default function MarqueeSection() {
+  const { formatMessage } = useIntl();
   const items = [
-    "ISO 9001 CERTIFIED",
-    "APEDA REGISTERED",
-    "FSSAI COMPLIANT",
-    "GLOBAL QUALITY STANDARDS",
-    "WORLDWIDE SHIPPING",
-    "EXPORT EXCELLENCE",
+    formatMessage({ id: "app.pages.home.marquee.iso_9001_certified" }),
+    formatMessage({ id: "app.pages.home.marquee.apeda_registered" }),
+    formatMessage({ id: "app.pages.home.marquee.fssai_compliant" }),
+    formatMessage({ id: "app.pages.home.marquee.global_quality_standards" }),
+    formatMessage({ id: "app.pages.home.marquee.worldwide_shipping" }),
+    formatMessage({ id: "app.pages.home.marquee.export_excellence" }),
   ];
 
   return (

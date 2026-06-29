@@ -2,14 +2,32 @@
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useIntl } from 'react-intl'
+import { useLocale } from '../../core/locale'
 
 export function Navigation({ isDark, setIsDark }) {
 const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+const { formatMessage } = useIntl()
+const { locale, setLocale } = useLocale()
+
+const locales = ['en-IN', 'zh-CN', 'ar-AE']
+
+const localeLabelByCode = {
+  'en-IN': 'EN',
+  'zh-CN': '中文',
+  'ar-AE': 'AR',
+}
+
+const handleLocaleSwitch = () => {
+  const currentIndex = locales.indexOf(locale)
+  const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % locales.length
+  setLocale(locales[nextIndex])
+}
 
 const navItems = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Products', href: '/products' },
-  { label: 'Contact Us', href: '/contact' },
+  { label: formatMessage({ id: 'app.navbar.tabs.about_us' }), href: '/about' },
+  { label: formatMessage({ id: 'app.navbar.tabs.products' }), href: '/products' },
+  { label: formatMessage({ id: 'app.navbar.tabs.contact_us' }), href: '/contact' },
 ]
 
 return (
@@ -17,7 +35,7 @@ return (
     <div className="w-full flex justify-between items-center gap-4">
 
       <Link to="/" className="font-headline-lg text-title-md font-bold text-primary tracking-tighter cursor-pointer shrink-0 hover:opacity-80 transition-opacity">
-        7 HORSE'S EXPORT INDIA PVT LTD
+        {formatMessage({ id: 'app.company_name' })}
       </Link>
 
       {/* Desktop Navigation */}
@@ -44,12 +62,21 @@ return (
           </span>
         </button>
 
+        <button
+          onClick={handleLocaleSwitch}
+          title={formatMessage({ id: 'app.navbar.btn.change_language' })}
+          aria-label={formatMessage({ id: 'app.navbar.btn.change_language' })}
+          className="w-12 h-10 flex items-center justify-center rounded-full border border-outline-variant text-text-primary hover:bg-surface-variant transition-all spring-active font-label-sm"
+        >
+          {localeLabelByCode[locale] || 'EN'}
+        </button>
+
         <button className="hidden xl:block px-6 py-2 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap">
-          Download Catalog
+          {formatMessage({ id: 'app.navbar.btn.download_catalogue' })}
         </button>
 
         <button className="hidden xl:block px-4 sm:px-6 py-2 bg-primary text-text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold spring-hover spring-active font-label-sm whitespace-nowrap">
-          Request Quote
+          {formatMessage({ id: 'app.navbar.btn.request_quote' })}
         </button>
 
         {/* Mobile Menu Button */}
@@ -83,12 +110,19 @@ return (
         ))}
 
         <div className="pt-4 border-t border-outline-variant flex flex-col gap-3">
+          <button
+            onClick={handleLocaleSwitch}
+            className="w-full py-3 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap"
+          >
+            {formatMessage({ id: 'app.navbar.btn.change_language' })}: {localeLabelByCode[locale] || 'EN'}
+          </button>
+
           <button className="w-full py-3 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap">
-            Download Catalog
+            {formatMessage({ id: 'app.navbar.btn.download_catalogue' })}
           </button>
 
           <button className="w-full py-3 bg-primary text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold">
-            Request Quote
+            {formatMessage({ id: 'app.navbar.btn.request_quote' })}
           </button>
         </div>
 
