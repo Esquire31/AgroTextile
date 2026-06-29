@@ -2,13 +2,15 @@ import React from "react";
 import CountUp from "../../../../components/ui/CountUp";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useIntl } from "react-intl";
 
 export default function StatsSection() {
+  const { formatMessage } = useIntl();
   const stats = [
-  { end: 40, suffix: "+", label: "Countries Served" },
-  { end: 500, suffix: "+", label: "Enterprise Clients" },
-  { end: 1000, suffix: "+", label: "TEU Monthly", isK: true },
-  { end: 15, suffix: "+", label: "Years Excellence" },
+  { end: 40, suffix: "+", label: formatMessage({ id: "app.pages.home.stats.countries_served" }) },
+  { end: 500, suffix: "+", label: formatMessage({ id: "app.pages.home.stats.enterprise_clients" }) },
+  { end: 1000, suffix: "+", label: formatMessage({ id: "app.pages.home.stats.teu_monthly" }), isK: true },
+  { end: 15, suffix: "+", label: formatMessage({ id: "app.pages.home.stats.years_excellence" }) },
 ];
 
   const { ref, inView } = useInView({

@@ -5,6 +5,7 @@ import { Package, Leaf, Send, ArrowRight, Loader2, CheckCircle2, AlertCircle } f
 import { motion, AnimatePresence } from 'framer-motion';
 import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js';
 import en from 'react-phone-number-input/locale/en.json';
+import { useIntl } from 'react-intl';
 
 // ─────────────────────────────────────────────────────────────────
 // EMAIL DELIVERY SETUP (read this before deploying)
@@ -47,6 +48,7 @@ const COUNTRY_LIST = getCountries()
   .sort((a, b) => a.name.localeCompare(b.name));
 
 export default function ProcurementForm() {
+  const { formatMessage } = useIntl();
   const [focusedLabel, setFocusedLabel] = useState(null);
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
 
@@ -64,13 +66,13 @@ export default function ProcurementForm() {
   const services = [
     {
       icon: Package,
-      title: 'Agro-Textile Logistics',
-      description: 'Request technical specs for industrial fabrics and geotextiles.',
+      title: formatMessage({ id: 'app.pages.contact.form.services.logistics.title' }),
+      description: formatMessage({ id: 'app.pages.contact.form.services.logistics.description' }),
     },
     {
       icon: Leaf,
-      title: 'Fresh Fruit Export',
-      description: 'Volume pricing and cold-chain logistics for international shipments.',
+      title: formatMessage({ id: 'app.pages.contact.form.services.fruit.title' }),
+      description: formatMessage({ id: 'app.pages.contact.form.services.fruit.description' }),
     },
   ];
 
@@ -108,12 +110,15 @@ export default function ProcurementForm() {
 
   const validate = () => {
     const next = {};
-    if (!formData.name.trim()) next.name = 'Required';
-    if (!validateEmail(formData.email)) next.email = 'Enter a valid email (e.g. name@company.com)';
+    if (!formData.name.trim()) next.name = formatMessage({ id: 'app.pages.contact.form.validation.required' });
+    if (!validateEmail(formData.email)) next.email = formatMessage({ id: 'app.pages.contact.form.validation.email_invalid' });
     if (!validatePhone(formData.phone, formData.countryIso)) {
-      next.phone = `Enter a valid phone number for ${en[formData.countryIso] || formData.countryIso}`;
+      next.phone = formatMessage(
+        { id: 'app.pages.contact.form.validation.phone_invalid' },
+        { country: en[formData.countryIso] || formData.countryIso }
+      );
     }
-    if (!formData.details.trim()) next.details = 'Required';
+    if (!formData.details.trim()) next.details = formatMessage({ id: 'app.pages.contact.form.validation.required' });
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -177,9 +182,9 @@ export default function ProcurementForm() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-headline-lg text-headline-lg text-on-surface mb-8">Procurement Inquiry</h2>
+            <h2 className="font-headline-lg text-headline-lg text-on-surface mb-8">{formatMessage({ id: 'app.pages.contact.form.title' })}</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-12">
-              Our specialized trade consultants are ready to assist with your specific textile or agricultural requirements. Please provide your procurement details below.
+              {formatMessage({ id: 'app.pages.contact.form.subtitle' })}
             </p>
             <div className="space-y-6">
               {services.map((service, idx) => {
@@ -234,7 +239,7 @@ export default function ProcurementForm() {
                       focusedLabel === 'name' ? 'text-primary' : ''
                     }`}
                   >
-                    Full Name
+                    {formatMessage({ id: 'app.pages.contact.form.field.name.label' })}
                   </label>
                   <input
                     value={formData.name}
@@ -258,7 +263,7 @@ export default function ProcurementForm() {
                       focusedLabel === 'email' ? 'text-primary' : ''
                     }`}
                   >
-                    Business Email
+                    {formatMessage({ id: 'app.pages.contact.form.field.email.label' })}
                   </label>
                   <input
                     value={formData.email}
@@ -268,7 +273,7 @@ export default function ProcurementForm() {
                     className="procurement-field w-full bg-surface-container text-on-surface border rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                     style={{ borderColor: fieldBorder(errors.email) }}
                     type="email"
-                    placeholder="name@company.com"
+                    placeholder={formatMessage({ id: 'app.pages.contact.form.field.email.placeholder' })}
                   />
                   {errors.email && (
                     <p className="text-xs procurement-field-error-text flex items-center gap-1">
@@ -289,7 +294,7 @@ export default function ProcurementForm() {
                     focusedLabel === 'phone' ? 'text-primary' : ''
                   }`}
                 >
-                  Phone Number
+                  {formatMessage({ id: 'app.pages.contact.form.field.phone.label' })}
                 </label>
                 <div className="flex">
                   <select
@@ -315,7 +320,7 @@ export default function ProcurementForm() {
                     style={{ borderColor: fieldBorder(errors.phone) }}
                     type="tel"
                     inputMode="numeric"
-                    placeholder="Phone number"
+                    placeholder={formatMessage({ id: 'app.pages.contact.form.field.phone.placeholder' })}
                   />
                 </div>
                 {errors.phone && (
@@ -331,7 +336,7 @@ export default function ProcurementForm() {
                     focusedLabel === 'sector' ? 'text-primary' : ''
                   }`}
                 >
-                  Select Sector
+                  {formatMessage({ id: 'app.pages.contact.form.field.sector.label' })}
                 </label>
                 <select
                   value={formData.sector}
@@ -341,9 +346,15 @@ export default function ProcurementForm() {
                   className="procurement-field w-full bg-surface-container text-on-surface border rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none transition-all"
                   style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
                 >
-                  <option>Industrial Textiles & Protective Gear</option>
-                  <option>Fresh Produce & Agro-Logistics</option>
-                  <option>Custom ESG Compliance Sourcing</option>
+                  <option value="Industrial Textiles & Protective Gear">
+                    {formatMessage({ id: 'app.pages.contact.form.field.sector.option.industrial' })}
+                  </option>
+                  <option value="Fresh Produce & Agro-Logistics">
+                    {formatMessage({ id: 'app.pages.contact.form.field.sector.option.fresh_produce' })}
+                  </option>
+                  <option value="Custom ESG Compliance Sourcing">
+                    {formatMessage({ id: 'app.pages.contact.form.field.sector.option.esg' })}
+                  </option>
                 </select>
               </div>
 
@@ -353,7 +364,7 @@ export default function ProcurementForm() {
                     focusedLabel === 'details' ? 'text-primary' : ''
                   }`}
                 >
-                  Procurement Details
+                  {formatMessage({ id: 'app.pages.contact.form.field.details.label' })}
                 </label>
                 <textarea
                   value={formData.details}
@@ -362,7 +373,7 @@ export default function ProcurementForm() {
                   onBlur={() => setFocusedLabel(null)}
                   className="procurement-field w-full bg-surface-container text-on-surface border rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                   style={{ borderColor: fieldBorder(errors.details) }}
-                  placeholder="Volume, destination, and technical requirements..."
+                  placeholder={formatMessage({ id: 'app.pages.contact.form.field.details.placeholder' })}
                   rows="4"
                 ></textarea>
                 {errors.details && (
@@ -389,7 +400,7 @@ export default function ProcurementForm() {
                       className="flex items-center gap-3"
                     >
                       <Loader2 size={20} className="animate-spin" />
-                      Processing...
+                      {formatMessage({ id: 'app.pages.contact.form.btn.submitting' })}
                     </motion.span>
                   )}
                   {status === 'success' && (
@@ -401,7 +412,7 @@ export default function ProcurementForm() {
                       className="flex items-center gap-3"
                     >
                       <CheckCircle2 size={20} />
-                      Submitted
+                      {formatMessage({ id: 'app.pages.contact.form.btn.success' })}
                     </motion.span>
                   )}
                   {(status === 'idle' || status === 'error') && (
@@ -412,7 +423,7 @@ export default function ProcurementForm() {
                       exit={{ opacity: 0 }}
                       className="flex items-center gap-3"
                     >
-                      Initiate Inquiry
+                      {formatMessage({ id: 'app.pages.contact.form.btn.submit' })}
                       <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </motion.span>
                   )}
@@ -422,7 +433,7 @@ export default function ProcurementForm() {
               {status === 'error' && (
                 <p className="text-sm procurement-field-error-text flex items-center gap-2 justify-center">
                   <AlertCircle size={14} />
-                  Something went wrong — please try again or email us directly.
+                  {formatMessage({ id: 'app.pages.contact.form.error' })}
                 </p>
               )}
             </form>

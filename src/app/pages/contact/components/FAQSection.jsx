@@ -3,25 +3,27 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useIntl } from 'react-intl';
 
 export default function FAQSection() {
+  const { formatMessage } = useIntl();
   const [openId, setOpenId] = useState(null);
 
   const faqs = [
     {
       id: 0,
-      q: 'What is the minimum order quantity for international textile exports?',
-      a: 'Our standard MOQ starts at 500 meters for technical fabrics and 2,000 units for finished industrial products. Custom ESG-compliant sourcing may have different requirements based on the raw material availability.',
+      q: formatMessage({ id: 'app.pages.contact.faq.q1.question' }),
+      a: formatMessage({ id: 'app.pages.contact.faq.q1.answer' }),
     },
     {
       id: 1,
-      q: 'How do you manage cold-chain logistics for fruit procurement?',
-      a: 'We utilize IoT-enabled reefer containers that provide real-time temperature and humidity tracking. Our logistics hub in Mumbai acts as the primary consolidation point for rapid air and sea dispatch.',
+      q: formatMessage({ id: 'app.pages.contact.faq.q2.question' }),
+      a: formatMessage({ id: 'app.pages.contact.faq.q2.answer' }),
     },
     {
       id: 2,
-      q: 'Do you provide ESG and sustainability certification reports?',
-      a: 'Yes, all our textile products come with detailed ESG compliance reports, including carbon footprint analysis and ethical labor audits conducted by third-party global agencies.',
+      q: formatMessage({ id: 'app.pages.contact.faq.q3.question' }),
+      a: formatMessage({ id: 'app.pages.contact.faq.q3.answer' }),
     },
   ];
 
@@ -35,8 +37,8 @@ export default function FAQSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-4">Buyer Resources</span>
-          <h2 className="font-headline-lg text-headline-lg text-on-surface">International Buyer FAQ</h2>
+          <span className="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-4">{formatMessage({ id: 'app.pages.contact.faq.eyebrow' })}</span>
+          <h2 className="font-headline-lg text-headline-lg text-on-surface">{formatMessage({ id: 'app.pages.contact.faq.title' })}</h2>
         </motion.div>
 
         <div className="space-y-4">

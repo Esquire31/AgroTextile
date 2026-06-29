@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useIntl } from 'react-intl';
 
 export default function HeroSection() {
+  const { formatMessage } = useIntl();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -35,7 +37,7 @@ export default function HeroSection() {
         <img
           className="w-full h-full object-cover"
           src="/about-hero-bg.svg"
-          alt="Global cargo port and shipping"
+          alt={formatMessage({ id: 'app.pages.about.hero.bg_alt' })}
         />
       </motion.div>
 
@@ -71,7 +73,7 @@ export default function HeroSection() {
                 color: 'var(--color-on-surface)',
               }}
             >
-              About Our Company
+              {formatMessage({ id: 'app.pages.about.hero.eyebrow' })}
             </span>
           </motion.div>
 
@@ -87,7 +89,7 @@ export default function HeroSection() {
               letterSpacing: '-0.02em',
             }}
           >
-            Building Global Trade
+            {formatMessage({ id: 'app.pages.about.hero.title' })}
             <br />
             <motion.span
               style={{ color: 'var(--color-primary)' }}
@@ -96,7 +98,7 @@ export default function HeroSection() {
               }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             >
-              Through Trust & Reliability
+              {formatMessage({ id: 'app.pages.about.hero.title_highlight' })}
             </motion.span>
           </motion.h1>
 
@@ -110,7 +112,7 @@ export default function HeroSection() {
               lineHeight: 1.7,
             }}
           >
-            We are an India-based export company committed to connecting international markets with high-quality products and dependable supply solutions. Through integrity, transparency, and long-term partnerships, we help businesses source with confidence and grow beyond borders.
+            {formatMessage({ id: 'app.pages.about.hero.description' })}
           </motion.p>
 
           {/* Scroll Indicator */}
@@ -135,7 +137,7 @@ export default function HeroSection() {
               className="text-xs font-medium tracking-wide uppercase"
               style={{ color: 'var(--color-primary)' }}
             >
-              Discover Our Story
+              {formatMessage({ id: 'app.pages.about.hero.scroll_indicator' })}
             </span>
           </motion.div>
         </motion.div>

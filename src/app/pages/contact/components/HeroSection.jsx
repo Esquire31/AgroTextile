@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Send, UserCheck, MessageSquareText } from 'lucide-react';
+import { useIntl } from 'react-intl';
 
 export default function HeroSection() {
+  const { formatMessage } = useIntl();
   // The actual idea: instead of decorating the headline with fake
   // "live" stats (no backend exists) or repeating the email/phone
   // chips that already live further down the page, the hero shows
@@ -19,18 +21,18 @@ export default function HeroSection() {
   const steps = [
     {
       icon: Send,
-      title: 'You Reach Out',
-      detail: 'Share your sourcing needs, volumes, and destination.',
+      title: formatMessage({ id: 'app.pages.contact.hero.steps.reach_out.title' }),
+      detail: formatMessage({ id: 'app.pages.contact.hero.steps.reach_out.detail' }),
     },
     {
       icon: UserCheck,
-      title: 'A Specialist Reviews',
-      detail: 'Routed directly to the right trade desk for your sector.',
+      title: formatMessage({ id: 'app.pages.contact.hero.steps.specialist.title' }),
+      detail: formatMessage({ id: 'app.pages.contact.hero.steps.specialist.detail' }),
     },
     {
       icon: MessageSquareText,
-      title: 'We Respond — Fast',
-      detail: 'A detailed reply within one business day, every time.',
+      title: formatMessage({ id: 'app.pages.contact.hero.steps.respond.title' }),
+      detail: formatMessage({ id: 'app.pages.contact.hero.steps.respond.detail' }),
     },
   ];
 
@@ -123,7 +125,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-sm text-label-sm mb-7 uppercase tracking-widest"
           >
-            Get in Touch
+            {formatMessage({ id: 'app.pages.contact.hero.badge' })}
           </motion.span>
 
           <motion.h1
@@ -132,7 +134,8 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-display-lg text-on-surface mb-6 leading-[1.05] tracking-tight text-[3.25rem] sm:text-[4.5rem] lg:text-[5.5rem]"
           >
-            Contact <span className="text-primary">Us</span>
+            {formatMessage({ id: 'app.pages.contact.hero.title' })}{' '}
+            <span className="text-primary">{formatMessage({ id: 'app.pages.contact.hero.title_highlight' })}</span>
           </motion.h1>
 
           <motion.p
@@ -141,7 +144,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="font-body-lg text-body-lg text-on-surface-variant max-w-xl"
           >
-            Whether you're sourcing technical textiles or coordinating fresh produce exports, our trade desks are ready to help. Here's exactly what happens once you send a message.
+            {formatMessage({ id: 'app.pages.contact.hero.subtitle' })}
           </motion.p>
         </div>
 

@@ -2,16 +2,18 @@
 
 import { motion } from 'framer-motion';
 import { BadgeCheck, Leaf, ShieldCheck, Factory, Award } from 'lucide-react';
-
-const certifications = [
-  { Icon: BadgeCheck, name: 'ISO 9001:2015' },
-  { Icon: Leaf, name: 'GlobalGAP' },
-  { Icon: ShieldCheck, name: 'HACCP Certified' },
-  { Icon: Factory, name: 'SA8000' },
-  { Icon: Award, name: 'Organic Cotton Std' },
-];
+import { useIntl } from 'react-intl';
 
 export default function CertificationsMarquee() {
+  const { formatMessage } = useIntl();
+  const certifications = [
+    { Icon: BadgeCheck, name: formatMessage({ id: 'app.pages.about.certifications.cert.iso' }) },
+    { Icon: Leaf, name: formatMessage({ id: 'app.pages.about.certifications.cert.globalgap' }) },
+    { Icon: ShieldCheck, name: formatMessage({ id: 'app.pages.about.certifications.cert.haccp' }) },
+    { Icon: Factory, name: formatMessage({ id: 'app.pages.about.certifications.cert.sa8000' }) },
+    { Icon: Award, name: formatMessage({ id: 'app.pages.about.certifications.cert.organic_cotton' }) },
+  ];
+
   return (
     <section
       className="py-16 sm:py-24 border-y overflow-hidden bg-surface-container-low relative"
@@ -35,8 +37,8 @@ export default function CertificationsMarquee() {
         viewport={{ once: true }}
       >
         <div>
-          <h3 className="font-label-sm text-primary uppercase tracking-widest mb-2">Industrial Trust</h3>
-          <h2 className="font-title-md text-title-md text-on-surface">Globally Certified Standards</h2>
+          <h3 className="font-label-sm text-primary uppercase tracking-widest mb-2">{formatMessage({ id: 'app.pages.about.certifications.eyebrow' })}</h3>
+          <h2 className="font-title-md text-title-md text-on-surface">{formatMessage({ id: 'app.pages.about.certifications.title' })}</h2>
         </div>
       </motion.div>
 
@@ -92,7 +94,7 @@ export default function CertificationsMarquee() {
                       A
                     </div>
                     <span className="font-title-md text-sm sm:text-base font-bold text-on-surface whitespace-nowrap tracking-tight">
-                      AgroTextile Global
+                      {formatMessage({ id: 'app.pages.about.certifications.wordmark' })}
                     </span>
                   </div>
                 </div>

@@ -1,32 +1,34 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
-const timelineItems = [
-  {
-    year: '1994',
-    title: 'The First Harvest',
-    description: 'Established in Ahmedabad as a boutique textile sourcing house focusing on organic long-staple cotton for European luxury markets.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDeNvnu2w6h7v-Udz6OUiPoAugF8ot9arJppohvVmL6QZPuj078QmErSJ0IdWnbb5tVGbiazLbRLX5t8iz08gAtsuqhfubN27yS8IJgsGdNlEfxYsGFMIbT5Jlzq46oCvvc5cfYFVRZQsVOmydyM3BKaqbzqkML5DqKZZS3WiOvFyGr7WCad_IdZ-UKiT35icMlCnYWc6oRUar48uxWe4fOlUxeVcapWLw_0HoM_1qkzJTREkKbV4_zExPtZ_IkTFD8UubTfa_ahho',
-    position: 'left',
-  },
-  {
-    year: '2008',
-    title: 'Agro-Export Expansion',
-    description: 'Diversified into premium horticulture, launching our cold-chain infrastructure in Maharashtra for Mango and Pomegranate exports to the Middle East.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSU8xOCO0UutiX-TlpcsFGBaLV9sBq3PU1FZkSJi_neyk3Igt_8MzxHsUZjjHpYgVfVuuNgdkFuJ1IgSyrcdhTURBxHU_q-Acifl9Adroq0VRt7zV9PkGCl4BHlP-_urWc8sWl3KB9r8gwPq9W7e1uLXg_PFguzQSGXHoRBz6k29cZPDDwbFTAK95sJjSUk6T1QI8nGmJlA2DHFKakogg7sisl2hLcXACQRFI8qcRFQ9zgopuAMT-bTj9V99Iu6nIdlX1RHrNEkUc',
-    position: 'right',
-  },
-  {
-    year: '2022',
-    title: 'Industrial Modernist Era',
-    description: 'Full integration of IoT-enabled logistics and sustainability-first ESG protocols across all textile and agro units, achieving GlobalGAP status.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6UKX5krzFkB7nPIQiaPtAEPnJ9oqRAJoqALGQmd82DT6X7SfcirLiAi0YUEfjKuAZSCzAcPL9PrcurlQTTVBVRcour_QLt63Y1IS4GPGwtoLKL9HXlMQorsp2M13v2a0XPVbPfK94iryPdEOLi3bZ9AIuCkmfqYLO9HQcAFYiDEBamKQJ97PDQeuEJBAFhnkYmo36gJEsQvqQG0HDqzD9qMUBnPyofDY63k8kOffziJNHo0y3c7QvovNYbrYbxnIe-7zSpGcp-4A',
-    position: 'left',
-  },
-];
+import { useIntl } from 'react-intl';
 
 export default function TimelineSection() {
+  const { formatMessage } = useIntl();
+  const timelineItems = [
+    {
+      year: '1994',
+      title: formatMessage({ id: 'app.pages.about.timeline.item1.title' }),
+      description: formatMessage({ id: 'app.pages.about.timeline.item1.description' }),
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDeNvnu2w6h7v-Udz6OUiPoAugF8ot9arJppohvVmL6QZPuj078QmErSJ0IdWnbb5tVGbiazLbRLX5t8iz08gAtsuqhfubN27yS8IJgsGdNlEfxYsGFMIbT5Jlzq46oCvvc5cfYFVRZQsVOmydyM3BKaqbzqkML5DqKZZS3WiOvFyGr7WCad_IdZ-UKiT35icMlCnYWc6oRUar48uxWe4fOlUxeVcapWLw_0HoM_1qkzJTREkKbV4_zExPtZ_IkTFD8UubTfa_ahho',
+      position: 'left',
+    },
+    {
+      year: '2008',
+      title: formatMessage({ id: 'app.pages.about.timeline.item2.title' }),
+      description: formatMessage({ id: 'app.pages.about.timeline.item2.description' }),
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSU8xOCO0UutiX-TlpcsFGBaLV9sBq3PU1FZkSJi_neyk3Igt_8MzxHsUZjjHpYgVfVuuNgdkFuJ1IgSyrcdhTURBxHU_q-Acifl9Adroq0VRt7zV9PkGCl4BHlP-_urWc8sWl3KB9r8gwPq9W7e1uLXg_PFguzQSGXHoRBz6k29cZPDDwbFTAK95sJjSUk6T1QI8nGmJlA2DHFKakogg7sisl2hLcXACQRFI8qcRFQ9zgopuAMT-bTj9V99Iu6nIdlX1RHrNEkUc',
+      position: 'right',
+    },
+    {
+      year: '2022',
+      title: formatMessage({ id: 'app.pages.about.timeline.item3.title' }),
+      description: formatMessage({ id: 'app.pages.about.timeline.item3.description' }),
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6UKX5krzFkB7nPIQiaPtAEPnJ9oqRAJoqALGQmd82DT6X7SfcirLiAi0YUEfjKuAZSCzAcPL9PrcurlQTTVBVRcour_QLt63Y1IS4GPGwtoLKL9HXlMQorsp2M13v2a0XPVbPfK94iryPdEOLi3bZ9AIuCkmfqYLO9HQcAFYiDEBamKQJ97PDQeuEJBAFhnkYmo36gJEsQvqQG0HDqzD9qMUBnPyofDY63k8kOffziJNHo0y3c7QvovNYbrYbxnIe-7zSpGcp-4A',
+      position: 'left',
+    },
+  ];
+
   return (
     <section className="py-16 sm:py-section-gap px-margin-mobile sm:px-margin-desktop bg-surface-container-low">
       <div className="max-w-container-max mx-auto">
@@ -37,9 +39,9 @@ export default function TimelineSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-headline-lg text-headline-lg text-on-surface mb-6">The Journey of Quality</h2>
+          <h2 className="font-headline-lg text-headline-lg text-on-surface mb-6">{formatMessage({ id: 'app.pages.about.timeline.title' })}</h2>
           <p className="font-body-lg text-on-surface-variant max-w-2xl">
-            A chronological testament to our growth from local sourcing to becoming a multi-sector export powerhouse.
+            {formatMessage({ id: 'app.pages.about.timeline.subtitle' })}
           </p>
         </motion.div>
 

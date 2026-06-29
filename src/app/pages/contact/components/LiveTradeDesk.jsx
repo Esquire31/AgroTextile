@@ -1,13 +1,15 @@
 'use client';
 
 import { Globe } from 'lucide-react';
+import { useIntl } from 'react-intl';
 
 export default function LiveTradeDesk() {
+  const { formatMessage } = useIntl();
   const desks = [
-    { city: 'Mumbai (IST)', status: 'Open', isOpen: true },
-    { city: 'London (GMT)', status: 'Open', isOpen: true },
-    { city: 'New York (EST)', status: 'Closed', isOpen: false },
-    { city: 'Dubai (GST)', status: 'Open', isOpen: true },
+    { city: formatMessage({ id: 'app.pages.contact.trade_desk.city.mumbai' }), status: formatMessage({ id: 'app.pages.contact.trade_desk.status.open' }), isOpen: true },
+    { city: formatMessage({ id: 'app.pages.contact.trade_desk.city.london' }), status: formatMessage({ id: 'app.pages.contact.trade_desk.status.open' }), isOpen: true },
+    { city: formatMessage({ id: 'app.pages.contact.trade_desk.city.new_york' }), status: formatMessage({ id: 'app.pages.contact.trade_desk.status.closed' }), isOpen: false },
+    { city: formatMessage({ id: 'app.pages.contact.trade_desk.city.dubai' }), status: formatMessage({ id: 'app.pages.contact.trade_desk.status.open' }), isOpen: true },
   ];
 
   return (
@@ -20,8 +22,8 @@ export default function LiveTradeDesk() {
           <div className="flex items-center gap-4">
             <Globe className="text-primary text-4xl w-10 h-10" />
             <div>
-              <h3 className="font-title-md text-title-md text-on-surface">Live Trade Desk</h3>
-              <p className="text-on-surface-variant font-label-sm">Monitoring Global Time Zones</p>
+              <h3 className="font-title-md text-title-md text-on-surface">{formatMessage({ id: 'app.pages.contact.trade_desk.title' })}</h3>
+              <p className="text-on-surface-variant font-label-sm">{formatMessage({ id: 'app.pages.contact.trade_desk.subtitle' })}</p>
             </div>
           </div>
           

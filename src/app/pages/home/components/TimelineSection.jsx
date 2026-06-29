@@ -1,7 +1,15 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 export default function TimelineSection() {
-  const steps = ['Inquiry', 'Sourcing', 'QC Control', 'Packaging', 'Freight'];
+  const { formatMessage } = useIntl();
+  const steps = [
+    { title: formatMessage({ id: 'app.pages.home.timeline.inquiry.title' }), subtitle: formatMessage({ id: 'app.pages.home.timeline.inquiry.subtitle' }) },
+    { title: formatMessage({ id: 'app.pages.home.timeline.sourcing.title' }), subtitle: formatMessage({ id: 'app.pages.home.timeline.sourcing.subtitle' }) },
+    { title: formatMessage({ id: 'app.pages.home.timeline.qc.title' }), subtitle: formatMessage({ id: 'app.pages.home.timeline.qc.subtitle' }) },
+    { title: formatMessage({ id: 'app.pages.home.timeline.packaging.title' }), subtitle: formatMessage({ id: 'app.pages.home.timeline.packaging.subtitle' }) },
+    { title: formatMessage({ id: 'app.pages.home.timeline.delivery.title' }), subtitle: formatMessage({ id: 'app.pages.home.timeline.delivery.subtitle' }) },
+  ];
 
   return (
     <section className="py-24 overflow-x-auto hide-scrollbar whitespace-nowrap bg-card-secondary">
@@ -11,9 +19,9 @@ export default function TimelineSection() {
             <div className="text-5xl md:text-[72px] leading-tight md:leading-20 text-text-secondary mb-3 md:mb-4 group-hover:text-[#006241] transition-colors tabular-nums font-bold">
               0{idx + 1}
             </div>
-            <h4 className="text-lg md:text-[24px] leading-tight md:leading-8 text-text-primary font-title-md mb-2 font-bold">{step}</h4>
+            <h4 className="text-lg md:text-[24px] leading-tight md:leading-8 text-text-primary font-title-md mb-2 font-bold">{step.title}</h4>
             <p className="whitespace-normal text-xs md:text-base text-text-secondary font-body-md">
-              Optimized supply chain workflow for maximum delivery efficiency.
+              {step.subtitle}
             </p>
             <div className="h-1.5 md:h-2 bg-card-secondary mt-6 md:mt-8 rounded-full relative overflow-hidden">
               <div className="absolute inset-0 bg-primary w-0 group-hover:w-full transition-all duration-1000"></div>
