@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Sprout, Droplets, Users, TrendingUp } from 'lucide-react';
+import { useIntl } from 'react-intl';
 
 // Animated count-up for the stat numbers — a small, premium touch
 // (Stripe/Linear-style) that makes the section feel alive rather
@@ -51,18 +52,19 @@ function AnimatedStat({ value, size = 'text-display-lg' }) {
 }
 
 export default function ImpactSection() {
+  const { formatMessage } = useIntl();
   const impactCards = [
     {
-      title: 'Gujarat Textile Initiative',
-      description: 'Empowering over 15,000 cotton farmers through regenerative agriculture and zero-waste processing facilities in Ahmedabad.',
+      title: formatMessage({ id: 'app.pages.about.impact.card1.title' }),
+      description: formatMessage({ id: 'app.pages.about.impact.card1.description' }),
     },
     {
-      title: 'Maharashtra Cold-Chain ESG',
-      description: 'Reducing post-harvest losses by 40% using solar-powered storage solutions for pomegranate growers across the Sahyadri belt.',
+      title: formatMessage({ id: 'app.pages.about.impact.card2.title' }),
+      description: formatMessage({ id: 'app.pages.about.impact.card2.description' }),
     },
     {
-      title: 'Carbon Neutral Logistics',
-      description: 'Targeting net-zero emissions by 2030 through fleet electrification and sustainable packaging innovations.',
+      title: formatMessage({ id: 'app.pages.about.impact.card3.title' }),
+      description: formatMessage({ id: 'app.pages.about.impact.card3.description' }),
     },
   ];
 
@@ -71,8 +73,8 @@ export default function ImpactSection() {
   // icon for context so the numbers read as labeled evidence rather
   // than floating digits.
   const stats = [
-    { value: '85%', label: 'Water Reused', icon: Droplets, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA00BChpLYgUkZIcBvS_gQJOOiJSvHiio_NYBfemP2sI4XJSHFJBZOxkTUIRN8TMIzHYRLlO-H2-4I7PeMCp_eYcrFoDu0R7hJ40wOMq1vpGGD9fTltv_s1UArbadFHufQ4-JJyqArXrdslc4dSdr2xJ_-AaxqnzTsx_MgWGVX17C2EPy8u8pvecEvSUSS2XQKJ7VQmrF92RhiPry9gUG03l-edpynkKk20PJDeNV79RP-uQ6DQF5cI8ZFQSzMh4aEXxcRGgd694vk' },
-    { value: '12k+', label: 'Jobs Created', icon: Users, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlhsmXTLLP_dnumgNM4ivQHFFX6UGa-qveTIlwQl1Y9w-z0ATTFjYCQB48nych5g4jlOMLlb9HN8JE71JR4-Ey0-eZDXFDckmaMzCRy2EDIHObU312D-bswX2KJet5hvS6zXhMFXesbtDwT6qVReAWx01bWj_GjL9V4s5PClycWOGwz2DKRH0E-ZCDG0pVV8h67LyKcyzM454XVVnfu5pJ-tnIt4HBIIFZctX2TShJbkBeCrDz2HgXQ4Y-TI14KBG6Qg3dNDwueWw' },
+    { value: '85%', label: formatMessage({ id: 'app.pages.about.impact.stat.water_reused.label' }), alt: formatMessage({ id: 'app.pages.about.impact.stat.water_reused.alt' }), icon: Droplets, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA00BChpLYgUkZIcBvS_gQJOOiJSvHiio_NYBfemP2sI4XJSHFJBZOxkTUIRN8TMIzHYRLlO-H2-4I7PeMCp_eYcrFoDu0R7hJ40wOMq1vpGGD9fTltv_s1UArbadFHufQ4-JJyqArXrdslc4dSdr2xJ_-AaxqnzTsx_MgWGVX17C2EPy8u8pvecEvSUSS2XQKJ7VQmrF92RhiPry9gUG03l-edpynkKk20PJDeNV79RP-uQ6DQF5cI8ZFQSzMh4aEXxcRGgd694vk' },
+    { value: '12k+', label: formatMessage({ id: 'app.pages.about.impact.stat.jobs_created.label' }), alt: formatMessage({ id: 'app.pages.about.impact.stat.jobs_created.alt' }), icon: Users, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlhsmXTLLP_dnumgNM4ivQHFFX6UGa-qveTIlwQl1Y9w-z0ATTFjYCQB48nych5g4jlOMLlb9HN8JE71JR4-Ey0-eZDXFDckmaMzCRy2EDIHObU312D-bswX2KJet5hvS6zXhMFXesbtDwT6qVReAWx01bWj_GjL9V4s5PClycWOGwz2DKRH0E-ZCDG0pVV8h67LyKcyzM454XVVnfu5pJ-tnIt4HBIIFZctX2TShJbkBeCrDz2HgXQ4Y-TI14KBG6Qg3dNDwueWw' },
   ];
 
   return (
@@ -98,10 +100,10 @@ export default function ImpactSection() {
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-sm text-label-sm mb-6 uppercase tracking-widest">
               <Sprout size={14} />
-              ESG Commitment
+              {formatMessage({ id: 'app.pages.about.impact.eyebrow' })}
             </div>
             <h2 className="font-headline-lg text-headline-lg text-on-secondary mb-8">
-              Our Impact: Sowing the Seeds of Tomorrow
+              {formatMessage({ id: 'app.pages.about.impact.title' })}
             </h2>
             <div className="space-y-4 sm:space-y-5">
               {impactCards.map((card, index) => (
@@ -142,7 +144,7 @@ export default function ImpactSection() {
                 >
                   <img
                     className="w-full h-full object-cover"
-                    alt="Sustainable agriculture"
+                    alt={stats[0].alt}
                     src={stats[0].image}
                   />
                 </motion.div>
@@ -182,7 +184,7 @@ export default function ImpactSection() {
                 >
                   <img
                     className="w-full h-full object-cover"
-                    alt="Hemp fields"
+                    alt={stats[1].alt}
                     src={stats[1].image}
                   />
                 </motion.div>
@@ -206,10 +208,10 @@ export default function ImpactSection() {
               </div>
               <div>
                 <span className="font-label-sm text-secondary-fixed uppercase tracking-wide block mb-1">
-                  Net-Zero Target
+                  {formatMessage({ id: 'app.pages.about.impact.net_zero.label' })}
                 </span>
                 <span className="tabular-nums text-2xl sm:text-3xl text-on-secondary font-bold">2030</span>
-                <span className="text-secondary-fixed ml-2 text-sm">Carbon Neutral Logistics</span>
+                <span className="text-secondary-fixed ml-2 text-sm">{formatMessage({ id: 'app.pages.about.impact.net_zero.caption' })}</span>
               </div>
             </motion.div>
           </motion.div>
