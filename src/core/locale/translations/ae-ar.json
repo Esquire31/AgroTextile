@@ -1,11 +1,13 @@
 {
     "app.company_name": "شركة 7 هورس إكسبورت إنديا الخاصة المحدودة",
+
     "app.navbar.tabs.about_us": "من نحن",
     "app.navbar.tabs.products": "المنتجات",
     "app.navbar.tabs.contact_us": "اتصل بنا",
     "app.navbar.btn.change_language": "تغيير اللغة",
     "app.navbar.btn.request_quote": "طلب عرض سعر",
     "app.navbar.btn.download_catalogue": "تحميل الكتالوج",
+
     "app.footer.subtext": "توريد دقيق. نمو مستدام. جسر الهند إلى السوق العالمي.",
     "app.footer.section.operations.title": "العمليات",
     "app.footer.section.operations.link.global_operations": "العمليات العالمية",
@@ -20,6 +22,7 @@
     "app.footer.section.newsletter.input_placeholder": "عنوان البريد الإلكتروني",
     "app.footer.section.newsletter.btn_subscribe": "اشتراك",
     "app.footer.copyright": "© 2024 أجريتكس إنترناشيونال. توريد دقيق. نمو مستدام.",
+
     "app.pages.home.hero.title": "ربط التميز الهندي <br /> بالأسواق <br /> العالمية",
     "app.pages.home.hero.subtitle": "شريك موثوق لتوريد المنسوجات الفاخرة والمنتجات الطازجة، نوصل منتجات عالية الجودة من الهند إلى الأسواق الدولية في أوروبا وأمريكا الشمالية والشرق الأوسط وآسيا والمحيط الهادئ.",
     "app.pages.home.hero.btn.start_sourcing": "ابدأ التوريد",
@@ -55,7 +58,7 @@
     "app.pages.home.parallax.title": "تقديم الحجم",
     "app.pages.home.parallax.subtitle": "هل أنت مستعد لتوسيع قدراتك في التوريد مع أكثر شركاء التصدير موثوقية في الهند؟",
     "app.pages.home.parallax.btn.request_quote": "احصل على عرضك المخصص",
-    "app.pages.home.calculator.title": "قم بتقدير", 
+    "app.pages.home.calculator.title": "قم بتقدير",
     "app.pages.home.calculator.title_highlight": "حجمك",
     "app.pages.home.calculator.subtitle": "تحديد أفضل تكوين للحاوية لنوع البضائع الخاص بك.",
     "app.pages.home.calculator.container_size": "حجم الحاوية",
@@ -67,6 +70,7 @@
     "app.pages.home.calculator.tick.20ft": "20 قدم",
     "app.pages.home.calculator.tick.40ft": "40 قدم",
     "app.pages.home.calculator.tick.40ft_hq": "40 قدم عالي",
+
     "app.pages.contact.hero.badge": "تواصل معنا",
     "app.pages.contact.hero.title": "اتصل",
     "app.pages.contact.hero.title_highlight": "بنا",
@@ -126,6 +130,7 @@
     "app.pages.contact.faq.q2.answer": "نحن نستخدم حاويات مبردة مزودة بتقنية إنترنت الأشياء (IoT) توفر تتبعًا فوريًا لدرجة الحرارة والرطوبة. يعمل مركزنا اللوجستي في مومباي كنقطة تجميع أساسية للإرسال السريع جوًا وبحرًا.",
     "app.pages.contact.faq.q3.question": "هل تقدمون تقارير شهادات الحوكمة البيئية والاجتماعية والمؤسسية (ESG) والاستدامة؟",
     "app.pages.contact.faq.q3.answer": "نعم، تأتي جميع منتجاتنا النسيجية بتقارير مفصلة عن الامتثال لمعايير ESG، بما في ذلك تحليل البصمة الكربونية وعمليات تدقيق العمل الأخلاقي التي تجريها وكالات عالمية خارجية.",
+
     "app.pages.about.hero.eyebrow": "نبذة عن شركتنا",
     "app.pages.about.hero.bg_alt": "ميناء الشحن والشحن العالمي",
     "app.pages.about.hero.title": "بناء التجارة العالمية",

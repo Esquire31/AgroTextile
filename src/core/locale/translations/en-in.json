@@ -81,7 +81,6 @@
     "app.pages.contact.hero.steps.specialist.detail": "Routed directly to the right trade desk for your sector.",
     "app.pages.contact.hero.steps.respond.title": "We Respond — Fast",
     "app.pages.contact.hero.steps.respond.detail": "A detailed reply within one business day, every time.",
-
     "app.pages.contact.trade_desk.title": "Live Trade Desk",
     "app.pages.contact.trade_desk.subtitle": "Monitoring Global Time Zones",
     "app.pages.contact.trade_desk.city.mumbai": "Mumbai (IST)",
@@ -90,7 +89,6 @@
     "app.pages.contact.trade_desk.city.dubai": "Dubai (GST)",
     "app.pages.contact.trade_desk.status.open": "Open",
     "app.pages.contact.trade_desk.status.closed": "Closed",
-
     "app.pages.contact.form.title": "Procurement Inquiry",
     "app.pages.contact.form.subtitle": "Our specialized trade consultants are ready to assist with your specific textile or agricultural requirements. Please provide your procurement details below.",
     "app.pages.contact.form.services.logistics.title": "Agro-Textile Logistics",
@@ -115,7 +113,6 @@
     "app.pages.contact.form.btn.success": "Submitted",
     "app.pages.contact.form.btn.submit": "Initiate Inquiry",
     "app.pages.contact.form.error": "Something went wrong — please try again or email us directly.",
-
     "app.pages.contact.offices.title": "Regional Strategic Hubs",
     "app.pages.contact.offices.subtitle": "Connecting local industrial excellence to the global trade map.",
     "app.pages.contact.offices.hq.title": "Surat Headquarters",
@@ -125,7 +122,6 @@
     "app.pages.contact.offices.hq.detail.location": "Ring Road, Surat, Gujarat, India",
     "app.pages.contact.offices.hq.detail.phone": "+91 (261) 400-GLOBAL",
     "app.pages.contact.offices.hq.detail.email": "global.trade@agrotextile.com",
-
     "app.pages.contact.faq.eyebrow": "Buyer Resources",
     "app.pages.contact.faq.title": "International Buyer FAQ",
     "app.pages.contact.faq.q1.question": "What is the minimum order quantity for international textile exports?",
@@ -141,7 +137,6 @@
     "app.pages.about.hero.title_highlight": "Through Trust & Reliability",
     "app.pages.about.hero.description": "We are an India-based export company committed to connecting international markets with high-quality products and dependable supply solutions. Through integrity, transparency, and long-term partnerships, we help businesses source with confidence and grow beyond borders.",
     "app.pages.about.hero.scroll_indicator": "Discover Our Story",
-
     "app.pages.about.timeline.title": "The Journey of Quality",
     "app.pages.about.timeline.subtitle": "A chronological testament to our growth from local sourcing to becoming a multi-sector export powerhouse.",
     "app.pages.about.timeline.item1.title": "The First Harvest",
@@ -150,7 +145,6 @@
     "app.pages.about.timeline.item2.description": "Diversified into premium horticulture, launching our cold-chain infrastructure in Maharashtra for Mango and Pomegranate exports to the Middle East.",
     "app.pages.about.timeline.item3.title": "Industrial Modernist Era",
     "app.pages.about.timeline.item3.description": "Full integration of IoT-enabled logistics and sustainability-first ESG protocols across all textile and agro units, achieving GlobalGAP status.",
-
     "app.pages.about.impact.eyebrow": "ESG Commitment",
     "app.pages.about.impact.title": "Our Impact: Sowing the Seeds of Tomorrow",
     "app.pages.about.impact.card1.title": "Gujarat Textile Initiative",
@@ -165,7 +159,6 @@
     "app.pages.about.impact.stat.jobs_created.alt": "Hemp fields",
     "app.pages.about.impact.net_zero.label": "Net-Zero Target",
     "app.pages.about.impact.net_zero.caption": "Carbon Neutral Logistics",
-
     "app.pages.about.testimonials.eyebrow": "Testimonials",
     "app.pages.about.testimonials.title": "What our partners say",
     "app.pages.about.testimonials.subtitle": "Trusted by procurement teams and trade desks around the world.",
@@ -199,7 +192,6 @@
     "app.pages.about.testimonials.t14.role": "Supply Chain Manager",
     "app.pages.about.testimonials.t15.text": "A dependable export partner that consistently delivers superior quality products backed by excellent communication and customer service. We look forward to many more years of collaboration.",
     "app.pages.about.testimonials.t15.role": "International Trade Manager",
-
     "app.pages.about.certifications.eyebrow": "Industrial Trust",
     "app.pages.about.certifications.title": "Globally Certified Standards",
     "app.pages.about.certifications.wordmark": "AgroTextile Global",
