@@ -30,7 +30,7 @@ export default function TimelineSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-section-gap px-margin-mobile sm:px-margin-desktop bg-surface-container-low">
+    <section id="timeline" className="py-16 sm:py-section-gap px-margin-mobile sm:px-margin-desktop bg-surface-container-low">
       <div className="max-w-container-max mx-auto">
         <motion.div
           className="flex flex-col items-center text-center mb-16 sm:mb-24"

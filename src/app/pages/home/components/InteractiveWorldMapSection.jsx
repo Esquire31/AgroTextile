@@ -156,7 +156,7 @@ export default function InteractiveWorldMapSection() {
  
               <button 
                 onClick={() => navigate('/products')}
-                className="pointer-events-auto border border-outline bg-card-bg/70 backdrop-blur-sm text-text-primary px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors spring-active"
+                className="pointer-events-auto border border-outline bg-card-bg/70 backdrop-blur-sm text-text-primary px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors spring-hover spring-active"
               >
                 {formatMessage({ id: "app.pages.home.hero.btn.view_catalogue" })}
               </button>

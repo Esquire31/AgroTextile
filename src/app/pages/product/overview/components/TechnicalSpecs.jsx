@@ -1,63 +1,56 @@
-import { Maximize2, Zap, Dumbbell, Crown } from 'lucide-react';
+﻿'use client';
 
-export default function TechnicalSpecs() {
-  const specs = [
-    {
-      icon: Maximize2,
-      label: 'STAPLE LENGTH',
-      value: '32mm+',
-      detail: 'Extra Long Staple',
-    },
-    {
-      icon: Zap,
-      label: 'MICRONAIRE',
-      value: '3.8 – 4.2',
-      detail: 'Optimal Spin-ability',
-    },
-    {
-      icon: Dumbbell,
-      label: 'FIBER STRENGTH',
-      value: '30 GPT+',
-      detail: 'High-Tenacity',
-    },
-    {
-      icon: Crown,
-      label: 'GRADE',
-      value: 'Middling',
-      detail: 'Standard White-1',
-    },
-  ];
+import { Maximize2, Zap, Dumbbell, ShieldCheck, Leaf, Target, Thermometer, Crown } from 'lucide-react';
+import { useIntl } from 'react-intl';
+
+const iconMap = {
+  Maximize2: Maximize2,
+  Zap: Zap,
+  Dumbbell: Dumbbell,
+  ShieldCheck: ShieldCheck,
+  Leaf: Leaf,
+  Target: Target,
+  Thermometer: Thermometer,
+  Crown: Crown,
+};
+
+export default function TechnicalSpecs({ product }) {
+  const { formatMessage } = useIntl();
+  const { specs } = product;
 
   return (
-    <section className="py-10 mb-15">
-      <div className="mb-12">
-        <h2 className="text-headline-lg font-bold text-on-surface mb-3">
-          Technical Specifications
+    <section className="py-20 border-y border-outline-variant/10">
+      <div className="mb-16">
+        <h2 className="text-display-sm font-bold text-on-surface mb-4">
+          {formatMessage({ id: 'app.products.overview.specs.title' })}
         </h2>
-        <p className="text-body-lg text-on-surface-variant">
-          Live laboratory metrics for Batch ID: VANG-COT-2024-08
+        <p className="text-body-lg text-on-surface-variant max-w-2xl">
+          {formatMessage(
+            { id: 'app.products.overview.specs.subtitle' },
+            { product: product.title }
+          )}
         </p>
       </div>
 
-      {/* Grid of Spec Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {specs.map((spec, idx) => {
-          const Icon = spec.icon;
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[1, 2, 3, 4].map((i) => {
+          const IconComponent = iconMap[specs[`icon${i}`]] || Target;
           return (
             <div
-              key={idx}
-              className="glass-card p-8 rounded-2xl flex flex-col items-center text-center"
+              key={i}
+              className="glass-card p-8 rounded-2xl flex flex-col gap-6 hover:translate-y-[-8px] transition-transform duration-300"
             >
-              <Icon className="text-primary mb-6" size={32} />
-              <p className="text-label-sm text-on-surface-variant font-bold tracking-wider mb-3">
-                {spec.label}
-              </p>
-              <p className="text-headline-lg font-bold text-on-surface mb-2 tabular-nums">
-                {spec.value}
-              </p>
-              <p className="text-body-md text-secondary font-semibold">
-                {spec.detail}
-              </p>
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                <IconComponent size={28} />
+              </div>
+              <div>
+                <p className="text-sm font-mono text-on-surface-variant uppercase tracking-wider mb-2">
+                  {specs[`label${i}`]}
+                </p>
+                <p className="text-2xl font-bold text-on-surface">
+                  {specs[`value${i}`]}
+                </p>
+              </div>
             </div>
           );
         })}
