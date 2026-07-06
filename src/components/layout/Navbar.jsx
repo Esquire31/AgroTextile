@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useIntl } from 'react-intl'
 import { useLocale } from '../../core/locale'
 
@@ -41,13 +41,19 @@ return (
       {/* Desktop Navigation */}
       <div className="hidden xl:flex ml-12 gap-6 xl:gap-10 items-center">
         {navItems.map((item) => (
-          <Link
+          <NavLink
             key={item.label}
             to={item.href}
-            className="text-text-primary hover:text-primary transition-colors duration-300 font-body-md whitespace-nowrap"
+            className={({ isActive }) => 
+              `transition-all duration-300 font-body-md whitespace-nowrap ${
+                isActive 
+                  ? 'text-primary text-lg font-semibold' 
+                  : 'text-text-primary hover:text-primary'
+              }`
+            }
           >
             {item.label}
-          </Link>
+          </NavLink>
         ))}
       </div>
 
@@ -99,14 +105,20 @@ return (
       <div className="flex flex-col gap-5">
 
         {navItems.map((item) => (
-          <Link
+          <NavLink
             key={item.label}
             to={item.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="text-text-primary font-medium hover:text-primary transition-colors"
+            className={({ isActive }) => 
+              `transition-all duration-300 font-medium ${
+                isActive 
+                  ? 'text-primary text-lg font-semibold' 
+                  : 'text-text-primary hover:text-primary'
+              }`
+            }
           >
             {item.label}
-          </Link>
+          </NavLink>
         ))}
 
         <div className="pt-4 border-t border-outline-variant flex flex-col gap-3">

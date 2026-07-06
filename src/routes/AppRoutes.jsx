@@ -4,7 +4,6 @@ import Home from '@/app/pages/home';
 import About from '@/app/pages/about';
 import ProductListing from '@/app/pages/product/listing';
 import ProductDetails from '@/app/pages/product/overview';
-import Services from '@/app/pages/services';
 import Contact from '@/app/pages/contact';
 
 export default function AppRoutes() {
@@ -15,7 +14,6 @@ export default function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/products" element={<ProductListing />} />
       <Route path="/products/:slug" element={<ProductDetails />} />
-      <Route path="/services" element={<Services />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

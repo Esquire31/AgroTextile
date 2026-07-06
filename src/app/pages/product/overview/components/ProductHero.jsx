@@ -1,17 +1,18 @@
-'use client';
+﻿'use client';
 
-import { Download, CheckCircle, Ship } from 'lucide-react';
-import { useState } from 'react';
+import { Download, CheckCircle, Ship, ShoppingBag } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { useIntl } from 'react-intl';
 
-export default function ProductHero() {
+export default function ProductHero({ product }) {
+  const { formatMessage } = useIntl();
   const [selectedImage, setSelectedImage] = useState(0);
 
-  const images = [
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAYFFpBtEIBpbXfWdC_PjmfxdJAkT9XhyS0sB3ZMdURTvwgUEBmlksKG-UfrQKr_fdZ9Z3WTvCZPdiluDGvg1b-M8h2rSxRXoNeF31P2JlXLdk17JiB7VDO0juqrKL5Amt7sfeyRkZX6hkBYGo2Wxtb4OX9m6BrmFpAL-jL1_HJRGPZdqMNW0UIsquoxhGOGJ5HgZpZWv5xUFNs4DFNLGPiXlIqM4JNlW8tdUgo_nwjUCGU7VRzN4loMEZfQRmelgDhNXioqglcBsY',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDSXeBi6HseigdkzzEWJKiBhOn01IEFciwDyKX7LTS9oHtG2oKSvATJJSn_uWrxSXgyBcqw3dkFA0xr_VwCu_7Br00GnSPQTVWjycAhDaMu-ifUcHzM1osT82_kSKGykvq1qtiV0FvEEkeWO4AhMZ1j75044pDMhjAYkS_YKTWF8NmVen4OFFdhytG5E_uRiImAgqeu5rgWr2x_hdgiNLZA1TPskLapU8usiSg7-PILbuKof7QTqFSSLcQNAId8HeaWnHNv9ixXh3U',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuBpSbcdt7_Pa49Es-S0VANjzTGw3TO_OBMW1gOXybmIlK0DnqucyNoGSjLJHUC6cteIz3J9qGVwStLYvMtl0DssyEaOKYP0e2UhKXQGA2ERQbwUX7LMI1wU4P0_JxXnnn1oAcuRgwx0Us8f2xqsWDGkow24hToKRNpRHj_j6gy4-KdtlTUMcSK1xUcK2OQ3i-7HOhLSfJVxPar_Hko39rJWxcsby_lm0cDXBElYWuB2-0E7BRDE0kcItyBePYgtQi6_qlUFjWRDuhI',
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuB6SeNgfRHqh5PlPHI7s58My1xOHO84Gb84JN8wvIK8wRVidQRcrqZVmVS_dHjHYgyhFDPiQ9soq1r0c-bmT1iejGr7rOFC_JQZlGN_DGd-Q8ajFzbH_fdsj85lZpyJynlk5jfiutvSmjT9bL3b2lopZCUwbUlaH7J6pA61ylWoDXOH31zT4nSgmcMzy-V6wnPkl42BLG96NslBLSsYVDi_BHkn0D_yW8JZV2XVFZ-_mmIBTbkY8J4wryw5aiYxJIJ275fhQn62aSw',
-  ];
+  const images = useMemo(() => {
+    return product.images && product.images.length > 0 
+      ? product.images 
+      : [product.thumbnail || product.image];
+  }, [product]);
 
   return (
     <section className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-12 mb-15">
@@ -21,7 +22,7 @@ export default function ProductHero() {
         <div className="relative w-full aspect-4/3 rounded-3xl overflow-hidden glass-card group">
           <img
             src={images[selectedImage]}
-            alt="Premium long-staple Indian cotton"
+            alt={product.title}
             className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
           />
           <div
@@ -41,8 +42,10 @@ export default function ProductHero() {
               <CheckCircle className="text-primary" size={20} />
             </div>
             <div>
-              <p className="text-xs text-on-surface-variant">Source Verified</p>
-              <p className="text-sm font-bold text-on-surface">Maharashtra Region</p>
+              <p className="text-xs text-on-surface-variant">
+                {formatMessage({ id: 'app.products.overview.hero.verified_source' })}
+              </p>
+              <p className="text-sm font-bold text-on-surface">{product.details.origin}</p>
             </div>
           </div>
         </div>
@@ -64,7 +67,7 @@ export default function ProductHero() {
                   : { borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }
               }
             >
-              <img src={src} alt={`Cotton detail view ${idx + 1}`} className="w-full h-full object-cover" />
+              <img src={src} alt={`${product.title} detail view ${idx + 1}`} className="w-full h-full object-cover" />
             </button>
           ))}
         </div>
@@ -75,11 +78,17 @@ export default function ProductHero() {
         {/* Title and Description */}
         <div>
           <h1 className="text-5xl md:text-6xl font-bold text-on-surface mb-4 leading-tight">
-            Premium Long-Staple<br />
-            <span className="text-primary">Indian Cotton</span>
+            {product.title}
           </h1>
+          <p className="text-sm font-mono text-secondary mb-4 uppercase tracking-[0.2em]">
+            {product.subtitle || (
+              product.category === 'Textile' 
+                ? formatMessage({ id: 'app.products.listing.filter.textile' })
+                : formatMessage({ id: 'app.products.listing.filter.agro' })
+            )}
+          </p>
           <p className="text-lg text-on-surface-variant leading-relaxed mb-8">
-            Our flagship textile export, sourced from the fertile black soil of the Deccan plateau. Engineered for high-speed spinning and superior tensile strength, ensuring unparalleled durability for luxury apparel manufacturing.
+            {product.details.description}
           </p>
         </div>
 
@@ -87,18 +96,28 @@ export default function ProductHero() {
         <div className="glass-card p-6 sm:p-8 rounded-2xl mb-8">
           <div className="grid grid-cols-2 gap-4">
             <div className="p-4 rounded-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--color-background) 40%, transparent)' }}>
-              <p className="text-xs text-on-surface-variant font-bold mb-2 uppercase tracking-wide">Min. Order</p>
-              <p className="text-4xl font-bold text-on-surface tabular-nums">50 MT</p>
+              <p className="text-xs text-on-surface-variant font-bold mb-2 uppercase tracking-wide">
+                {formatMessage({ id: 'app.products.overview.hero.min_order' })}
+              </p>
+              <p className="text-4xl font-bold text-on-surface tabular-nums">
+                {product.details.minOrder.split(' ')[0]} <span className="text-lg">{product.details.minOrder.split(' ')[1] || ''}</span>
+              </p>
             </div>
             <div className="p-4 rounded-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--color-background) 40%, transparent)' }}>
-              <p className="text-xs text-on-surface-variant font-bold mb-2 uppercase tracking-wide">Lead Time</p>
-              <p className="text-4xl font-bold text-on-surface tabular-nums">14-21 Days</p>
+              <p className="text-xs text-on-surface-variant font-bold mb-2 uppercase tracking-wide">
+                {formatMessage({ id: 'app.products.overview.hero.lead_time' })}
+              </p>
+              <p className="text-4xl font-bold text-on-surface tabular-nums">
+                {product.details.leadTime.split(' ')[0]} <span className="text-lg">{product.details.leadTime.split(' ')[1] || ''}</span>
+              </p>
             </div>
             <div className="p-4 rounded-xl col-span-2" style={{ backgroundColor: 'color-mix(in srgb, var(--color-background) 40%, transparent)' }}>
-              <p className="text-xs text-on-surface-variant font-bold mb-3 uppercase tracking-wide">Primary Shipping Port</p>
+              <p className="text-xs text-on-surface-variant font-bold mb-3 uppercase tracking-wide">
+                {formatMessage({ id: 'app.products.overview.hero.shipping_port' })}
+              </p>
               <div className="flex items-center gap-3">
                 <Ship className="text-primary" size={24} />
-                <span className="text-xl font-bold text-on-surface">Mundra / Nhava Sheva</span>
+                <span className="text-xl font-bold text-on-surface">{product.details.shippingPorts}</span>
               </div>
             </div>
           </div>
@@ -106,12 +125,16 @@ export default function ProductHero() {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="flex-1 bg-primary text-on-primary font-bold py-4 rounded-full text-sm hover:bg-primary/90 transition-all spring-hover">
-            Request Technical Quote
+          <button className="flex-1 bg-primary text-on-primary font-bold py-4 rounded-full text-sm hover:bg-primary/90 transition-all spring-hover flex items-center justify-center gap-2">
+            <ShoppingBag size={18} />
+            {formatMessage({ id: 'app.products.overview.hero.btn.add_to_inquiry' })}
           </button>
-          <button className="flex-1 border-2 border-primary text-primary font-bold py-4 rounded-full text-sm hover:bg-primary/10 transition-all spring-hover flex items-center justify-center gap-2">
-            <Download size={20} />
-            Spec Sheet (PDF)
+          <button
+            className="flex-1 border font-bold py-4 rounded-full text-sm hover:bg-surface-container-high transition-all spring-hover flex items-center justify-center gap-2"
+            style={{ borderColor: 'var(--color-outline)' }}
+          >
+            <Download size={18} />
+            {formatMessage({ id: 'app.products.overview.hero.btn.technical_sheet' })}
           </button>
         </div>
       </div>

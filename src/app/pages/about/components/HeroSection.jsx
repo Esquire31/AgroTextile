@@ -116,9 +116,12 @@ export default function HeroSection() {
           </motion.p>
 
           {/* Scroll Indicator */}
-          <motion.div
+          <motion.a
+            href="#timeline"
             variants={itemVariants}
-            className="flex flex-col items-center gap-2"
+            className="flex flex-col items-center gap-2 cursor-pointer group"
+            whileHover={{ y: 5 }}
+            transition={{ duration: 0.2 }}
           >
             <motion.svg
               width="24"
@@ -127,6 +130,7 @@ export default function HeroSection() {
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
+              className="group-hover:stroke-[3px] transition-all"
               style={{ color: 'var(--color-primary)' }}
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
@@ -134,12 +138,12 @@ export default function HeroSection() {
               <path d="M12 5v14M19 12l-7 7-7-7" />
             </motion.svg>
             <span
-              className="text-xs font-medium tracking-wide uppercase"
+              className="text-xs font-semibold tracking-widest uppercase group-hover:scale-105 transition-transform"
               style={{ color: 'var(--color-primary)' }}
             >
               {formatMessage({ id: 'app.pages.about.hero.scroll_indicator' })}
             </span>
-          </motion.div>
+          </motion.a>
         </motion.div>
       </div>
     </section>
