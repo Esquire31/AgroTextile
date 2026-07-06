@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Navigation } from "./components/layout/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 import { Footer } from "./components/layout/Footer";
-import ScrollToTop from "./components/layout/ScrolltoTop";
+import ScrollToTop from "./components/layout/ScrollToTop";
 import SplashCursor from "./components/ui/cursor/SplashCursor";
 import FairyDustCursor from "./components/ui/cursor/FairyDust";
 import Lenis from "lenis";
