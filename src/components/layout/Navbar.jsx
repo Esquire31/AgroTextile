@@ -14,7 +14,7 @@ const { locale, setLocale } = useLocale()
 
 const locales = [
   { code: 'en-IN', label: 'EN', name: 'English' },
-  { code: 'zh-CN', label: '中文', name: '中文' },
+  { code: 'zh-CN', label: 'CN', name: '中文' },
   { code: 'ar-AE', label: 'AR', name: 'العربية' },
 ]
 
@@ -56,7 +56,7 @@ return (
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="hidden xl:flex ml-12 gap-6 xl:gap-10 items-center">
+      <div className="hidden xl:flex flex-1 ml-12 gap-6 xl:gap-10 items-center justify-center">
         {navItems.map((item) => (
           <NavLink
             key={item.label}
@@ -98,7 +98,7 @@ return (
           </button>
 
           {langMenuOpen && (
-            <div className="absolute right-0 mt-3 w-52 origin-top-right rounded-2xl border border-outline-variant/30 bg-background/80 backdrop-blur-xl shadow-2xl shadow-black/10 ring-1 ring-black/5 p-2 z-50 animate-lang-menu">
+            <div className="absolute right-0 mt-3 w-52 origin-top-right rounded-2xl border border-outline-variant/30 bg-background backdrop-blur-xl shadow-2xl shadow-black/10 ring-1 ring-black/5 p-2 z-50 animate-lang-menu">
               <div className="flex flex-col gap-0.5">
                 {locales.map(({ code, label, name }) => {
                   const isActive = locale === code
@@ -132,10 +132,6 @@ return (
             </div>
           )}
         </div>
-
-        <button className="hidden xl:block px-6 py-2 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap">
-          {formatMessage({ id: 'app.navbar.btn.download_catalogue' })}
-        </button>
 
         <button className="hidden xl:block px-4 sm:px-6 py-2 bg-primary text-text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold spring-hover spring-active font-label-sm whitespace-nowrap">
           {formatMessage({ id: 'app.navbar.btn.request_quote' })}
@@ -179,7 +175,7 @@ return (
 
         <div className="pt-4 border-t border-outline-variant flex flex-col gap-3">
           <div className="flex flex-col gap-2">
-            <span className="text-text-primary/60 font-label-sm px-1">
+            <span className="text-text-primary font-label-sm px-1">
               {formatMessage({ id: 'app.navbar.btn.change_language' })}
             </span>
             <div className="flex gap-2">
@@ -198,10 +194,6 @@ return (
               ))}
             </div>
           </div>
-
-          <button className="w-full py-3 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap">
-            {formatMessage({ id: 'app.navbar.btn.download_catalogue' })}
-          </button>
 
           <button className="w-full py-3 bg-primary text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold">
             {formatMessage({ id: 'app.navbar.btn.request_quote' })}
