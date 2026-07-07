@@ -80,10 +80,9 @@ export default function HeroSection() {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl leading-tight tracking-tight"
+            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl leading-tight tracking-tight text-text-primary"
             style={{
               fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
-              color: 'var(--color-on-surface)',
               fontWeight: 700,
               lineHeight: 1.1,
               letterSpacing: '-0.02em',

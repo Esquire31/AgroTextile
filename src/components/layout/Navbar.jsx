@@ -1,16 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useIntl } from 'react-intl'
 import { useLocale } from '../../core/locale'
 
 export function Navigation({ isDark, setIsDark }) {
 const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+const [langMenuOpen, setLangMenuOpen] = useState(false)
+const langMenuRef = useRef(null)
 const { formatMessage } = useIntl()
 const { locale, setLocale } = useLocale()
 
-const locales = ['en-IN', 'zh-CN', 'ar-AE']
+const locales = [
+  { code: 'en-IN', label: 'EN', name: 'English' },
+  { code: 'zh-CN', label: '中文', name: '中文' },
+  { code: 'ar-AE', label: 'AR', name: 'العربية' },
+]
 
 const localeLabelByCode = {
   'en-IN': 'EN',
@@ -18,11 +24,22 @@ const localeLabelByCode = {
   'ar-AE': 'AR',
 }
 
-const handleLocaleSwitch = () => {
-  const currentIndex = locales.indexOf(locale)
-  const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % locales.length
-  setLocale(locales[nextIndex])
+const handleLocaleSelect = (code) => {
+  setLocale(code)
+  setLangMenuOpen(false)
 }
+
+// Close the language dropdown when clicking outside of it
+useEffect(() => {
+  if (!langMenuOpen) return
+  const handleClickOutside = (event) => {
+    if (langMenuRef.current && !langMenuRef.current.contains(event.target)) {
+      setLangMenuOpen(false)
+    }
+  }
+  document.addEventListener('mousedown', handleClickOutside)
+  return () => document.removeEventListener('mousedown', handleClickOutside)
+}, [langMenuOpen])
 
 const navItems = [
   { label: formatMessage({ id: 'app.navbar.tabs.about_us' }), href: '/about' },
@@ -68,14 +85,53 @@ return (
           </span>
         </button>
 
-        <button
-          onClick={handleLocaleSwitch}
-          title={formatMessage({ id: 'app.navbar.btn.change_language' })}
-          aria-label={formatMessage({ id: 'app.navbar.btn.change_language' })}
-          className="w-12 h-10 flex items-center justify-center rounded-full border border-outline-variant text-text-primary hover:bg-surface-variant transition-all spring-active font-label-sm"
-        >
-          {localeLabelByCode[locale] || 'EN'}
-        </button>
+        <div className="relative" ref={langMenuRef}>
+          <button
+            onClick={() => setLangMenuOpen((open) => !open)}
+            title={formatMessage({ id: 'app.navbar.btn.change_language' })}
+            aria-label={formatMessage({ id: 'app.navbar.btn.change_language' })}
+            aria-haspopup="true"
+            aria-expanded={langMenuOpen}
+            className="w-12 h-10 flex items-center justify-center rounded-full border border-outline-variant text-text-primary hover:bg-surface-variant transition-all spring-active font-label-sm"
+          >
+            {localeLabelByCode[locale] || 'EN'}
+          </button>
+
+          {langMenuOpen && (
+            <div className="absolute right-0 mt-3 w-52 origin-top-right rounded-2xl border border-outline-variant/30 bg-background/80 backdrop-blur-xl shadow-2xl shadow-black/10 ring-1 ring-black/5 p-2 z-50 animate-lang-menu">
+              <div className="flex flex-col gap-0.5">
+                {locales.map(({ code, label, name }) => {
+                  const isActive = locale === code
+                  return (
+                    <button
+                      key={code}
+                      onClick={() => handleLocaleSelect(code)}
+                      className={`group w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200 ${
+                        isActive
+                          ? 'bg-primary/10 text-primary'
+                          : 'text-text-primary hover:bg-surface-variant'
+                      }`}
+                    >
+                      <span className={`flex items-center justify-center w-8 h-8 shrink-0 rounded-lg text-xs font-semibold transition-colors ${
+                        isActive
+                          ? 'bg-primary text-on-primary'
+                          : 'bg-surface-variant text-text-primary/70 group-hover:bg-primary/10 group-hover:text-primary'
+                      }`}>
+                        {label}
+                      </span>
+                      <span className={`flex-1 font-body-md text-sm ${isActive ? 'font-semibold' : ''}`}>
+                        {name}
+                      </span>
+                      {isActive && (
+                        <span className="material-symbols-outlined text-[18px] text-primary">check</span>
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+        </div>
 
         <button className="hidden xl:block px-6 py-2 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap">
           {formatMessage({ id: 'app.navbar.btn.download_catalogue' })}
@@ -122,12 +178,26 @@ return (
         ))}
 
         <div className="pt-4 border-t border-outline-variant flex flex-col gap-3">
-          <button
-            onClick={handleLocaleSwitch}
-            className="w-full py-3 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap"
-          >
-            {formatMessage({ id: 'app.navbar.btn.change_language' })}: {localeLabelByCode[locale] || 'EN'}
-          </button>
+          <div className="flex flex-col gap-2">
+            <span className="text-text-primary/60 font-label-sm px-1">
+              {formatMessage({ id: 'app.navbar.btn.change_language' })}
+            </span>
+            <div className="flex gap-2">
+              {locales.map(({ code, label, name }) => (
+                <button
+                  key={code}
+                  onClick={() => handleLocaleSelect(code)}
+                  className={`flex-1 py-2.5 rounded-full border transition-all spring-active font-label-sm ${
+                    locale === code
+                      ? 'border-primary bg-primary/10 text-primary font-semibold'
+                      : 'border-outline-variant text-text-primary hover:bg-surface-variant'
+                  }`}
+                >
+                  {name}
+                </button>
+              ))}
+            </div>
+          </div>
 
           <button className="w-full py-3 border border-outline-variant rounded-full text-text-primary hover:bg-primary transition-all spring-active font-label-sm whitespace-nowrap">
             {formatMessage({ id: 'app.navbar.btn.download_catalogue' })}

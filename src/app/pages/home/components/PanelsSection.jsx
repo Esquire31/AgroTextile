@@ -1,12 +1,21 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
 export default function PanelsSection() {
   const { formatMessage } = useIntl();
+  const navigate = useNavigate();
+
   return (
     <section className="py-12 md:py-24 px-4 sm:px-8 md:px-16 max-w-[1280px] mx-auto">
       <div className="flex flex-col md:flex-row gap-4 md:gap-8 h-auto md:h-175">
-        <div className="group relative flex-2 bg-surface-container rounded-xl overflow-hidden transition-all duration-700 hover:flex-3 cursor-pointer shadow-xl h-60 md:h-auto">
+        <div
+          onClick={() => navigate('/products?category=Textile')}
+          role="link"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && navigate('/products?category=Textile')}
+          className="group relative flex-2 bg-surface-container rounded-xl overflow-hidden transition-all duration-700 hover:flex-3 cursor-pointer shadow-xl h-60 md:h-auto"
+        >
           <img
             alt="Factory loom"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -25,7 +34,13 @@ export default function PanelsSection() {
             </ul>
           </div>
         </div>
-        <div className="group relative flex-1 bg-surface-container rounded-xl overflow-hidden transition-all duration-700 hover:flex-3 cursor-pointer shadow-xl">
+        <div
+          onClick={() => navigate('/products?category=Agro')}
+          role="link"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && navigate('/products?category=Agro')}
+          className="group relative flex-1 bg-surface-container rounded-xl overflow-hidden transition-all duration-700 hover:flex-3 cursor-pointer shadow-xl"
+        >
           <img
             alt="Pomegranates"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"

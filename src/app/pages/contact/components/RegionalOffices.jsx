@@ -50,7 +50,7 @@ export default function RegionalOffices() {
               className="absolute inset-0 w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=Surat,Gujarat,India&z=12&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3721.4643217683742!2d72.85398937525949!3d21.13391228054179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDA4JzAyLjEiTiA3MsKwNTEnMjMuNiJF!5e0!3m2!1sen!2sin!4v1783403463846!5m2!1sen!2sin"
             ></iframe>
             <div className="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-bold pointer-events-none">
               {office.badge}
