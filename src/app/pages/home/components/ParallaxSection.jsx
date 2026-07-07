@@ -14,13 +14,13 @@ export default function ParallaxSection() {
         <div className="absolute inset-0 bg-linear-to-t from-[#006241]/60 via-background/60 to-background/40"></div>
       </div>
       <div className="relative z-10 text-center px-4 sm:px-8 md:px-16">
-        <h2 className="text-3xl sm:text-5xl md:text-[72px] leading-tight md:leading-20 font-display-lg mb-4 md:mb-8 text-text-on-primary tracking-tight uppercase font-bold">
+        <h2 className="type-display mb-4 md:mb-8 text-text-on-primary uppercase">
           {formatMessage({ id: "app.pages.home.parallax.title" })}
         </h2>
-        <p className="text-sm sm:text-base md:text-[18px] leading-relaxed md:leading-7 font-body-lg max-w-2xl mx-auto mb-6 md:mb-12 text-text-on-primary opacity-90">
+        <p className="type-body-lg max-w-2xl mx-auto mb-6 md:mb-12 text-text-on-primary opacity-90">
           {formatMessage({ id: "app.pages.home.parallax.subtitle" })}
         </p>
-        <button className="px-6 sm:px-12 py-3 md:py-6 bg-[#006241] text-text-on-primary rounded-full font-bold text-sm sm:text-base md:text-xl spring-hover spring-active shadow-lg shadow-[#006241]/40 font-label-sm">
+        <button className="px-6 sm:px-12 py-3 md:py-6 bg-[#006241] text-text-on-primary rounded-full type-button spring-hover spring-active shadow-lg shadow-[#006241]/40">
           {formatMessage({ id: "app.pages.home.parallax.btn.request_quote" })}
         </button>
       </div>

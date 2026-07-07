@@ -14,17 +14,17 @@ export default function CalculatorSection() {
     <section className="py-12 md:py-24 px-4 sm:px-8 md:px-16 max-w-[1280px] mx-auto">
       <div className="bg-card-header rounded-xl p-6 md:p-12 lg:p-20 grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center shadow-lg border border-primary">
         <div>
-          <h2 className="text-2xl text-text-primary sm:text-3xl md:text-[48px] leading-tight md:leading-14 font-headline-lg mb-4 md:mb-8 font-bold">
+          <h2 className="type-headline text-text-primary mb-4 md:mb-8">
             {formatMessage({ id: 'app.pages.home.calculator.title' })} <span className="text-primary italic">{formatMessage({ id: 'app.pages.home.calculator.title_highlight' })}</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-[18px] leading-relaxed md:leading-7 font-body-lg text-text-secondary mb-6 md:mb-12">
+          <p className="type-body-lg text-text-secondary mb-6 md:mb-12">
             {formatMessage({ id: 'app.pages.home.calculator.subtitle' })}
           </p>
           <div className="space-y-8 md:space-y-12">
             <div>
               <div className="flex justify-between mb-4 md:mb-6 flex-wrap gap-2">
-                <span className="font-bold font-label-sm text-text-primary uppercase tracking-widest opacity-60 text-xs sm:text-sm">{formatMessage({ id: 'app.pages.home.calculator.container_size' })}</span>
-                <span className="text-primary font-bold font-label-sm uppercase bg-primary/10 px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm">
+                <span className="type-label text-text-primary uppercase opacity-60">{formatMessage({ id: 'app.pages.home.calculator.container_size' })}</span>
+                <span className="text-primary type-badge bg-primary/10 px-3 sm:px-4 py-1 rounded-full">
                   {containerData[sliderValue].label}
                 </span>
               </div>

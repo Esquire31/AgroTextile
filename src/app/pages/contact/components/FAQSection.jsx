@@ -37,8 +37,8 @@ export default function FAQSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-4">{formatMessage({ id: 'app.pages.contact.faq.eyebrow' })}</span>
-          <h2 className="font-headline-lg text-headline-lg text-on-surface">{formatMessage({ id: 'app.pages.contact.faq.title' })}</h2>
+          <span className="type-badge text-primary block mb-4">{formatMessage({ id: 'app.pages.contact.faq.eyebrow' })}</span>
+          <h2 className="type-headline text-on-surface">{formatMessage({ id: 'app.pages.contact.faq.title' })}</h2>
         </motion.div>
 
         <div className="space-y-4">

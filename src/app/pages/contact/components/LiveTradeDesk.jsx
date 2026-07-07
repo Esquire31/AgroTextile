@@ -22,20 +22,20 @@ export default function LiveTradeDesk() {
           <div className="flex items-center gap-4">
             <Globe className="text-primary text-4xl w-10 h-10" />
             <div>
-              <h3 className="font-title-md text-title-md text-on-surface">{formatMessage({ id: 'app.pages.contact.trade_desk.title' })}</h3>
-              <p className="text-on-surface-variant font-label-sm">{formatMessage({ id: 'app.pages.contact.trade_desk.subtitle' })}</p>
+              <h3 className="type-title text-on-surface">{formatMessage({ id: 'app.pages.contact.trade_desk.title' })}</h3>
+              <p className="text-on-surface-variant type-label">{formatMessage({ id: 'app.pages.contact.trade_desk.subtitle' })}</p>
             </div>
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6 sm:gap-12 tabular-nums">
             {desks.map((desk, idx) => (
               <div key={idx} className="flex flex-col">
-                <span className="text-on-surface-variant text-label-sm uppercase mb-1">{desk.city}</span>
+                <span className="text-on-surface-variant type-label uppercase mb-1">{desk.city}</span>
                 <div className="flex items-center gap-2">
                   <span
                     className={`w-2 h-2 rounded-full ${desk.isOpen ? 'bg-primary pulse-ring' : 'bg-error'} relative`}
                   ></span>
-                  <span className="text-body-lg text-on-surface">{desk.status}</span>
+                  <span className="type-body-lg text-on-surface">{desk.status}</span>
                 </div>
               </div>
             ))}

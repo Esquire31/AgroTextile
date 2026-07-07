@@ -153,6 +153,39 @@ $dark-theme-colors: map.get($theme-color-values, dark);
 $all-theme-tokens: map.merge($light-theme-colors, $dark-theme-colors);
 @include emit-color-utilities($all-theme-tokens);
 
+$glass-bg-light: rgba(255, 255, 255, 0.6);
+$glass-border-light: rgba(0, 98, 65, 0.12);
+$glass-bg-dark: rgba(29, 32, 30, 0.6);
+$glass-border-dark: rgba(64, 73, 67, 0.1);
+$glass-blur: blur(12px);
+$text-glow-color: rgba(144, 213, 176, 0.3);
+
+$glass-panel-light: (
+  background: $glass-bg-light,
+  backdrop-filter: $glass-blur,
+  border-color: $glass-border-light,
+);
+
+$glass-panel-dark: (
+  background: $glass-bg-dark,
+  backdrop-filter: $glass-blur,
+  border-color: $glass-border-dark,
+);
+
+.light .glass-panel,
+.theme-light .glass-panel {
+  background: map.get($glass-panel-light, background);
+  backdrop-filter: map.get($glass-panel-light, backdrop-filter);
+  border: 1px solid map.get($glass-panel-light, border-color);
+}
+
+.dark .glass-panel,
+.theme-dark .glass-panel {
+  background: map.get($glass-panel-dark, background);
+  backdrop-filter: map.get($glass-panel-dark, backdrop-filter);
+  border: 1px solid map.get($glass-panel-dark, border-color);
+}
+
 
 // Base Typography Variables
 $font-family-base: 'Inter', sans-serif;
@@ -173,37 +206,94 @@ $font-weight-bold: 700;
 
 $font-weight-base: $font-weight-normal;
 
-$glass-bg-light: rgba(255, 255, 255, 0.6);
-$glass-border-light: rgba(0, 98, 65, 0.12);
-$glass-bg-dark: rgba(29, 32, 30, 0.6);
-$glass-border-dark: rgba(64, 73, 67, 0.1);
-$glass-blur: blur(12px);
-$text-glow-color: rgba(144, 213, 176, 0.3);
+@mixin emit-typography-utilities() {
+  $sizes: (
+    "sm": $font-size-sm,
+    "base": $font-size-base,
+    "md": $font-size-md,
+    "lg": $font-size-lg,
+    "xl": $font-size-xl,
+    "2xl": $font-size-2xl
+  );
 
+  @each $name, $value in $sizes {
+    .text-#{$name} {
+      font-size: $value;
+    }
+  }
 
-$glass-panel-light: (
-  background: $glass-bg-light,
-  backdrop-filter: $glass-blur,
-  border-color: $glass-border-light,
-);
+  $weights: (
+    "lighter": $font-weight-lighter,
+    "light": $font-weight-light,
+    "normal": $font-weight-normal,
+    "medium": $font-weight-medium,
+    "semibold": $font-weight-semibold,
+    "bold": $font-weight-bold
+  );
 
-$glass-panel-dark: (
-  background: $glass-bg-dark,
-  backdrop-filter: $glass-blur,
-  border-color: $glass-border-dark,
-);
+  @each $name, $value in $weights {
+    .font-#{$name} {
+      font-weight: $value;
+    }
+  }
 
+  // Semantic Component Typography (Matched to Site Theme)
+  .type-display {
+    font-size: 4.5rem; // 72px
+    font-weight: $font-weight-bold;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
 
-.light .glass-panel,
-.theme-light .glass-panel {
-  background: map.get($glass-panel-light, background);
-  backdrop-filter: map.get($glass-panel-light, backdrop-filter);
-  border: 1px solid map.get($glass-panel-light, border-color);
+  .type-headline {
+    font-size: 3rem; // 48px
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .type-title {
+    font-size: 1.5rem; // 24px
+    font-weight: $font-weight-bold;
+    line-height: 1.3;
+  }
+
+  .type-subtitle {
+    font-size: 1.25rem; // 20px
+    font-weight: $font-weight-semibold;
+    line-height: 1.5;
+  }
+
+  .type-body-lg {
+    font-size: 1.125rem; // 18px
+    font-weight: $font-weight-normal;
+    line-height: 1.6;
+  }
+
+  .type-body {
+    font-size: 1rem; // 16px
+    font-weight: $font-weight-normal;
+    line-height: 1.6;
+  }
+
+  .type-button {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.02em;
+  }
+
+  .type-badge {
+    font-size: 0.75rem; // 12px
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .type-label {
+    font-size: 0.75rem; // 12px
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.02em;
+  }
 }
 
-.dark .glass-panel,
-.theme-dark .glass-panel {
-  background: map.get($glass-panel-dark, background);
-  backdrop-filter: map.get($glass-panel-dark, backdrop-filter);
-  border: 1px solid map.get($glass-panel-dark, border-color);
-}
+@include emit-typography-utilities();

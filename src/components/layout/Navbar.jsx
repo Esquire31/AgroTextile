@@ -51,7 +51,7 @@ return (
 <> <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] sm:w-[calc(100%-48px)] lg:w-[calc(100%-128px)] max-w-295 z-50 bg-background/80 backdrop-blur-md border border-outline-variant/30 h-14 px-4 sm:px-6 lg:px-8 rounded-full flex items-center shadow-lg">
     <div className="w-full flex justify-between items-center gap-4">
 
-      <Link to="/" className="font-headline-lg text-title-md font-bold text-primary tracking-tighter cursor-pointer shrink-0 hover:opacity-80 transition-opacity">
+      <Link to="/" className="type-subtitle text-primary tracking-tighter cursor-pointer shrink-0 hover:opacity-80 transition-opacity">
         {formatMessage({ id: 'app.company_name' })}
       </Link>
 
@@ -62,10 +62,10 @@ return (
             key={item.label}
             to={item.href}
             className={({ isActive }) => 
-              `transition-all duration-300 font-body-md whitespace-nowrap ${
+              `transition-all duration-300 whitespace-nowrap ${
                 isActive 
-                  ? 'text-primary text-lg font-semibold' 
-                  : 'text-text-primary hover:text-primary'
+                  ? 'text-primary type-subtitle' 
+                  : 'text-text-primary hover:text-primary type-body'
               }`
             }
           >
