@@ -1,20 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useIntl } from 'react-intl';
 
 export default function HeroSection() {
   const { formatMessage } = useIntl();
-  const [isLight, setIsLight] = useState(false);
-  useEffect(() => {
-    const root = document.documentElement;
-    const sync = () => setIsLight(root.classList.contains('light'));
-    sync();
-    const observer = new MutationObserver(sync);
-    observer.observe(root, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
-  }, []);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -47,22 +37,6 @@ export default function HeroSection() {
         <img
           className="w-full h-full object-cover"
           src="/about-hero-bg.svg"
-          alt={formatMessage({ id: 'app.pages.about.hero.bg_alt' })}
-        />
-      </motion.div>
-
-       {/* Light theme background — crossfades in when light theme is active */}
-      <motion.div
-        className="absolute inset-0 w-full h-full"
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.05 }}
-        transition={{ duration: 20, ease: 'easeInOut', repeat: Infinity, repeatType: 'reverse' }}
-        style={{ opacity: isLight ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}
-        aria-hidden={!isLight}
-      >
-        <img
-          className="w-full h-full object-cover"
-          src="/about-hero-bg-light.png"
           alt={formatMessage({ id: 'app.pages.about.hero.bg_alt' })}
         />
       </motion.div>
@@ -106,7 +80,7 @@ export default function HeroSection() {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl leading-tight tracking-tight text-white"
+            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl leading-tight tracking-tight text-text-primary"
             style={{
               fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
               fontWeight: 700,
