@@ -25,20 +25,20 @@ export default function FAQ() {
   return (
     <section className="py-15">
       <div className="container">
-        <h2 className="text-4xl font-bold text-center mb-3">Frequently Asked Questions</h2>
+        <h2 className="type-headline text-text-primary text-center mb-3">Frequently Asked Questions</h2>
         <div className="max-w-2xl mx-auto mt-10">
           {faqs.map((faq, index) => (
-            <div key={index} className="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+            <div key={index} className="mb-4 border border-border rounded-lg overflow-hidden">
               <button
-                className="w-full px-6 py-4 bg-gray-50 text-left font-semibold flex justify-between items-center hover:bg-gray-100 transition-colors"
+                className="w-full px-6 py-4 bg-surface-container-low text-left font-semibold flex justify-between items-center hover:bg-surface-container-high transition-colors"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <span>{faq.question}</span>
-                <span className="text-2xl font-bold">{openIndex === index ? '−' : '+'}</span>
+                <span className="type-body font-semibold">{faq.question}</span>
+                <span className="type-title">{openIndex === index ? '−' : '+'}</span>
               </button>
               {openIndex === index && (
-                <div className="px-6 py-4 bg-white text-gray-700 leading-relaxed">
-                  <p>{faq.answer}</p>
+                <div className="px-6 py-4 bg-background text-text-secondary leading-relaxed">
+                  <p className="type-body">{faq.answer}</p>
                 </div>
               )}
             </div>

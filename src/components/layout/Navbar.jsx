@@ -80,7 +80,7 @@ return (
           onClick={() => setIsDark(!isDark)}
           className="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-text-primary hover:bg-surface-variant transition-all spring-active"
         >
-          <span className="material-symbols-outlined text-[20px]">
+          <span className="material-symbols-outlined text-[18px] sm:text-[20px]">
             {isDark ? 'light_mode' : 'dark_mode'}
           </span>
         </button>
