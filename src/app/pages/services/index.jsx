@@ -44,8 +44,8 @@ export default function Services() {
   return (
     <div className="container py-15">
       <div className="text-center mb-10">
-        <h1 className="text-5xl font-bold mb-4">Our Services</h1>
-        <p className="text-xl text-gray-600">
+        <h1 className="type-headline text-text-primary mb-4">Our Services</h1>
+        <p className="type-body-lg text-text-secondary">
           Comprehensive textile sourcing and supply chain solutions
         </p>
       </div>
@@ -53,9 +53,9 @@ export default function Services() {
         {services.map((service) => (
           <Card key={service.id}>
             <div className="text-center">
-              <div className="text-5xl mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{service.description}</p>
+              <div className="text-4xl md:text-5xl mb-4">{service.icon}</div>
+              <h3 className="type-title text-text-primary mb-2">{service.title}</h3>
+              <p className="type-body text-text-secondary leading-relaxed">{service.description}</p>
             </div>
           </Card>
         ))}

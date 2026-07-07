@@ -316,3 +316,24 @@ direction: ltr;
     @apply font-sans;
   }
 }
+
+/* Responsive Typography Overrides */
+@media (max-width: 1024px) {
+  :root {
+    --font-size-display-lg: 56px;
+    --font-size-headline-lg: 40px;
+    --font-size-title-md: 20px;
+    --font-size-body-lg: 17px;
+    --font-size-body-md: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-display-lg: 40px;
+    --font-size-headline-lg: 32px;
+    --font-size-title-md: 18px;
+    --font-size-body-lg: 16px;
+    --font-size-body-md: 14px;
+  }
+}
