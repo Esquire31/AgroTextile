@@ -67,7 +67,7 @@ export default function HeroSection() {
           {/* Eyebrow */}
           <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
             <span
-              className="inline-block text-xs md:text-sm font-semibold uppercase tracking-[0.2em] px-4 py-2 rounded-full border"
+              className="inline-block type-badge px-4 py-2 rounded-full border"
               style={{
                 borderColor: 'var(--color-outline-variant)',
                 color: 'var(--color-on-surface)',
@@ -80,13 +80,7 @@ export default function HeroSection() {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl leading-tight tracking-tight text-text-primary"
-            style={{
-              fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-            }}
+            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl type-display text-text-primary uppercase"
           >
             {formatMessage({ id: 'app.pages.about.hero.title' })}
             <br />
@@ -104,13 +98,7 @@ export default function HeroSection() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mb-8 sm:mb-12 md:mb-16 max-w-2xl leading-relaxed"
-            style={{
-              fontSize: 'clamp(1rem, 2vw, 1.125rem)',
-              color: 'var(--color-on-surface-variant)',
-              lineHeight: 1.7,
-            }}
-          >
+            className="mb-8 sm:mb-12 md:mb-16 max-w-2xl text-text-secondary type-body-lg">
             {formatMessage({ id: 'app.pages.about.hero.description' })}
           </motion.p>
 
@@ -137,7 +125,7 @@ export default function HeroSection() {
               <path d="M12 5v14M19 12l-7 7-7-7" />
             </motion.svg>
             <span
-              className="text-xs font-semibold tracking-widest uppercase group-hover:scale-105 transition-transform"
+              className="type-label group-hover:scale-105 transition-transform"
               style={{ color: 'var(--color-primary)' }}
             >
               {formatMessage({ id: 'app.pages.about.hero.scroll_indicator' })}

@@ -41,7 +41,7 @@ export default function StatsSection() {
               }}
               className="flex flex-col items-center"
             >
-              <div className="text-stats-text font-bold text-3xl sm:text-4xl md:text-[56px] leading-none tabular-nums">
+              <div className="text-stats-text type-display tabular-nums leading-none">
                 {inView ? (
                   <>
                     <CountUp
@@ -63,7 +63,7 @@ export default function StatsSection() {
                 )}
               </div>
 
-              <div className="mt-3 text-text-on-primary uppercase tracking-widest text-xs md:text-sm">
+              <div className="mt-3 text-text-on-primary type-badge">
                 {stat.label}
               </div>
             </motion.div>

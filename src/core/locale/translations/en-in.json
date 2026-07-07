@@ -1,5 +1,5 @@
 {
-    "app.company_name": "7 HORSE'S EXPORT INDIA PVT LTD",
+    "app.company_name": "7 HORSE'S EXPORT",
 
     "app.navbar.tabs.about_us": "About Us",
     "app.navbar.tabs.products": "Products",
@@ -20,7 +20,7 @@
 
     "app.footer.copyright": "© 2026 7 Horse's Export India Pvt Ltd. All rights reserved.",
 
-    "app.pages.home.hero.title": "Connecting Indian <br /> Excellence To Global <br /> Markets",
+    "app.pages.home.hero.title": "Connecting Indian <br /> Excellence <span class=\"text-highlight\">To Global <br /> Markets</span>",
     "app.pages.home.hero.subtitle": "Trusted sourcing partner for premium textiles and fresh produce, delivering quality products from India to international markets across Europe, North America, the Middle East and Asia-Pacific.",
     "app.pages.home.hero.btn.start_sourcing": "Start Sourcing",
     "app.pages.home.hero.btn.view_catalogue": "View Catalogue",

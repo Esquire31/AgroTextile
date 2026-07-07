@@ -19,7 +19,7 @@
     "app.footer.section.contact.phone": "+91 76000 06560",
     "app.footer.copyright": "© 2026 7 Horse's Export India Pvt Ltd. جميع الحقوق محفوظة.",
 
-    "app.pages.home.hero.title": "ربط التميز الهندي <br /> بالأسواق <br /> العالمية",
+    "app.pages.home.hero.title": "ربط التميز الهندي <br /> <span class=\"text-highlight\">بالأسواق <br /> العالمية</span>",
     "app.pages.home.hero.subtitle": "شريك موثوق لتوريد المنسوجات الفاخرة والمنتجات الطازجة، نوصل منتجات عالية الجودة من الهند إلى الأسواق الدولية في أوروبا وأمريكا الشمالية والشرق الأوسط وآسيا والمحيط الهادئ.",
     "app.pages.home.hero.btn.start_sourcing": "ابدأ التوريد",
     "app.pages.home.hero.btn.view_catalogue": "عرض الكتالوج",

@@ -42,10 +42,10 @@ export default function ProductHero({ product }) {
               <CheckCircle className="text-primary" size={20} />
             </div>
             <div>
-              <p className="text-xs text-on-surface-variant">
+              <p className="type-label text-on-surface-variant">
                 {formatMessage({ id: 'app.products.overview.hero.verified_source' })}
               </p>
-              <p className="text-sm font-bold text-on-surface">{product.details.origin}</p>
+              <p className="type-body font-bold text-on-surface">{product.details.origin}</p>
             </div>
           </div>
         </div>
@@ -77,17 +77,17 @@ export default function ProductHero({ product }) {
       <div className="flex flex-col justify-between">
         {/* Title and Description */}
         <div>
-          <h1 className="text-5xl md:text-6xl font-bold text-on-surface mb-4 leading-tight">
+          <h1 className="type-headline text-on-surface mb-4">
             {product.title}
           </h1>
-          <p className="text-sm font-mono text-secondary mb-4 uppercase tracking-[0.2em]">
+          <p className="type-label text-secondary mb-4 uppercase tracking-[0.2em]">
             {product.subtitle || (
               product.category === 'Textile' 
                 ? formatMessage({ id: 'app.products.listing.filter.textile' })
                 : formatMessage({ id: 'app.products.listing.filter.agro' })
             )}
           </p>
-          <p className="text-lg text-on-surface-variant leading-relaxed mb-8">
+          <p className="type-body-lg text-on-surface-variant mb-8">
             {product.details.description}
           </p>
         </div>

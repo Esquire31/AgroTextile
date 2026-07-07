@@ -135,13 +135,13 @@ export default function InteractiveWorldMapSection() {
         </div>
 
         {/* Content overlaid on the map */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center px-2 sm:px-8">
+        <div className="absolute inset-0 flex flex-col items-center justify-center pt-8 sm:pt-16 pointer-events-none text-center px-2 sm:px-8">
           <div className="z-10 max-w-5xl">
-            <h2 className="text-4xl text-text-primary sm:text-6xl lg:text-[82px] leading-[1.05] font-bold font-display-lg tracking-[-0.03em] mb-8">
+            <h2 className="type-display text-text-primary mb-8">
               <span dangerouslySetInnerHTML={{ __html: formatMessage({ id: "app.pages.home.hero.title" }) }} />
             </h2>
 
-            <p className="max-w-3xl mx-auto text-text-primary text-base sm:text-lg md:text-xl leading-relaxed mb-10">
+            <p className="max-w-3xl mx-auto text-text-primary type-subtitle mb-10">
               {formatMessage({ id: "app.pages.home.hero.subtitle" })}
             </p>
 

@@ -125,19 +125,19 @@ export default function TestimonialsSection() {
           className="flex flex-col items-center justify-center max-w-135 mx-auto"
         >
           <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full type-badge">
               {formatMessage({ id: 'app.pages.about.testimonials.eyebrow' })}
             </div>
           </div>
 
           <h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-6 text-center"
+            className="type-headline mt-6 text-center"
             style={{ color: `var(--color-on-surface)` }}
           >
             {formatMessage({ id: 'app.pages.about.testimonials.title' })}
           </h2>
           <p
-            className="text-center mt-5"
+            className="text-center mt-5 type-body"
             style={{ color: `var(--color-on-surface-variant)`, opacity: 0.85 }}
           >
             {formatMessage({ id: 'app.pages.about.testimonials.subtitle' })}

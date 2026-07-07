@@ -6,14 +6,14 @@ export default function CommandCenterSection() {
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16">
         <div className="flex flex-col gap-6 md:gap-8 mb-8 md:mb-16">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-[48px] text-text-primary leading-tight md:leading-14 font-headline-lg mb-2 md:mb-4 font-bold">Global Command Center</h2>
-            <p className="text-text-highlight font-bold font-label-sm uppercase tracking-widest text-xs sm:text-sm">
+            <h2 className="type-headline text-text-primary mb-2 md:mb-4">Global Command Center</h2>
+            <p className="type-badge text-text-highlight">
               Real-time supply chain transparency
             </p>
           </div>
           <div className="flex flex-col items-start md:items-end">
-            <div className="text-label-sm uppercase opacity-50 mb-2 text-xs text-text-primary sm:text-sm">System Status</div>
-            <div className="flex items-center gap-2 sm:gap-3 text-text-highlight font-bold font-label-sm bg-text-highlight/10 px-4 sm:px-6 py-2 rounded-full border border-text-highlight/20 text-xs sm:text-sm">
+            <div className="type-label uppercase opacity-50 mb-2 text-text-primary">System Status</div>
+            <div className="flex items-center gap-2 sm:gap-3 text-text-highlight type-badge bg-text-highlight/10 px-4 sm:px-6 py-2 rounded-full border border-text-highlight/20">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse shrink-0"></span> SYSTEM OPERATIONAL
             </div>
           </div>
@@ -21,8 +21,8 @@ export default function CommandCenterSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 glass-card rounded-xl overflow-hidden h-100 flex flex-col border border-outline-variant/30">
             <div className="p-6 border-b border-outline-variant/30 flex justify-between bg-card-header">
-              <span className="font-bold text-text-primary font-label-sm">LIVE CARGO MANIFEST</span>
-              <span className="text-xs text-text-primary opacity-50 font-label-sm">REFRESHED: JUST NOW</span>
+              <span className="type-badge text-text-primary">LIVE CARGO MANIFEST</span>
+              <span className="type-label text-text-primary opacity-50 uppercase">REFRESHED: JUST NOW</span>
             </div>
             <div className="flex-1 overflow-y-auto p-6 space-y-4 tabular-nums">
               <div className="flex justify-between items-center py-4 px-6 bg-card-secondary rounded-xl border border-outline-variant/10">

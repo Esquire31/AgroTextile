@@ -98,11 +98,11 @@ export default function ImpactSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-sm text-label-sm mb-6 uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full type-badge mb-6">
               <Sprout size={14} />
               {formatMessage({ id: 'app.pages.about.impact.eyebrow' })}
             </div>
-            <h2 className="font-headline-lg text-headline-lg text-on-secondary mb-8">
+            <h2 className="type-headline text-on-secondary mb-8">
               {formatMessage({ id: 'app.pages.about.impact.title' })}
             </h2>
             <div className="space-y-4 sm:space-y-5">
@@ -116,8 +116,8 @@ export default function ImpactSection() {
                   viewport={{ once: true }}
                   whileHover={{ x: 4 }}
                 >
-                  <h4 className="font-title-md text-title-md text-on-secondary mb-2">{card.title}</h4>
-                  <p className="text-secondary-fixed leading-relaxed">{card.description}</p>
+                  <h4 className="type-title text-on-secondary mb-2">{card.title}</h4>
+                  <p className="text-secondary-fixed type-body">{card.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -207,11 +207,11 @@ export default function ImpactSection() {
                 <TrendingUp size={24} />
               </div>
               <div>
-                <span className="font-label-sm text-secondary-fixed uppercase tracking-wide block mb-1">
+                <span className="type-badge text-secondary-fixed block mb-1">
                   {formatMessage({ id: 'app.pages.about.impact.net_zero.label' })}
                 </span>
-                <span className="tabular-nums text-2xl sm:text-3xl text-on-secondary font-bold">2030</span>
-                <span className="text-secondary-fixed ml-2 text-sm">{formatMessage({ id: 'app.pages.about.impact.net_zero.caption' })}</span>
+                <span className="tabular-nums type-title text-on-secondary">2030</span>
+                <span className="text-secondary-fixed ml-2 type-label">{formatMessage({ id: 'app.pages.about.impact.net_zero.caption' })}</span>
               </div>
             </motion.div>
           </motion.div>

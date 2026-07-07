@@ -38,19 +38,19 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-card-bg w-full py-12 md:py-24 rounded-t-3xl md:rounded-t-[5rem] border-t border-outline-variant shadow-lg mt-12 md:mt-24 overflow-hidden relative">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-8 relative z-10">
+    <footer className="bg-card-bg w-full pt-10 pb-6 md:pt-16 md:pb-10 rounded-t-2xl md:rounded-t-[2rem] border-t border-outline-variant shadow-lg mt-6 md:mt-10 overflow-hidden relative">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 flex flex-col items-center text-center md:grid md:grid-cols-[2fr_1fr_1fr] md:items-center md:text-left gap-8 md:gap-10 relative z-10">
         {/* Brand column */}
-        <div className="col-span-1 sm:col-span-2 md:col-span-1">
+        <div className="col-span-1 sm:col-span-2 md:col-span-1 flex flex-col items-center md:items-start">
           <img
-            className="w-48 md:w-64 h-auto mb-6 md:mb-8"
+            className="w-32 md:w-48 h-auto mb-3 md:mb-4"
             src="/logo.svg"
             alt={formatMessage({ id: 'app.company_name' })}
           />
-          <p className="text-text-primary font-body-md text-sm md:text-base mb-6 md:mb-8 leading-relaxed max-w-sm">
+          <p className="text-text-primary type-body mb-3 md:mb-4 max-w-sm opacity-80">
             {formatMessage({ id: 'app.footer.subtext' })}
           </p>
-          <div className="flex gap-4 md:gap-6">
+          <div className="flex gap-3 md:gap-4 justify-center md:justify-start">
             {socialLinks.map(({ key, href, label, svg }) => (
               <a
                 key={key}
@@ -68,17 +68,17 @@ export function Footer() {
 
         {/* Company links */}
         <div>
-          <h5 className="font-bold text-primary mb-4 md:mb-8 font-label-sm uppercase tracking-widest text-xs md:text-sm">
+          <h5 className="type-badge text-primary mb-2 md:mb-3">
             {formatMessage({ id: 'app.footer.section.company.title' })}
           </h5>
-          <ul className="space-y-3 text-text-primary md:space-y-5 font-body-md text-sm md:text-base">
+          <ul className="space-y-1 text-text-primary md:space-y-2 type-body">
             {[
               { key: 'about_us', to: '/about' },
               { key: 'products', to: '/products' },
               { key: 'contact_us', to: '/contact' },
             ].map(({ key, to }) => (
               <li key={key}>
-                <Link className="text-on-surface-variant hover:text-primary transition-colors duration-200" to={to}>
+                <Link className="text-on-surface-variant hover:text-text-highlight hover:underline transition-all duration-200" to={to}>
                   {formatMessage({ id: `app.footer.section.company.link.${key}` })}
                 </Link>
               </li>
@@ -88,20 +88,20 @@ export function Footer() {
 
         {/* Contact info */}
         <div>
-          <h5 className="font-bold text-primary mb-4 md:mb-8 font-label-sm uppercase tracking-widest text-xs md:text-sm">
+          <h5 className="type-badge text-text-highlight mb-2 md:mb-3">
             {formatMessage({ id: 'app.footer.section.contact.title' })}
           </h5>
-          <ul className="space-y-3 text-text-primary md:space-y-5 font-body-md text-sm md:text-base">
+          <ul className="space-y-1 text-text-primary md:space-y-2 type-body">
             <li className="text-on-surface-variant">
               {formatMessage({ id: 'app.footer.section.contact.address' })}
             </li>
             <li>
-              <a className="text-on-surface-variant hover:text-primary transition-colors duration-200" href={`mailto:${formatMessage({ id: 'app.footer.section.contact.email' })}`}>
+              <a className="text-on-surface-variant hover:text-highlight hover:underline transition-all duration-200" href={`mailto:${formatMessage({ id: 'app.footer.section.contact.email' })}`}>
                 {formatMessage({ id: 'app.footer.section.contact.email' })}
               </a>
             </li>
             <li>
-              <a className="text-on-surface-variant hover:text-primary transition-colors duration-200" href={`tel:${formatMessage({ id: 'app.footer.section.contact.phone' })}`}>
+              <a className="text-on-surface-variant hover:text-highlight hover:underline transition-all duration-200" href={`tel:${formatMessage({ id: 'app.footer.section.contact.phone' })}`}>
                 {formatMessage({ id: 'app.footer.section.contact.phone' })}
               </a>
             </li>

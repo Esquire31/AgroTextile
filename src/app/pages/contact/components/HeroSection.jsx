@@ -132,7 +132,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display-lg text-on-surface mb-6 leading-[1.05] tracking-tight text-[3.25rem] sm:text-[4.5rem] lg:text-[5.5rem]"
+            className="type-display text-on-surface mb-6"
           >
             {formatMessage({ id: 'app.pages.contact.hero.title' })}{' '}
             <span className="text-primary">{formatMessage({ id: 'app.pages.contact.hero.title_highlight' })}</span>
@@ -142,7 +142,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="font-body-lg text-body-lg text-on-surface-variant max-w-xl"
+            className="type-body-lg text-on-surface-variant max-w-xl"
           >
             {formatMessage({ id: 'app.pages.contact.hero.subtitle' })}
           </motion.p>
