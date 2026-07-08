@@ -4,7 +4,8 @@ import { useIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 
 export function Footer() {
-  const { formatMessage } = useIntl()
+  const { formatMessage, locale } = useIntl()
+  const isRTL = locale === 'ar-AE'
 
   const socialLinks = [
     {
@@ -96,13 +97,27 @@ export function Footer() {
               {formatMessage({ id: 'app.footer.section.contact.address' })}
             </li>
             <li>
-              <a className="text-on-surface-variant hover:text-highlight hover:underline transition-all duration-200" href={`mailto:${formatMessage({ id: 'app.footer.section.contact.email' })}`}>
-                {formatMessage({ id: 'app.footer.section.contact.email' })}
+              <a 
+                className="text-on-surface-variant hover:text-highlight hover:underline transition-all duration-200" 
+                href={`mailto:${formatMessage({ id: 'app.footer.section.contact.email' })}`}
+              >
+                {isRTL ? (
+                  <span dir="ltr">{formatMessage({ id: 'app.footer.section.contact.email' })}</span>
+                ) : (
+                  formatMessage({ id: 'app.footer.section.contact.email' })
+                )}
               </a>
             </li>
             <li>
-              <a className="text-on-surface-variant hover:text-highlight hover:underline transition-all duration-200" href={`tel:${formatMessage({ id: 'app.footer.section.contact.phone' })}`}>
-                {formatMessage({ id: 'app.footer.section.contact.phone' })}
+              <a 
+                className="text-on-surface-variant hover:text-highlight hover:underline transition-all duration-200" 
+                href={`tel:${formatMessage({ id: 'app.footer.section.contact.phone' })}`}
+              >
+                {isRTL ? (
+                  <span dir="ltr">{formatMessage({ id: 'app.footer.section.contact.phone' })}</span>
+                ) : (
+                  formatMessage({ id: 'app.footer.section.contact.phone' })
+                )}
               </a>
             </li>
           </ul>
@@ -110,9 +125,10 @@ export function Footer() {
       </div>
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 pt-8 md:pt-12 mt-8 md:mt-12 border-t border-outline-variant/30 text-center relative z-10">
-        <p className="text-text-primary font-body-md opacity-60 text-xs md:text-sm">
-          {formatMessage({ id: 'app.footer.copyright' })}
-        </p>
+        <p 
+          className="text-text-primary font-body-md opacity-60 text-xs md:text-sm"
+          dangerouslySetInnerHTML={{ __html: formatMessage({ id: 'app.footer.copyright' }) }}
+        />
       </div>
     </footer>
   )

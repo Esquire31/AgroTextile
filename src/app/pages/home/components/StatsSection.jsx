@@ -63,9 +63,10 @@ export default function StatsSection() {
                 )}
               </div>
 
-              <div className="mt-3 text-text-on-primary type-badge">
-                {stat.label}
-              </div>
+              <div 
+                className="mt-3 text-text-on-primary type-badge"
+                dangerouslySetInnerHTML={{ __html: stat.label }}
+              />
             </motion.div>
           ))}
         </div>

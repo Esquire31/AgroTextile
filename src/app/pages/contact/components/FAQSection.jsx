@@ -73,9 +73,8 @@ export default function FAQSection() {
                     transition={{ duration: 0.3 }}
                     className="p-4 sm:p-6 pt-0 text-on-surface-variant border-t"
                     style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 10%, transparent)' }}
-                  >
-                    {faq.a}
-                  </motion.div>
+                    dangerouslySetInnerHTML={{ __html: faq.a }}
+                  />
                 )}
               </AnimatePresence>
             </motion.div>

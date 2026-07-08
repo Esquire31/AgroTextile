@@ -47,9 +47,10 @@ export default function CertificationsMarquee() {
                 <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <Icon size={22} strokeWidth={1.75} />
                 </div>
-                <span className="font-title-md text-[11px] sm:text-xs font-bold text-on-surface leading-tight">
-                  {name}
-                </span>
+                <span 
+                  className="font-title-md text-[11px] sm:text-xs font-bold text-on-surface leading-tight"
+                  dangerouslySetInnerHTML={{ __html: name }}
+                />
               </div>
             ))}
           </div>

@@ -37,9 +37,8 @@ export default function MarqueeSection() {
                     px-8
                     whitespace-nowrap
                   "
-                >
-                  {item}
-                </span>
+                  dangerouslySetInnerHTML={{ __html: item }}
+                />
 
                 <span className="text-primary text-2xl md:text-3xl opacity-40">
                   •
