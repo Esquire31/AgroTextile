@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 export default function ParallaxSection() {
   const { formatMessage } = useIntl();
   return (
-    <section className="relative h-96 sm:h-125 md:h-175 flex items-center justify-center overflow-hidden mx-2 sm:mx-4 rounded-xl my-12 md:my-24 -mb-16 shadow-lg">
+    <section className="relative h-96 sm:h-125 md:h-175 flex items-center justify-center overflow-hidden my-12 md:my-24 shadow-lg">
       <div className="absolute inset-0 z-0">
         <img
           

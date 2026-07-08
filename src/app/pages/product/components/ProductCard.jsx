@@ -1,24 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
-import { FileText, Anchor, ShoppingBag, Check } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({
   product,
-  onOpenSpecs,
-  onOpenBooking,
-  onAddToBasket,
-  isInBasket,
 }) => {
   const { formatMessage } = useIntl();
-  const [addingState, setAddingState] = useState(false);
-
-  const handleQuickAdd = () => {
-    setAddingState(true);
-    onAddToBasket(product, 1);
-    setTimeout(() => setAddingState(false), 1500);
-  };
 
   return (
     <motion.div
@@ -45,19 +34,6 @@ const ProductCard = ({
         }`}>
           {product.category}
         </div>
-
-        {/* Quick Add To Basket Floating Trigger */}
-        <button
-          onClick={handleQuickAdd}
-          title={formatMessage({ id: 'app.products.card.btn.add_to_basket_title' })}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface-container/80 backdrop-blur-md border border-outline-variant/30 flex items-center justify-center text-on-surface hover:text-primary hover:border-primary hover:bg-surface-container transition-all cursor-pointer shadow-md"
-        >
-          {addingState || isInBasket ? (
-            <Check className="w-4 h-4 text-secondary" />
-          ) : (
-            <ShoppingBag className="w-4 h-4" />
-          )}
-        </button>
       </div>
 
       {/* Product Information Body */}
@@ -100,23 +76,13 @@ const ProductCard = ({
 
         {/* Technical & Commercial Actions */}
         <div className="flex flex-col gap-2 pt-2">
-          {product.category === 'Textile' ? (
-            <button
-              onClick={() => onOpenSpecs(product)}
-              className="w-full py-3.5 bg-surface-container-highest text-on-surface text-xs font-bold rounded-full border border-outline-variant/20 hover:bg-primary hover:text-on-primary hover:border-transparent transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider"
+            <Link 
+              to={`/products/${product.id}`}
+              className="w-full py-3.5 bg-primary text-on-primary text-xs font-bold rounded-full border border-transparent hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider"
             >
               <FileText className="w-4 h-4" />
-              {formatMessage({ id: 'app.products.card.btn.request_specs' })}
-            </button>
-          ) : (
-            <button
-              onClick={() => onOpenBooking(product)}
-              className="w-full py-3.5 bg-surface-container-highest text-on-surface text-xs font-bold rounded-full border border-outline-variant/20 hover:bg-primary hover:text-on-primary hover:border-transparent transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider"
-            >
-              <Anchor className="w-4 h-4" />
-              {formatMessage({ id: 'app.products.card.btn.book_shipment' })}
-            </button>
-          )}
+              {formatMessage({ id: 'app.products.card.btn.learn_more' })}
+            </Link>
         </div>
       </div>
     </motion.div>

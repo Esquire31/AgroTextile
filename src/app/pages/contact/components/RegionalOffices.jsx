@@ -5,13 +5,15 @@ import { motion } from 'framer-motion';
 import { useIntl } from 'react-intl';
 
 export default function RegionalOffices() {
-  const { formatMessage } = useIntl();
+  const { formatMessage, locale } = useIntl();
+  const isRTL = locale === 'ar-AE';
+  
   const office = {
     title: formatMessage({ id: 'app.pages.contact.offices.hq.title' }),
     badge: formatMessage({ id: 'app.pages.contact.offices.hq.badge' }),
     description: formatMessage({ id: 'app.pages.contact.offices.hq.description' }),
     details: [
-      { type: 'location', value: formatMessage({ id: 'app.pages.contact.offices.hq.detail.location' }) },
+      { type: 'location', value: formatMessage({ id: 'app.pages.contact.offices.hq.detail.location' }), hasHtml: true },
       { type: 'phone', value: formatMessage({ id: 'app.pages.contact.offices.hq.detail.phone' }) },
       { type: 'email', value: formatMessage({ id: 'app.pages.contact.offices.hq.detail.email' }) },
     ],
@@ -64,10 +66,23 @@ export default function RegionalOffices() {
             <div className="space-y-3 font-body-md">
               {office.details.map((detail, didx) => {
                 const DetailIcon = detail.type === 'location' ? MapPin : detail.type === 'email' ? Mail : Phone;
+                const needsLTR = isRTL && (detail.type === 'phone' || detail.type === 'email');
+                
                 return (
                   <div key={didx} className="flex items-center gap-3">
                     <DetailIcon className="text-primary text-lg w-5 h-5 shrink-0" />
-                    <span className="text-on-surface">{detail.value}</span>
+                    {detail.hasHtml ? (
+                      <span 
+                        className="text-on-surface" 
+                        dangerouslySetInnerHTML={{ __html: detail.value }}
+                      />
+                    ) : needsLTR ? (
+                      <span className="text-on-surface">
+                        <span dir="ltr">{detail.value}</span>
+                      </span>
+                    ) : (
+                      <span className="text-on-surface">{detail.value}</span>
+                    )}
                   </div>
                 );
               })}
