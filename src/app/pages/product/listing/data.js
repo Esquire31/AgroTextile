@@ -5,12 +5,12 @@
     title: "Pure Mulberry Silk Saree",
     description: "Exquisite hand-woven mulberry silk saree featuring intricate Zari work and a luxurious drape. A masterpiece of traditional craftsmanship for high-end markets.",
     category: "Textile",
-    image: "https://images.unsplash.com/photo-1610030469983-98e6f24965ce?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1610030469983-98e6f24965ce?q=80&w=200&auto=format&fit=crop",
+    image: "/product_images/textile/silk_saree_showroom.jpg",
+    thumbnail: "/product_images/textile/silk_saree_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1610030469983-98e6f24965ce?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-6c78276477e2?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1563214815-30fd15d8f6cc?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/textile/silk_saree_hero.jpg",
+      "/product_images/textile/silk_saree_folded.jpg",
+      "/product_images/textile/silk_saree_closeup.jpg"
     ],
     specs: {
       label1: "Fiber Content", value1: "100% Pure Silk", icon1: "Maximize2",
@@ -38,11 +38,11 @@
     description: "Premium fine-count cotton saree featuring authentic hand-block prints using natural dyes. Breathable, durable, and ethically produced.",
     category: "Textile",
     image: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/textile/print_saree_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1583391733956-6c78276477e2?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1621332462372-e1d88a4e1074?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469668-935142b9c7a6?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/textile/print_saree_hero.jpg",
+      "/product_images/textile/print_saree_motion.jpg",
+      "/product_images/textile/print_saree_closeup.jpg"
     ],
     specs: {
       label1: "Fiber Content", value1: "100% Organic Cotton", icon1: "Leaf",
@@ -70,11 +70,11 @@
     description: "High-quality yarn-dyed and piece-dyed sarees with superior color depth and consistency. Vibrant hues designed for longevity.",
     category: "Textile",
     image: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/textile/dyed_saree_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558270135-867ab2d60309?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/textile/dyed_saree_hero.jpg",
+      "/product_images/textile/dyed_saree_folded.jpg",
+      "/product_images/textile/dyed_saree_closeup.jpg"
     ],
     specs: {
       label1: "Fiber Content", value1: "95% Cotton / 5% Lycra", icon1: "Maximize2",
@@ -102,11 +102,11 @@
     description: "Versatile and durable fabrics engineered for mass garment production. Smooth finish and easy care for global retail standards.",
     category: "Textile",
     image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/textile/garment_fabric_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1525904868206-b5dd75214463?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/textile/garment_fabric_hero.jpg",
+      "/product_images/textile/garment_fabric_rolls.jpg",
+      "/product_images/textile/garment_fabric_closeup.jpg"
     ],
     specs: {
       label1: "Fiber Content", value1: "100% Combed Cotton", icon1: "Leaf",
@@ -134,11 +134,11 @@
     description: "High-pungency red onions with excellent shelf life. Uniformly sized and cured, specifically graded for international reefer shipment.",
     category: "Agro",
     image: "https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/Agro/Onion_closeup.jpg",
     images: [
-      "https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/Onion_hero.png.jpg",
+      "/product_images/Agro/Onion_table.jpg",
+      "/product_images/Agro/Onion_boxes.jpg"
     ],
     specs: {
       label1: "Variety", value1: "Red Globe / Nashik", icon1: "Target",
@@ -166,11 +166,11 @@
     description: "Juicy, thin-skinned seedless lemons with high acid content and aromatic zest. Harvested at optimal color for long-distance transit.",
     category: "Agro",
     image: "https://images.unsplash.com/photo-1590505681534-423c827ec3d9?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1590505681534-423c827ec3d9?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/Agro/lemon_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1590505681534-423c827ec3d9?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1591147551068-15c0e127395c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1568569350062-ebfa3cb193df?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/lemon_hero.jpg",
+      "/product_images/Agro/lemon_detail.jpg",
+      "/product_images/Agro/lemon_boxes.png"
     ],
     specs: {
       label1: "Variety", value1: "Kagzi / Seedless", icon1: "Target",
@@ -198,11 +198,11 @@
     description: "Intense dark green chillies with high Scoville heat units. Firm texture and vibrant color, pre-cooled for maximum freshness.",
     category: "Agro",
     image: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/Agro/chilli_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1564660136204-062e74e4c93f?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/chilli_hero.jpg",
+      "/product_images/Agro/chilli_detail.jpg",
+      "/product_images/Agro/chilli_packaging.jpg"
     ],
     specs: {
       label1: "Variety", value1: "G4 / Teja", icon1: "Target",
@@ -230,11 +230,11 @@
     description: "World-renowned 'King of Mangoes' from the Konkan coast. Rich saffron flesh, creamy texture, and unmatched aroma. Hand-picked for export.",
     category: "Agro",
     image: "https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/Agro/mango_listing.png",
     images: [
-      "https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1591073113125-e46713c829ed?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605027628030-9bb6f83ec7cd?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/mango_hero.jpg",
+      "/product_images/Agro/mango_boxes.png",
+      "/product_images/Agro/mango_detail.jpg"
     ],
     specs: {
       label1: "Variety", value1: "Ratnagiri Alphonso", icon1: "Target",
@@ -262,11 +262,11 @@
     description: "Premium G9 Cavendish bananas, uniformly sized and free from blemishes. Harvested at specific caliper levels for global shipping requirements.",
     category: "Agro",
     image: "https://images.unsplash.com/photo-1571771894821-ad996d13a24e?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1571771894821-ad996d13a24e?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/Agro/banana_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1571771894821-ad996d13a24e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1543218024-57a70143c369?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/banana_hero.jpg",
+      "/product_images/Agro/banana_detail.jpg",
+      "/product_images/Agro/banana_packaging.jpg"
     ],
     specs: {
       label1: "Variety", value1: "Grand Naine (G9)", icon1: "Target",
@@ -294,11 +294,11 @@
     description: "Aromatic and pungent fresh ginger rhizomes. Thoroughly washed and dried, featuring large fingers and minimal fiber content.",
     category: "Agro",
     image: "https://images.unsplash.com/photo-1615485240214-12a418ef0052?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1615485240214-12a418ef0052?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/Agro/ginger_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1615485240214-12a418ef0052?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1596097560416-6577583626e2?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1576435031758-c57be6391d1e?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/ginger_hero.jpg",
+      "/product_images/Agro/ginger_detail.jpg",
+      "/product_images/Agro/ginger_packaging.jpg"
     ],
     specs: {
       label1: "Variety", value1: "Fresh Kochi Ginger", icon1: "Target",
@@ -326,11 +326,11 @@
     description: "Crisp and thick-walled green capsicum grown in controlled greenhouse environments. Excellent shape uniformity and shelf stability.",
     category: "Agro",
     image: "https://images.unsplash.com/photo-1563590525586-635d94bc240f?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1563590525586-635d94bc240f?q=80&w=200&auto=format&fit=crop",
+    thumbnail: "/product_images/Agro/capsicum_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1563590525586-635d94bc240f?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1526346698384-1b6fe57a8999?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1592652425028-68c1710928a7?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/capsicum_hero.jpg",
+      "/product_images/Agro/capsicum_detail.jpg",
+      "/product_images/Agro/capsicum_packaging.jpg"
     ],
     specs: {
       label1: "Variety", value1: "Indra Greenhouse", icon1: "Target",
@@ -357,12 +357,12 @@
     title: "1121 Basmati Rice",
     description: "Premium long-grain 1121 Steam Basmati rice, aged naturally for superior aroma. Non-sticky and elongates significantly upon cooking.",
     category: "Agro",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=800&auto=format&fit=crop",
-    thumbnail: "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=200&auto=format&fit=crop",
+    image: "/product_images/Agro/rice_basmati.jpg",
+    thumbnail: "/product_images/Agro/rice_listing.jpg",
     images: [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1596560548464-f01068618467?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1592997572594-34be01bc36c7?q=80&w=1200&auto=format&fit=crop"
+      "/product_images/Agro/rice_hero.jpg",
+      "/product_images/Agro/rice_detail.jpg",
+      "/product_images/Agro/rice_packaging.jpg"
     ],
     specs: {
       label1: "Type", value1: "1121 Steam Basmati", icon1: "Target",
