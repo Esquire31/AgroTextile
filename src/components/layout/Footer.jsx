@@ -39,7 +39,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-card-bg w-full pt-10 pb-6 md:pt-16 md:pb-10 rounded-t-2xl md:rounded-t-[2rem] border-t border-outline-variant shadow-lg mt-6 md:mt-10 overflow-hidden relative">
+    <footer className="bg-card-bg w-full pt-10 pb-6 md:pt-16 md:pb-10 rounded-t-3xl md:rounded-t-[2rem] border-t border-outline-variant shadow-lg mt-6 md:mt-10 overflow-hidden relative">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 md:px-16 flex flex-col items-center text-center md:grid md:grid-cols-[2fr_1fr_1fr] md:items-center md:text-left gap-8 md:gap-10 relative z-10">
         {/* Brand column */}
         <div className="col-span-1 sm:col-span-2 md:col-span-1 flex flex-col items-center md:items-start">

@@ -10,6 +10,7 @@ import Lenis from "lenis";
 
 function App() {
   const [canUseSplashCursor, setCanUseSplashCursor] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return true;
@@ -60,6 +61,19 @@ function App() {
     setCanUseSplashCursor(Boolean(webglContext));
   }, []);
 
+  // Detect desktop vs mobile/tablet
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isLargeScreen = window.innerWidth >= 1024;
+      setIsDesktop(isLargeScreen && !hasTouch);
+    };
+
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
+
   return (
     <BrowserRouter>
     <ScrollToTop />
@@ -77,7 +91,7 @@ function App() {
         COLOR="#006241"
       />
     )}
-    <FairyDustCursor />
+    {isDesktop && <FairyDustCursor />}
       <>
         <Navigation
           isDark={isDark}

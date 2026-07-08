@@ -6,6 +6,7 @@ import TimelineSection from './components/TimelineSection';
 import MarqueeSection from './components/MarqueeSection';
 import CalculatorSection from './components/CalculatorSection';
 import ParallaxSection from './components/ParallaxSection';
+import LeadershipSection from '../about/components/LeadershipSection';
 
 export default function Home() {
   return (
@@ -17,7 +18,8 @@ export default function Home() {
       <MarqueeSection />
       {/* <CommandCenterSection /> */}
       <CalculatorSection />
-      <ParallaxSection />
+      {/* <ParallaxSection /> */}
+      <LeadershipSection />
     </main>
   );
 }
