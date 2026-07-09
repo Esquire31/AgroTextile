@@ -6,7 +6,7 @@ import TimelineSection from './components/TimelineSection';
 import MarqueeSection from './components/MarqueeSection';
 import CalculatorSection from './components/CalculatorSection';
 import ParallaxSection from './components/ParallaxSection';
-import LeadershipSection from '../about/components/LeadershipSection';
+import LeadershipSection from './components/LeadershipSection';
 
 export default function Home() {
   return (
