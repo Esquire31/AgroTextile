@@ -240,5 +240,34 @@
     "app.products.overview.logistics.live_update": "تحديث النظام المباشر: الآن",
     "app.products.overview.related.title": "منتجات ذات صلة",
     "app.products.overview.related.subtitle": "منتجات مماثلة في فئة {category}.",
-    "app.products.overview.fab.inquiry": "استفسر عن {product}"
+    "app.products.overview.fab.inquiry": "استفسر عن {product}",
+
+    
+  
+  "app.pages.about.designtestimonials.eyebrow": "من شركة سفن هورسز إكسبورت الهند المحدودة الخاصة",
+  "app.pages.about.designtestimonials.rail_label": "فريقنا",
+  "app.pages.about.designtestimonials.btn_prev": "الشهادة السابقة",
+  "app.pages.about.designtestimonials.btn_next": "الشهادة التالية",
+
+  "app.pages.about.designtestimonials.t1.quote": "أسّسنا هذه الشركة على مبدأ واحد: يجب أن تقوم التجارة العالمية على الثقة، لا على الصفقات فحسب. كل شحنة تغادر مستودعنا تحمل اسمنا وكلمتنا.",
+  "app.pages.about.designtestimonials.t1.author": "كيشان باتيل",
+  "app.pages.about.designtestimonials.t1.role": "عضو مجلس الإدارة والرئيس التنفيذي",
+  "app.pages.about.designtestimonials.t1.tag": "القيادة",
+
+  "app.pages.about.designtestimonials.t2.quote": "الموثوقية تكسب عقودًا أكثر مما يسببه السعر أبدًا. في كل ميناء ومع كل شريك، التسليم في الموعد المحدد هو الوعد الذي لا نساوم عليه.",
+  "app.pages.about.designtestimonials.t2.author": "أضف الاسم هنا",
+  "app.pages.about.designtestimonials.t2.role": "رئيس قسم التصدير",
+  "app.pages.about.designtestimonials.t2.tag": "التجارة العالمية",
+
+  "app.pages.about.designtestimonials.t3.quote": "الجودة ليست نقطة تفتيش قبل مغادرة الشحنة، بل هي المعيار الذي نلتزم به في كل مرحلة، من التوريد حتى الختم النهائي على الحاوية.",
+  "app.pages.about.designtestimonials.t3.author": "أضف الاسم هنا",
+  "app.pages.about.designtestimonials.t3.role": "رئيس قسم المنتجات",
+  "app.pages.about.designtestimonials.t3.tag": "المنتج والجودة",
+
+  "app.pages.about.designtestimonials.values.v1": "الثقة",
+  "app.pages.about.designtestimonials.values.v2": "الجودة",
+  "app.pages.about.designtestimonials.values.v3": "النزاهة",
+  "app.pages.about.designtestimonials.values.v4": "الانتشار العالمي",
+  "app.pages.about.designtestimonials.values.v5": "التسليم في الموعد"
+
 }

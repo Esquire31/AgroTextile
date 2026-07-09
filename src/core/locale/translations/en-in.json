@@ -241,5 +241,33 @@
     "app.products.overview.logistics.live_update": "Live system update: Just now",
     "app.products.overview.related.title": "Related Products",
     "app.products.overview.related.subtitle": "Similar products in the {category} category.",
-    "app.products.overview.fab.inquiry": "Inquire about {product}"
+    "app.products.overview.fab.inquiry": "Inquire about {product}",
+
+    
+  "app.pages.about.designtestimonials.eyebrow": "From 7 Horses Export India Pvt Ltd",
+  "app.pages.about.designtestimonials.rail_label": "Our Team",
+  "app.pages.about.designtestimonials.btn_prev": "Previous testimonial",
+  "app.pages.about.designtestimonials.btn_next": "Next testimonial",
+
+  "app.pages.about.designtestimonials.t1.quote": "We built this company on one belief: global trade should run on trust, not just transactions. Every shipment that leaves our warehouse carries our name and our word.",
+  "app.pages.about.designtestimonials.t1.author": "Kishan Patel",
+  "app.pages.about.designtestimonials.t1.role": "Director & CEO",
+  "app.pages.about.designtestimonials.t1.tag": "Leadership",
+
+  "app.pages.about.designtestimonials.t2.quote": "Reliability wins more contracts than price ever will. Across every port and every partner, on-time delivery is the promise we don't compromise on.",
+  "app.pages.about.designtestimonials.t2.author": "Add Name Here",
+  "app.pages.about.designtestimonials.t2.role": "Head of Export",
+  "app.pages.about.designtestimonials.t2.tag": "Global Trade",
+
+  "app.pages.about.designtestimonials.t3.quote": "Quality isn't a checkpoint before a shipment leaves — it's the standard we hold at every single stage, from sourcing to the final seal on the container.",
+  "app.pages.about.designtestimonials.t3.author": "Add Name Here",
+  "app.pages.about.designtestimonials.t3.role": "Head of Product",
+  "app.pages.about.designtestimonials.t3.tag": "Product & Quality",
+
+  "app.pages.about.designtestimonials.values.v1": "Trust",
+  "app.pages.about.designtestimonials.values.v2": "Quality",
+  "app.pages.about.designtestimonials.values.v3": "Integrity",
+  "app.pages.about.designtestimonials.values.v4": "Global Reach",
+  "app.pages.about.designtestimonials.values.v5": "On-Time Delivery"
+
 }

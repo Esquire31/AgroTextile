@@ -240,5 +240,33 @@
     "app.products.overview.logistics.live_update": "系统实时更新：刚才",
     "app.products.overview.related.title": "相关产品",
     "app.products.overview.related.subtitle": "{category} 类别下的类似产品。",
-    "app.products.overview.fab.inquiry": "咨询关于 {product}"
+    "app.products.overview.fab.inquiry": "咨询关于 {product}",
+
+    
+  "app.pages.about.designtestimonials.eyebrow": "来自印度七马出口私人有限公司 (7 Horses Export India Pvt Ltd)",
+  "app.pages.about.designtestimonials.rail_label": "我们的团队",
+  "app.pages.about.designtestimonials.btn_prev": "上一条评价",
+  "app.pages.about.designtestimonials.btn_next": "下一条评价",
+
+  "app.pages.about.designtestimonials.t1.quote": "我们创立这家公司的信念很简单：全球贸易应建立在信任之上，而不仅仅是交易。每一批离开我们仓库的货物，都承载着我们的名字与承诺。",
+  "app.pages.about.designtestimonials.t1.author": "Kishan Patel",
+  "app.pages.about.designtestimonials.t1.role": "董事兼首席执行官",
+  "app.pages.about.designtestimonials.t1.tag": "领导团队",
+
+  "app.pages.about.designtestimonials.t2.quote": "可靠性比价格更能赢得客户的长期合作。无论面对哪个港口、哪位合作伙伴，准时交付都是我们绝不妥协的承诺。",
+  "app.pages.about.designtestimonials.t2.author": "请填写姓名",
+  "app.pages.about.designtestimonials.t2.role": "出口部主管",
+  "app.pages.about.designtestimonials.t2.tag": "全球贸易",
+
+  "app.pages.about.designtestimonials.t3.quote": "品质从来不是货物出厂前的最后一道检查，而是我们在每一个环节都坚持的标准，从原料采购到最终封箱。",
+  "app.pages.about.designtestimonials.t3.author": "请填写姓名",
+  "app.pages.about.designtestimonials.t3.role": "产品部主管",
+  "app.pages.about.designtestimonials.t3.tag": "产品与品质",
+
+  "app.pages.about.designtestimonials.values.v1": "信任",
+  "app.pages.about.designtestimonials.values.v2": "品质",
+  "app.pages.about.designtestimonials.values.v3": "诚信",
+  "app.pages.about.designtestimonials.values.v4": "全球覆盖",
+  "app.pages.about.designtestimonials.values.v5": "准时交付"
+
 }
