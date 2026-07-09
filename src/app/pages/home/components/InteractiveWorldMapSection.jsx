@@ -3,6 +3,7 @@ import DottedMap from "dotted-map/without-countries";
 import worldMapData from "./worldMapData.json";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const worldMap = new DottedMap({
   map: worldMapData,
@@ -41,6 +42,26 @@ export default function InteractiveWorldMapSection() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const activePoint = activeIndex === null ? null : worldPoints[activeIndex];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
+  };
 
   const renderedPoints = useMemo(() => {
     return worldPoints.map((point, index) => {
@@ -136,16 +157,54 @@ export default function InteractiveWorldMapSection() {
 
         {/* Content overlaid on the map */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pt-8 sm:pt-16 pointer-events-none text-center px-2 sm:px-8">
-          <div className="z-10 max-w-5xl">
-            <h2 className="type-display text-text-primary mb-8">
-              <span dangerouslySetInnerHTML={{ __html: formatMessage({ id: "app.pages.home.hero.title" }) }} />
-            </h2>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="z-10 max-w-5xl flex flex-col items-center"
+          >
+            {/* Eyebrow Badge */}
+            <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
+              <span
+                className="inline-block type-badge px-4 py-2 rounded-full border"
+                style={{
+                  borderColor: 'var(--color-outline-variant)',
+                  color: 'var(--color-on-surface)',
+                }}
+              >
+                {formatMessage({ id: 'app.pages.home.hero.eyebrow' })}
+              </span>
+            </motion.div>
 
-            <p className="max-w-3xl mx-auto text-text-primary type-subtitle mb-10">
+            {/* Main Heading */}
+            <motion.h2
+              variants={itemVariants}
+              className="type-display text-text-primary mb-8"
+            >
+              {formatMessage({ id: "app.pages.home.hero.title" })}
+              <br />
+              <motion.span
+                style={{ color: 'var(--color-primary)' }}
+                animate={{
+                  opacity: [0.8, 1, 0.8],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                {formatMessage({ id: "app.pages.home.hero.title_highlight" })}
+              </motion.span>
+            </motion.h2>
+
+            <motion.p
+              variants={itemVariants}
+              className="max-w-3xl mx-auto text-text-primary type-body-lg mb-10"
+            >
               {formatMessage({ id: "app.pages.home.hero.subtitle" })}
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6"
+            >
               <button 
                 onClick={() => navigate('/products')}
                 className="pointer-events-auto bg-primary text-text-on-primary px-8 py-4 rounded-full font-bold spring-hover spring-active flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
@@ -160,8 +219,8 @@ export default function InteractiveWorldMapSection() {
               >
                 {formatMessage({ id: "app.pages.home.hero.btn.view_catalogue" })}
               </button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
