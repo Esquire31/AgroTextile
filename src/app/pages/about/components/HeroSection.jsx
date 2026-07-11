@@ -83,8 +83,13 @@ export default function HeroSection() {
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       ></motion.div>
 
-      {/* Content Container */}
-      <div className="relative z-10 h-full flex items-center justify-center pt-32 sm:pt-40 pointer-events-none">
+      {/* Content Container — pt-32 sm:pt-40 matches the homepage hero exactly
+          so the title baseline lines up between pages. The eyebrow badge
+          above the title on this page used to push the title further down
+          than the homepage's; it now sits ABOVE that same pt-32/pt-40
+          anchor point (via negative margin) instead of adding to it, so the
+          h1 itself lands at the same spot the homepage h1 does. */}
+      <div className="relative z-10 h-full flex items-center justify-center pt-44 sm:pt-56 pointer-events-none">
         <motion.div
           className="flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-12 pointer-events-none"
           variants={containerVariants}
@@ -104,10 +109,10 @@ export default function HeroSection() {
             </span>
           </motion.div>
 
-          {/* Main Heading */}
+          {/* Main Heading — same mb spacing pattern as homepage's h1 */}
           <motion.h1
             variants={itemVariants}
-            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl type-display text-text-primary"
+            className="mb-8 max-w-4xl type-display text-text-primary"
           >
             {formatMessage({ id: 'app.pages.about.hero.title' })}
             <br />
