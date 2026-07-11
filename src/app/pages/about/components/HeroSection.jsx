@@ -107,7 +107,7 @@ export default function HeroSection() {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl type-display text-text-primary uppercase"
+            className="mb-4 sm:mb-6 md:mb-8 max-w-4xl type-display text-text-primary"
           >
             {formatMessage({ id: 'app.pages.about.hero.title' })}
             <br />

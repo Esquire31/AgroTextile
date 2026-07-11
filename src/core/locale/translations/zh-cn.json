@@ -19,7 +19,9 @@
     "app.footer.section.contact.phone": "+91 76000 06560",
     "app.footer.copyright": "版权所有 © 2026 7 Horse's Export India Pvt Ltd. 保留所有权利。",
 
-    "app.pages.home.hero.title": "连接印度 <br /> 卓越<span class=\"text-highlight\">到全球 <br /> 市场</span>",
+    "app.pages.home.hero.eyebrow": "印度到世界",
+    "app.pages.home.hero.title": "连接印度卓越",
+    "app.pages.home.hero.title_highlight": "到全球市场",
     "app.pages.home.hero.subtitle": "值得信赖的优质纺织品和新鲜农产品采购合作伙伴，为欧洲、北美、中东和亚太地区的国际市场提供印度优质产品。",
     "app.pages.home.hero.btn.start_sourcing": "开始采购",
     "app.pages.home.hero.btn.view_catalogue": "查看目录",

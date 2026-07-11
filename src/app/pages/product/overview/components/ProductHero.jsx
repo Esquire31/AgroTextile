@@ -77,10 +77,10 @@ export default function ProductHero({ product }) {
       <div className="flex flex-col justify-between">
         {/* Title and Description */}
         <div>
-          <h1 className="type-headline text-on-surface mb-4">
+          <h1 className="type-display text-on-surface mb-4">
             {product.title}
           </h1>
-          <p className="type-label text-secondary mb-4 uppercase tracking-[0.2em]">
+          <p className="type-badge text-on-surface-variant mb-4">
             {product.subtitle || (
               product.category === 'Textile' 
                 ? formatMessage({ id: 'app.products.listing.filter.textile' })

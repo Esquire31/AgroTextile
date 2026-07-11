@@ -123,7 +123,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-sm text-label-sm mb-7 uppercase tracking-widest"
+            className="inline-block type-badge px-4 py-2 rounded-full border mb-7"
+            style={{
+              borderColor: 'var(--color-outline-variant)',
+              color: 'var(--color-on-surface)',
+            }}
           >
             {formatMessage({ id: 'app.pages.contact.hero.badge' })}
           </motion.span>
