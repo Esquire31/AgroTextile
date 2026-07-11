@@ -157,16 +157,6 @@ export default function InteractiveWorldMapSection() {
 
         {/* Content overlaid on the map */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pt-8 sm:pt-16 pointer-events-none text-center px-2 sm:px-8">
-<<<<<<< HEAD
-          <div className="z-10 max-w-5xl">
-            <h2 className="type-display text-text-primary mb-8">
-              {formatMessage({ id: "app.pages.home.hero.title" })}
-              <br />
-              <span style={{ color: 'var(--color-primary)' }}>
-                <span dangerouslySetInnerHTML={{ __html: formatMessage({ id: 'app.pages.home.hero.title_highlight' }) }} />
-              </span>
-            </h2>
-=======
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -185,7 +175,6 @@ export default function InteractiveWorldMapSection() {
                 {formatMessage({ id: 'app.pages.home.hero.eyebrow' })}
               </span>
             </motion.div>
->>>>>>> origin/main
 
             {/* Main Heading */}
             <motion.h2

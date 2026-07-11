@@ -64,17 +64,10 @@ export default function ProductListingHero({
           className="w-full flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between"
         >
           {/* Quick-filter Category Tabs */}
-<<<<<<< HEAD
-          <div className="flex flex-wrap gap-2 p-1 bg-surface-container rounded-full border border-outline-variant/20 w-full sm:w-fit">
-            <button
-              onClick={() => setSelectedCategory('All')}
-              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
-=======
           <div className="flex flex-wrap gap-2 sm:gap-2 sm:p-1 sm:bg-surface-container sm:rounded-full sm:border sm:border-outline-variant/20 w-full sm:w-fit">
             <button
               onClick={() => setSelectedCategory('All')}
               className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
->>>>>>> origin/main
                 selectedCategory === 'All'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
@@ -84,11 +77,7 @@ export default function ProductListingHero({
             </button>
             <button
               onClick={() => setSelectedCategory('Textile')}
-<<<<<<< HEAD
-              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
-=======
               className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
->>>>>>> origin/main
                 selectedCategory === 'Textile'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
@@ -98,11 +87,7 @@ export default function ProductListingHero({
             </button>
             <button
               onClick={() => setSelectedCategory('Agro')}
-<<<<<<< HEAD
-              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
-=======
               className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
->>>>>>> origin/main
                 selectedCategory === 'Agro'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
