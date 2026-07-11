@@ -20,8 +20,14 @@
 
     "app.footer.copyright": "© 2026 7 Horse's Export India Pvt Ltd. All rights reserved.",
 
+<<<<<<< HEAD
     "app.pages.home.hero.title": "Connecting Indian ",
 "app.pages.home.hero.title_highlight": "Excellence To Global <br/>Markets",
+=======
+    "app.pages.home.hero.eyebrow": "India To The World",
+    "app.pages.home.hero.title": "Connecting Indian Excellence",
+    "app.pages.home.hero.title_highlight": "To Global Markets",
+>>>>>>> origin/main
     "app.pages.home.hero.subtitle": "Trusted sourcing partner for premium textiles and fresh produce, delivering quality products from India to international markets across Europe, North America, the Middle East and Asia-Pacific.",
     "app.pages.home.hero.btn.start_sourcing": "Start Sourcing",
     "app.pages.home.hero.btn.view_catalogue": "View Catalogue",

@@ -18,26 +18,32 @@ export default function ProductListingHero({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container/20 text-secondary border border-secondary-container/30 mb-6"
+          className="mb-6"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
-          </span>
-          <span className="font-mono text-[10px] md:text-xs uppercase tracking-wider font-semibold">
+          <span
+            className="inline-flex items-center gap-2 type-badge px-4 py-2 rounded-full border"
+            style={{
+              borderColor: 'var(--color-outline-variant)',
+              color: 'var(--color-on-surface)',
+            }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+            </span>
             {formatMessage({ id: 'app.products.listing.hero.live_sync' })}
           </span>
         </motion.div>
 
-        {/* Serif Display Title */}
+        {/* Display Title */}
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-serif text-5xl md:text-7xl text-on-background mb-6 max-w-3xl leading-tight tracking-tight"
+          className="type-display text-on-background mb-6 max-w-3xl"
         >
           {formatMessage({ id: 'app.products.listing.hero.title' })}{' '}
-          <span className="text-primary italic">{formatMessage({ id: 'app.products.listing.hero.title_italic' })}</span>
+          <span className="text-primary">{formatMessage({ id: 'app.products.listing.hero.title_italic' })}</span>
         </motion.h1>
 
         {/* Slogan & Intro */}
@@ -45,7 +51,7 @@ export default function ProductListingHero({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-sans text-base md:text-lg text-on-surface-variant max-w-2xl mb-10 leading-relaxed"
+          className="type-body-lg text-on-surface-variant max-w-2xl mb-10"
         >
           {formatMessage({ id: 'app.products.listing.hero.description' })}
         </motion.p>
@@ -58,33 +64,48 @@ export default function ProductListingHero({
           className="w-full flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between"
         >
           {/* Quick-filter Category Tabs */}
+<<<<<<< HEAD
           <div className="flex flex-wrap gap-2 p-1 bg-surface-container rounded-full border border-outline-variant/20 w-full sm:w-fit">
             <button
               onClick={() => setSelectedCategory('All')}
               className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
+=======
+          <div className="flex flex-wrap gap-2 sm:gap-2 sm:p-1 sm:bg-surface-container sm:rounded-full sm:border sm:border-outline-variant/20 w-full sm:w-fit">
+            <button
+              onClick={() => setSelectedCategory('All')}
+              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
+>>>>>>> origin/main
                 selectedCategory === 'All'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
-                  : 'text-on-surface-variant hover:text-on-surface'
+                  : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
               }`}
             >
               {formatMessage({ id: 'app.products.listing.filter.all' })}
             </button>
             <button
               onClick={() => setSelectedCategory('Textile')}
+<<<<<<< HEAD
               className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
+=======
+              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
+>>>>>>> origin/main
                 selectedCategory === 'Textile'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
-                  : 'text-on-surface-variant hover:text-on-surface'
+                  : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
               }`}
             >
               {formatMessage({ id: 'app.products.listing.filter.textile' })}
             </button>
             <button
               onClick={() => setSelectedCategory('Agro')}
+<<<<<<< HEAD
               className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
+=======
+              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
+>>>>>>> origin/main
                 selectedCategory === 'Agro'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
-                  : 'text-on-surface-variant hover:text-on-surface'
+                  : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
               }`}
             >
               {formatMessage({ id: 'app.products.listing.filter.agro' })}
