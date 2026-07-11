@@ -177,7 +177,7 @@ export default function Globe({
 
     const updateSize = () => {
       const { width, height } = root.getBoundingClientRect()
-      const size = Math.floor(Math.min(width, height))
+      const size = Math.floor(Math.min(width, height)*1.08)
       if (size > 0) setSquareSize(size)
     }
 

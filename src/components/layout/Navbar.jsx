@@ -133,9 +133,12 @@ return (
           )}
         </div>
 
-        <button className="hidden xl:block px-4 sm:px-6 py-2 bg-primary text-text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold spring-hover spring-active font-label-sm whitespace-nowrap">
+        <Link
+          to="/contact#procurement-form"
+          className="hidden xl:block px-4 sm:px-6 py-2 bg-primary text-text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold spring-hover spring-active font-label-sm whitespace-nowrap"
+        >
           {formatMessage({ id: 'app.navbar.btn.request_quote' })}
-        </button>
+        </Link>
 
         {/* Mobile Menu Button */}
         <button
@@ -195,9 +198,13 @@ return (
             </div>
           </div>
 
-          <button className="w-full py-3 bg-primary text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold">
+          <Link
+            to="/contact#procurement-form"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full py-3 bg-primary text-on-primary dark:bg-primary-container dark:text-on-primary-container rounded-full font-semibold text-center"
+          >
             {formatMessage({ id: 'app.navbar.btn.request_quote' })}
-          </button>
+          </Link>
         </div>
 
       </div>

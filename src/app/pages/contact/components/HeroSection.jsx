@@ -37,7 +37,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-24 sm:py-28 h-screen">
+    <section className="relative overflow-hidden min-h-screen flex items-center pt-32 sm:pt-40 pb-24 sm:pb-28">
       {/* Ambient background motion — slow, quiet drifting shapes so
           the space around the headline doesn't feel empty. Kept
           well behind the content (z-0, soft opacity, blurred) so it
@@ -116,7 +116,7 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-container-max mx-auto px-margin-mobile sm:px-margin-desktop">
+      <div className="relative z-10 max-w-container-max mx-auto px-margin-mobile sm:px-margin-desktop w-full">
         {/* Headline block — centered, unambiguous, dominant */}
         <div className="flex flex-col items-center text-center mb-20">
           <motion.span

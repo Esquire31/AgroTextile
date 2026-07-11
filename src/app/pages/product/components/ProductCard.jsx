@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import { FileText } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import LazyImage from '@/components/ui/LazyImage';
 
 const ProductCard = ({
   product,
@@ -18,11 +19,12 @@ const ProductCard = ({
       className="glass-card group rounded-2xl overflow-hidden flex flex-col shadow-xl border border-outline-variant/10 hover:border-primary/30 hover:shadow-primary/5 transition-all duration-300"
     >
       {/* Product Image Container */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-64 overflow-hidden bg-surface-container-low">
         <Link to={`/products/${product.id}`} className="block w-full h-full">
-          <div
-            className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
-            style={{ backgroundImage: `url('${product.thumbnail || product.image}')` }}
+          <LazyImage
+            src={product.thumbnail || product.image}
+            alt={product.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
         </Link>
         
