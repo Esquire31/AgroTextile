@@ -45,7 +45,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative h-screen w-full overflow-hidden"
+      className="relative min-h-screen w-full overflow-hidden"
       style={{ background: 'var(--color-background)' }}
     >
       {/* Globe sits directly on the section's own background color, so
@@ -84,9 +84,9 @@ export default function HeroSection() {
       ></motion.div>
 
       {/* Content Container */}
-      <div className="relative z-10 h-full flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 pointer-events-none">
+      <div className="relative z-10 h-full flex items-center justify-center pt-32 sm:pt-40 pointer-events-none">
         <motion.div
-          className="flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-12 translate-y-8 sm:translate-y-12 md:translate-y-16 pointer-events-none"
+          className="flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-12 pointer-events-none"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

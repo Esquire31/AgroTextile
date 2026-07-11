@@ -58,7 +58,7 @@ export default function HeroSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center pt-24 sm:pt-32 overflow-hidden px-4 py-12 sm:px-8 sm:py-16">
+    <section className="relative min-h-screen flex items-center justify-center pt-32 sm:pt-40 overflow-hidden px-4 py-12 sm:px-8 sm:py-16">
       
       <BackgroundPaths />
       {/* Content */}

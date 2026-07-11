@@ -58,10 +58,10 @@ export default function ProductListingHero({
           className="w-full flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between"
         >
           {/* Quick-filter Category Tabs */}
-          <div className="flex flex-wrap gap-2 p-1 bg-surface-container rounded-full border border-outline-variant/20 w-fit">
+          <div className="flex flex-wrap gap-2 p-1 bg-surface-container rounded-full border border-outline-variant/20 w-full sm:w-fit">
             <button
               onClick={() => setSelectedCategory('All')}
-              className={`px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'All'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'text-on-surface-variant hover:text-on-surface'
@@ -71,7 +71,7 @@ export default function ProductListingHero({
             </button>
             <button
               onClick={() => setSelectedCategory('Textile')}
-              className={`px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'Textile'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'text-on-surface-variant hover:text-on-surface'
@@ -81,7 +81,7 @@ export default function ProductListingHero({
             </button>
             <button
               onClick={() => setSelectedCategory('Agro')}
-              className={`px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer ${
+              className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'Agro'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'text-on-surface-variant hover:text-on-surface'

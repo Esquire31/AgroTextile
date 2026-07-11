@@ -138,7 +138,11 @@ export default function InteractiveWorldMapSection() {
         <div className="absolute inset-0 flex flex-col items-center justify-center pt-8 sm:pt-16 pointer-events-none text-center px-2 sm:px-8">
           <div className="z-10 max-w-5xl">
             <h2 className="type-display text-text-primary mb-8">
-              <span dangerouslySetInnerHTML={{ __html: formatMessage({ id: "app.pages.home.hero.title" }) }} />
+              {formatMessage({ id: "app.pages.home.hero.title" })}
+              <br />
+              <span style={{ color: 'var(--color-primary)' }}>
+                <span dangerouslySetInnerHTML={{ __html: formatMessage({ id: 'app.pages.home.hero.title_highlight' }) }} />
+              </span>
             </h2>
 
             <p className="max-w-3xl mx-auto text-text-primary type-subtitle mb-10">
