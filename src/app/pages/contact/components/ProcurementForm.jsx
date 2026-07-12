@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Package, Leaf, Send, ArrowRight, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js';
@@ -62,6 +62,82 @@ export default function ProcurementForm() {
   });
 
   const [errors, setErrors] = useState({});
+
+  // Searchable country-code dropdown state — replaces the native
+  // <select>, which can't be filtered by typing a country name (it
+  // only jumps to options whose visible text starts with the typed
+  // letter, and that text starts with "+91" not "India").
+  const [countryOpen, setCountryOpen] = useState(false);
+  const [countryQuery, setCountryQuery] = useState('');
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+  const countryBoxRef = useRef(null);
+  const countrySearchRef = useRef(null);
+  const optionRefs = useRef([]);
+
+  const selectedCountry = COUNTRY_LIST.find((c) => c.isoCode === formData.countryIso);
+
+  const filteredCountries = (() => {
+    const q = countryQuery.trim().toLowerCase();
+    if (!q) return COUNTRY_LIST;
+    return COUNTRY_LIST.filter(
+      (c) =>
+        c.name.toLowerCase().includes(q) ||
+        c.isoCode.toLowerCase().includes(q) ||
+        c.dialCode.includes(q) ||
+        c.dialCode.replace('+', '').includes(q)
+    );
+  })();
+
+  // Close the dropdown on any click outside the country box.
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (countryBoxRef.current && !countryBoxRef.current.contains(e.target)) {
+        setCountryOpen(false);
+        setCountryQuery('');
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Move focus into the search box the moment the list opens, so
+  // typing works immediately without an extra click.
+  useEffect(() => {
+    if (countryOpen) {
+      setHighlightedIndex(0);
+      countrySearchRef.current?.focus();
+    }
+  }, [countryOpen]);
+
+  // Keep the keyboard-highlighted option scrolled into view.
+  useEffect(() => {
+    optionRefs.current[highlightedIndex]?.scrollIntoView({ block: 'nearest' });
+  }, [highlightedIndex]);
+
+  const selectCountry = (isoCode) => {
+    setFormData((prev) => ({ ...prev, countryIso: isoCode }));
+    if (errors.phone) setErrors((prev) => ({ ...prev, phone: null }));
+    setCountryOpen(false);
+    setCountryQuery('');
+  };
+
+  const handleCountrySearchKeyDown = (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setHighlightedIndex((i) => Math.min(i + 1, filteredCountries.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHighlightedIndex((i) => Math.max(i - 1, 0));
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filteredCountries[highlightedIndex]) {
+        selectCountry(filteredCountries[highlightedIndex].isoCode);
+      }
+    } else if (e.key === 'Escape') {
+      setCountryOpen(false);
+      setCountryQuery('');
+    }
+  };
 
   const services = [
     {
@@ -172,8 +248,10 @@ export default function ProcurementForm() {
       ? 'color-mix(in srgb, var(--color-error) 60%, transparent)'
       : 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)';
 
+  optionRefs.current = [];
+
   return (
-    <section className="py-section-gap">
+    <section id="procurement-form" className="py-section-gap scroll-mt-28">
       <div className="max-w-container-max mx-auto px-margin-mobile sm:px-margin-desktop">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
           <motion.div
@@ -297,26 +375,68 @@ export default function ProcurementForm() {
                   {formatMessage({ id: 'app.pages.contact.form.field.phone.label' })}
                 </label>
                 <div className="flex">
-                  <select
-                    value={formData.countryIso}
-                    onChange={handleChange('countryIso')}
-                    onFocus={() => setFocusedLabel('phone')}
-                    onBlur={() => setFocusedLabel(null)}
-                    className="procurement-field bg-surface-container text-on-surface border rounded-l-lg pl-3 pr-2 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none shrink-0 w-28 sm:w-36 truncate"
-                    style={{ borderColor: fieldBorder(errors.phone), borderRight: 'none' }}
-                  >
-                    {COUNTRY_LIST.map((c) => (
-                      <option key={c.isoCode} value={c.isoCode}>
-                       {c.dialCode} {c.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div ref={countryBoxRef} className="relative shrink-0 w-28 sm:w-36">
+                    <button
+                      type="button"
+                      onClick={() => setCountryOpen((o) => !o)}
+                      onFocus={() => setFocusedLabel('phone')}
+                      onBlur={() => setFocusedLabel(null)}
+                      aria-haspopup="listbox"
+                      aria-expanded={countryOpen}
+                      className="procurement-field relative focus:z-10 w-full text-left bg-surface-container text-on-surface border rounded-l-lg pl-3 pr-2 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all truncate"
+                      style={{ borderColor: fieldBorder(errors.phone), borderRight: 'none' }}
+                    >
+                      {selectedCountry ? `${selectedCountry.dialCode} ${selectedCountry.name}` : formData.countryIso}
+                    </button>
+
+                    {countryOpen && (
+                      <div
+                        className="absolute z-20 top-full left-0 mt-1 w-64 max-w-[80vw] bg-surface-container border rounded-lg shadow-xl overflow-hidden"
+                        style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
+                      >
+                        <input
+                          ref={countrySearchRef}
+                          value={countryQuery}
+                          onChange={(e) => setCountryQuery(e.target.value)}
+                          onKeyDown={handleCountrySearchKeyDown}
+                          type="text"
+                          placeholder="Search country or code"
+                          className="procurement-field w-full bg-surface-container text-on-surface border-b p-3 outline-none"
+                          style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
+                        />
+                        <ul role="listbox" className="max-h-56 overflow-y-auto py-1">
+                          {filteredCountries.length === 0 && (
+                            <li className="px-3 py-2 text-sm text-on-surface-variant">No matches</li>
+                          )}
+                          {filteredCountries.map((c, idx) => (
+                            <li
+                              key={c.isoCode}
+                              ref={(el) => (optionRefs.current[idx] = el)}
+                              role="option"
+                              aria-selected={c.isoCode === formData.countryIso}
+                            >
+                              <button
+                                type="button"
+                                onClick={() => selectCountry(c.isoCode)}
+                                onMouseEnter={() => setHighlightedIndex(idx)}
+                                className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                                  idx === highlightedIndex ? 'bg-primary/10 text-primary' : 'text-on-surface'
+                                } ${c.isoCode === formData.countryIso ? 'font-semibold' : ''}`}
+                              >
+                                {c.dialCode} {c.name}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                   <input
                     value={formData.phone}
                     onChange={handlePhoneChange}
                     onFocus={() => setFocusedLabel('phone')}
                     onBlur={() => setFocusedLabel(null)}
-                    className="procurement-field w-full bg-surface-container text-on-surface border rounded-r-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all tabular-nums"
+                    className="procurement-field relative focus:z-10 w-full bg-surface-container text-on-surface border rounded-r-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all tabular-nums"
                     style={{ borderColor: fieldBorder(errors.phone) }}
                     type="tel"
                     inputMode="numeric"

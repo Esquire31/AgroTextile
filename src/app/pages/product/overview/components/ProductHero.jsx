@@ -3,6 +3,7 @@
 import { Download, CheckCircle, Ship, ShoppingBag } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { useIntl } from 'react-intl';
+import LazyImage from '@/components/ui/LazyImage';
 
 export default function ProductHero({ product }) {
   const { formatMessage } = useIntl();
@@ -23,6 +24,9 @@ export default function ProductHero({ product }) {
           <img
             src={images[selectedImage]}
             alt={product.title}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
           />
           <div
@@ -67,7 +71,12 @@ export default function ProductHero({ product }) {
                   : { borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }
               }
             >
-              <img src={src} alt={`${product.title} detail view ${idx + 1}`} className="w-full h-full object-cover" />
+              <LazyImage
+                src={src}
+                alt={`${product.title} detail view ${idx + 1}`}
+                rootMargin="600px"
+                className="w-full h-full object-cover"
+              />
             </button>
           ))}
         </div>
