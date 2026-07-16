@@ -123,7 +123,7 @@ export default function ProductListing() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-[90] w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-all shadow-lg cursor-pointer group"
+            className="fixed bottom-8 right-8 z-90 w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-all shadow-lg cursor-pointer group"
             title="Return to top"
           >
             <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />

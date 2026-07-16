@@ -67,7 +67,7 @@ export default function ProductListingHero({
           <div className="flex flex-wrap gap-2 sm:gap-2 sm:p-1 sm:bg-surface-container sm:rounded-full sm:border sm:border-outline-variant/20 w-full sm:w-fit">
             <button
               onClick={() => setSelectedCategory('All')}
-              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
+              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer shrink-0 ${
                 selectedCategory === 'All'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
@@ -77,7 +77,7 @@ export default function ProductListingHero({
             </button>
             <button
               onClick={() => setSelectedCategory('Textile')}
-              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
+              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer shrink-0 ${
                 selectedCategory === 'Textile'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'
@@ -87,7 +87,7 @@ export default function ProductListingHero({
             </button>
             <button
               onClick={() => setSelectedCategory('Agro')}
-              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-shrink-0 ${
+              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer shrink-0 ${
                 selectedCategory === 'Agro'
                   ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                   : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/30'

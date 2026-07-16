@@ -466,7 +466,7 @@ export default function ProcurementForm() {
                   className="procurement-field w-full bg-surface-container text-on-surface border rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none transition-all"
                   style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
                 >
-                  <option value="Industrial Textiles & Protective Gear">
+                  <option value="Industrial Textiles & Garments">
                     {formatMessage({ id: 'app.pages.contact.form.field.sector.option.industrial' })}
                   </option>
                   <option value="Fresh Produce & Agro-Logistics">
