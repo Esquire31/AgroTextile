@@ -10,6 +10,7 @@ import Logistics from './components/Logistics';
 import RelatedProducts from './components/RelatedProducts';
 import FloatingFAB from './components/FloatingFAB';
 import { PRODUCTS } from '../listing/data';
+import ErrorPage from '@/app/pages/Error/ErrorPage';
 
 export default function ProductDetails() {
   const { slug } = useParams();
@@ -25,12 +26,11 @@ export default function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="pt-32 pb-20 text-center">
-        <h1 className="text-4xl font-bold mb-4">404 - Product Not Found</h1>
-        <Link to="/products" className="text-primary hover:underline">
-          Return to All Products
-        </Link>
-      </div>
+      <ErrorPage
+        code={404}
+        title="Product not found"
+        message="This product doesn't exist or may have been removed. Check the link or browse all products."
+      />
     );
   }
 
