@@ -11,11 +11,13 @@ import RelatedProducts from './components/RelatedProducts';
 import FloatingFAB from './components/FloatingFAB';
 import { PRODUCTS } from '../listing/data';
 import ErrorPage from '@/app/pages/Error/ErrorPage';
+import { useErrorPage } from '@/app/pages/Error/ErrorContext';
 
 export default function ProductDetails() {
   const { slug } = useParams();
   const { formatMessage } = useIntl();
-  
+  const { setIsErrorPage } = useErrorPage();
+
   // Find product by id (using slug as id)
   const product = PRODUCTS.find(p => p.id === slug);
 
@@ -23,6 +25,13 @@ export default function ProductDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+
+  // Tell App.jsx whether we're currently showing an error, so it
+  // can hide the Navbar/Footer even on a "valid" route like this one
+  useEffect(() => {
+    setIsErrorPage(!product);
+    return () => setIsErrorPage(false);
+  }, [product, setIsErrorPage]);
 
   if (!product) {
     return (

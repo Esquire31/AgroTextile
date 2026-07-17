@@ -20,7 +20,7 @@ export function Footer() {
     },
     {
       key: 'instagram',
-      href: 'https://instagram.com/yourpage',
+      href: 'https://www.instagram.com/7horses.export.india?igsh=OTVleTZydjdlYm1x',
       label: 'Instagram',
       svg: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="w-4 h-4 md:w-5 md:h-5">
@@ -32,7 +32,7 @@ export function Footer() {
     },
     {
       key: 'mail',
-      href: 'mailto:info@yourcompany.com',
+      href: 'mailto:info@7horsesexport.com',
       label: 'Email',
       svg: <span className="material-symbols-outlined text-sm md:text-xl">mail</span>,
     },

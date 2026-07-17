@@ -10,7 +10,7 @@ export default function FloatingFAB({ product }) {
     const message = encodeURIComponent(
       `Hello! I am interested in the ${product.title} (ID: ${product.id}). Could you provide more information regarding pricing and technical specs?`
     );
-    window.open(`https://wa.me/91XXXXXXXXXX?text=${message}`, '_blank');
+    window.open(`https://wa.me/917600006560?text=${message}`, '_blank');
   };
 
   return (
