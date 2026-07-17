@@ -3,42 +3,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { Package, Leaf, Send, ArrowRight, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js';
+import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js/max';
 import en from 'react-phone-number-input/locale/en.json';
 import { useIntl } from 'react-intl';
 
-// ─────────────────────────────────────────────────────────────────
-// EMAIL DELIVERY SETUP (read this before deploying)
-//
-// This form sends submissions straight to an email address using
-// Web3Forms — chosen because it's genuinely free forever, requires
-// zero backend/server code, and sends directly from the browser
-// via a single fetch() call. (Formspree is the other well-known
-// option but has a smaller free tier and more setup friction.)
-//
-// To make this live:
-//   1. Go to https://web3forms.com and enter the email address you
-//      want submissions sent to. They'll email you a free Access Key
-//      — no account/password needed, just email verification.
-//   2. Paste that key into WEB3FORMS_ACCESS_KEY below.
-//
-// Every form-to-email service (Web3Forms, Formspree, etc.) requires
-// an access key like this — there's no way to send email from a
-// public website without one, otherwise anyone could spam through
-// your form. The key only allows submissions INTO your inbox, it
-// can't be used to read your email or send arbitrary mail elsewhere.
-// ─────────────────────────────────────────────────────────────────
-const WEB3FORMS_ACCESS_KEY = '1e678b49-c3d8-460e-bff5-3683e95c36ab';
+const WEB3FORMS_ACCESS_KEY = '255374b3-86b9-472e-88b4-29837d932298';
 
-// Full country list built from libphonenumber-js's real metadata —
-// every ISO country code it supports, each with its actual dial
-// code and an English display name. This replaces a hand-typed
-// 10-country list with the complete, accurate set (240+ countries),
-// in "IN +91 India" style. libphonenumber-js itself ships no React
-// component and no CSS, so this works identically regardless of
-// React version and never touches any existing styling — only the
-// <select>/<option> markup below (built with the site's existing
-// classes) renders it.
 const COUNTRY_LIST = getCountries()
   .map((isoCode) => ({
     isoCode,
@@ -47,10 +17,14 @@ const COUNTRY_LIST = getCountries()
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Letters (any language) and spaces only — blocks digits and special
+// characters as the person types, rather than only validating on submit.
+const sanitizeName = (value) => value.replace(/[^\p{L}\s]/gu, '');
+
 export default function ProcurementForm() {
   const { formatMessage } = useIntl();
   const [focusedLabel, setFocusedLabel] = useState(null);
-  const [status, setStatus] = useState('idle'); // idle | submitting | success | error
+  const [status, setStatus] = useState('idle');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -63,10 +37,6 @@ export default function ProcurementForm() {
 
   const [errors, setErrors] = useState({});
 
-  // Searchable country-code dropdown state — replaces the native
-  // <select>, which can't be filtered by typing a country name (it
-  // only jumps to options whose visible text starts with the typed
-  // letter, and that text starts with "+91" not "India").
   const [countryOpen, setCountryOpen] = useState(false);
   const [countryQuery, setCountryQuery] = useState('');
   const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -88,7 +58,6 @@ export default function ProcurementForm() {
     );
   })();
 
-  // Close the dropdown on any click outside the country box.
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (countryBoxRef.current && !countryBoxRef.current.contains(e.target)) {
@@ -100,8 +69,6 @@ export default function ProcurementForm() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Move focus into the search box the moment the list opens, so
-  // typing works immediately without an extra click.
   useEffect(() => {
     if (countryOpen) {
       setHighlightedIndex(0);
@@ -109,7 +76,6 @@ export default function ProcurementForm() {
     }
   }, [countryOpen]);
 
-  // Keep the keyboard-highlighted option scrolled into view.
   useEffect(() => {
     optionRefs.current[highlightedIndex]?.scrollIntoView({ block: 'nearest' });
   }, [highlightedIndex]);
@@ -152,15 +118,8 @@ export default function ProcurementForm() {
     },
   ];
 
-  // Email: requires something + "@" + something + "." + something
-  // (e.g. name@domain.com) — stricter than the browser's loose
-  // type="email" check, which would accept "a@b" with no TLD.
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-  // Phone: validated against the selected country's real numbering
-  // rules via libphonenumber-js, instead of a flat "exactly 10
-  // digits" check — 10 digits is only correct for India; UK, UAE,
-  // Germany, and most other countries use different lengths.
   const validatePhone = (value, countryIso) => {
     if (!value) return false;
     try {
@@ -171,12 +130,17 @@ export default function ProcurementForm() {
   };
 
   const handlePhoneChange = (e) => {
-    // Strip everything except digits as the person types — still
-    // digits-only input, just no longer capped at a fixed length,
-    // since the correct length depends on which country is selected.
     const digitsOnly = e.target.value.replace(/\D/g, '');
     setFormData((prev) => ({ ...prev, phone: digitsOnly }));
     if (errors.phone) setErrors((prev) => ({ ...prev, phone: null }));
+  };
+
+  // Name: strips digits/special characters live, so they physically
+  // can't be typed in — not just flagged after the fact.
+  const handleNameChange = (e) => {
+    const cleaned = sanitizeName(e.target.value);
+    setFormData((prev) => ({ ...prev, name: cleaned }));
+    if (errors.name) setErrors((prev) => ({ ...prev, name: null }));
   };
 
   const handleChange = (field) => (e) => {
@@ -186,7 +150,11 @@ export default function ProcurementForm() {
 
   const validate = () => {
     const next = {};
-    if (!formData.name.trim()) next.name = formatMessage({ id: 'app.pages.contact.form.validation.required' });
+    if (!formData.name.trim()) {
+      next.name = formatMessage({ id: 'app.pages.contact.form.validation.required' });
+    } else if (!/^[\p{L}\s]+$/u.test(formData.name)) {
+      next.name = formatMessage({ id: 'app.pages.contact.form.validation.name_invalid' });
+    }
     if (!validateEmail(formData.email)) next.email = formatMessage({ id: 'app.pages.contact.form.validation.email_invalid' });
     if (!validatePhone(formData.phone, formData.countryIso)) {
       next.phone = formatMessage(
@@ -307,6 +275,33 @@ export default function ProcurementForm() {
               .procurement-field-error-text {
                 color: var(--color-error);
               }
+              /* Glossy dial-code button: soft top-light gradient +
+                 inner highlight ring + subtle depth on hover/active,
+                 all built from the existing --color-primary token so
+                 it stays on-brand instead of introducing new colors. */
+              .country-select-btn {
+                background:
+                  linear-gradient(180deg,
+                    color-mix(in srgb, var(--color-primary) 14%, var(--color-surface-container)) 0%,
+                    var(--color-surface-container) 55%
+                  );
+                box-shadow:
+                  inset 0 1px 0 color-mix(in srgb, white 25%, transparent),
+                  inset 0 -1px 0 color-mix(in srgb, black 8%, transparent);
+                transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+              }
+              .country-select-btn:hover {
+                background:
+                  linear-gradient(180deg,
+                    color-mix(in srgb, var(--color-primary) 22%, var(--color-surface-container)) 0%,
+                    var(--color-surface-container) 55%
+                  );
+              }
+              .country-select-btn:active {
+                transform: translateY(1px);
+                box-shadow:
+                  inset 0 1px 2px color-mix(in srgb, black 15%, transparent);
+              }
             `}</style>
 
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -321,12 +316,14 @@ export default function ProcurementForm() {
                   </label>
                   <input
                     value={formData.name}
-                    onChange={handleChange('name')}
+                    onChange={handleNameChange}
                     onFocus={() => setFocusedLabel('name')}
                     onBlur={() => setFocusedLabel(null)}
                     className="procurement-field w-full bg-surface-container text-on-surface border rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                     style={{ borderColor: fieldBorder(errors.name) }}
                     type="text"
+                    inputMode="text"
+                    autoCapitalize="words"
                   />
                   {errors.name && (
                     <p className="text-xs procurement-field-error-text flex items-center gap-1">
@@ -361,11 +358,6 @@ export default function ProcurementForm() {
                 </div>
               </div>
 
-              {/* Phone — country selector (default India, IN +91)
-                  using real libphonenumber-js data for every
-                  supported country, + a number input validated
-                  against that specific country's actual numbering
-                  rules (not a flat 10-digit assumption) */}
               <div className="space-y-2">
                 <label
                   className={`font-label-sm text-label-sm uppercase text-on-surface-variant transition-colors ${
@@ -383,7 +375,7 @@ export default function ProcurementForm() {
                       onBlur={() => setFocusedLabel(null)}
                       aria-haspopup="listbox"
                       aria-expanded={countryOpen}
-                      className="procurement-field relative focus:z-10 w-full text-left bg-surface-container text-on-surface border rounded-l-lg pl-3 pr-2 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all truncate"
+                      className="country-select-btn procurement-field relative focus:z-10 w-full text-left text-on-surface border rounded-l-lg pl-3 pr-2 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none truncate"
                       style={{ borderColor: fieldBorder(errors.phone), borderRight: 'none' }}
                     >
                       {selectedCountry ? `${selectedCountry.dialCode} ${selectedCountry.name}` : formData.countryIso}

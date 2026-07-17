@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, useLocation } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Navigation } from "./components/layout/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 import { Footer } from "./components/layout/Footer";
@@ -7,29 +7,20 @@ import ScrollToTop from "./components/layout/ScrollToTop";
 import SplashCursor from "./components/ui/cursor/SplashCursor";
 import FairyDustCursor from "./components/ui/cursor/FairyDust";
 import Lenis from "lenis";
+import { ErrorProvider, useErrorPage } from "@/app/pages/Error/ErrorContext";
 
 function AppContent({ isDark, setIsDark }) {
-  const location = useLocation();
-
-  const is404 =
-    location.pathname !== "/" &&
-    location.pathname !== "/about" &&
-    location.pathname !== "/products" &&
-    location.pathname !== "/contact" &&
-    !location.pathname.startsWith("/products/");
+  const { isErrorPage } = useErrorPage();
 
   return (
     <>
-      {!is404 && (
-        <Navigation
-          isDark={isDark}
-          setIsDark={setIsDark}
-        />
+      {!isErrorPage && (
+        <Navigation isDark={isDark} setIsDark={setIsDark} />
       )}
 
       <AppRoutes />
 
-      {!is404 && <Footer />}
+      {!isErrorPage && <Footer />}
     </>
   );
 }
@@ -58,7 +49,6 @@ function App() {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
 
-  // Initialize Lenis smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -92,7 +82,6 @@ function App() {
     setCanUseSplashCursor(Boolean(webglContext));
   }, []);
 
-  // Detect desktop vs mobile/tablet
   useEffect(() => {
     const checkIsDesktop = () => {
       const hasTouch =
@@ -107,8 +96,7 @@ function App() {
 
     window.addEventListener("resize", checkIsDesktop);
 
-    return () =>
-      window.removeEventListener("resize", checkIsDesktop);
+    return () => window.removeEventListener("resize", checkIsDesktop);
   }, []);
 
   return (
@@ -132,10 +120,9 @@ function App() {
 
       {isDesktop && <FairyDustCursor />}
 
-      <AppContent
-        isDark={isDark}
-        setIsDark={setIsDark}
-      />
+      <ErrorProvider>
+        <AppContent isDark={isDark} setIsDark={setIsDark} />
+      </ErrorProvider>
     </BrowserRouter>
   );
 }
