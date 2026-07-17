@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import ProductListingHero from './components/ProductListingHero';
 import ProductCatalog from './components/ProductCatalog';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, MessageCircle } from 'lucide-react';
 
 function FloatingPaths({ position }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -97,6 +97,13 @@ export default function ProductListing() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleWhatsAppInquiry = () => {
+    const message = encodeURIComponent(
+      formatMessage({ id: 'app.products.listing.fab.message' })
+    );
+    window.open(`https://wa.me/917600006560?text=${message}`, '_blank');
+  };
+
   return (
     <main className="relative min-h-screen bg-surface-container-lowest text-on-surface selection:bg-primary/20 pt-20">
       <BackgroundPaths />
@@ -116,6 +123,22 @@ export default function ProductListing() {
       />
 
       {/* Persistent Floating Controls (Right Side) */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.85, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+        onClick={handleWhatsAppInquiry}
+        title={formatMessage({ id: 'app.products.listing.fab.label' })}
+        aria-label={formatMessage({ id: 'app.products.listing.fab.label' })}
+        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all spring-hover border border-background/20 backdrop-blur-sm"
+      >
+        <MessageCircle size={20} />
+        <span className="absolute -top-1 -right-1 flex h-4 w-4">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-4 w-4 bg-secondary"></span>
+        </span>
+      </motion.button>
+
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -123,7 +146,7 @@ export default function ProductListing() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-90 w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-all shadow-lg cursor-pointer group"
+            className="fixed bottom-24 right-8 z-50 w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-all shadow-lg cursor-pointer group"
             title="Return to top"
           >
             <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />

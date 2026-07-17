@@ -6,8 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphonenumber-js/max';
 import en from 'react-phone-number-input/locale/en.json';
 import { useIntl } from 'react-intl';
+import { useSearchParams } from 'react-router-dom';
 
-const WEB3FORMS_ACCESS_KEY = process.env.WEB3_ACCESS_KEY;
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3_ACCESS_KEY; 
+const DEFAULT_SECTOR = 'Textiles & Garments';
+const AGRO_SECTOR = 'Fresh Produce & Agro Products';
+const OTHER_SECTOR = 'Other';
 
 const COUNTRY_LIST = getCountries()
   .map((isoCode) => ({
@@ -23,6 +27,7 @@ const sanitizeName = (value) => value.replace(/[^\p{L}\s]/gu, '');
 
 export default function ProcurementForm() {
   const { formatMessage } = useIntl();
+  const [searchParams] = useSearchParams();
   const [focusedLabel, setFocusedLabel] = useState(null);
   const [status, setStatus] = useState('idle');
 
@@ -31,7 +36,7 @@ export default function ProcurementForm() {
     email: '',
     countryIso: 'IN',
     phone: '',
-    sector: 'Industrial Textiles & Protective Gear',
+    sector: DEFAULT_SECTOR,
     details: '',
   });
 
@@ -79,6 +84,41 @@ export default function ProcurementForm() {
   useEffect(() => {
     optionRefs.current[highlightedIndex]?.scrollIntoView({ block: 'nearest' });
   }, [highlightedIndex]);
+
+  useEffect(() => {
+    const inquiryProduct = searchParams.get('inquiryProduct');
+    if (!inquiryProduct) {
+      return;
+    }
+
+    const inquiryCategory = searchParams.get('inquiryCategory');
+    const inquiryOrigin = searchParams.get('inquiryOrigin') || '';
+    const inquiryMinOrder = searchParams.get('inquiryMinOrder') || '';
+    const inquiryLeadTime = searchParams.get('inquiryLeadTime') || '';
+    const inquiryShippingPort = searchParams.get('inquiryShippingPort') || '';
+
+    const categoryLabel = inquiryCategory === 'Agro'
+      ? formatMessage({ id: 'app.products.listing.filter.agro' })
+      : formatMessage({ id: 'app.products.listing.filter.textile' });
+
+    setFormData((prev) => ({
+      ...prev,
+      sector: inquiryCategory === 'Agro' ? AGRO_SECTOR : DEFAULT_SECTOR,
+      details: formatMessage(
+        { id: 'app.pages.contact.form.prefill.product_details' },
+        {
+          product: inquiryProduct,
+          category: categoryLabel,
+          origin: inquiryOrigin,
+          minOrder: inquiryMinOrder,
+          leadTime: inquiryLeadTime,
+          shippingPort: inquiryShippingPort,
+        }
+      ),
+    }));
+
+    setErrors((prev) => ({ ...prev, details: null }));
+  }, [formatMessage, searchParams]);
 
   const selectCountry = (isoCode) => {
     setFormData((prev) => ({ ...prev, countryIso: isoCode }));
@@ -199,7 +239,7 @@ export default function ProcurementForm() {
           email: '',
           countryIso: 'IN',
           phone: '',
-          sector: 'Industrial Textiles & Protective Gear',
+          sector: DEFAULT_SECTOR,
           details: '',
         });
         setTimeout(() => setStatus('idle'), 4000);
@@ -464,7 +504,7 @@ export default function ProcurementForm() {
                   <option value="Fresh Produce & Agro Products">
                     {formatMessage({ id: 'app.pages.contact.form.field.sector.option.fresh_produce' })}
                   </option>
-                  <option value="Other">
+                  <option value={OTHER_SECTOR}>
                     {formatMessage({ id: 'app.pages.contact.form.field.sector.option.other' })}
                   </option>
                 </select>
