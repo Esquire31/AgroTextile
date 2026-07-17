@@ -52,7 +52,7 @@ export default function RelatedProducts({ currentProduct }) {
               />
             </div>
             <div className="p-6">
-              <span className="text-[10px] font-mono font-bold text-primary uppercase tracking-widest mb-2 block">
+              <span className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2 block">
                 {prod.category}
               </span>
               <h4 className="text-xl font-bold text-on-surface group-hover:text-primary transition-colors">

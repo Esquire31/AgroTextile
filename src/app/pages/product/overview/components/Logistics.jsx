@@ -32,7 +32,7 @@ export default function Logistics({ product }) {
                 <span className="text-body-lg text-on-surface">
                   {formatMessage({ id: 'app.products.overview.logistics.moq' })}
                 </span>
-                <span className="text-body-lg text-secondary font-mono">{product.details.minOrder}</span>
+                <span className="text-body-lg text-secondary">{product.details.minOrder}</span>
               </div>
               <div
                 className="flex justify-between items-center border-b pb-4"
@@ -41,13 +41,13 @@ export default function Logistics({ product }) {
                 <span className="text-body-lg text-on-surface">
                   {formatMessage({ id: 'app.products.overview.logistics.capacity' })}
                 </span>
-                <span className="text-body-lg text-secondary font-mono">{product.details.stockStatus}</span>
+                <span className="text-body-lg text-secondary">{product.details.stockStatus}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-body-lg text-on-surface">
                   {formatMessage({ id: 'app.products.overview.logistics.insurance' })}
                 </span>
-                <span className="text-body-lg text-secondary font-mono">
+                <span className="text-body-lg text-secondary">
                   {formatMessage({ id: 'app.products.overview.logistics.insurance_value' })}
                 </span>
               </div>

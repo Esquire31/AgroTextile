@@ -29,7 +29,7 @@ const ProductCard = ({
         </Link>
         
         {/* Category Badge */}
-        <div className={`absolute top-4 left-4 text-[10px] font-mono font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider ${
+        <div className={`absolute top-4 left-4 text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider ${
           product.category === 'Textile'
             ? 'bg-primary text-on-primary border border-primary/20'
             : 'bg-secondary-container text-on-secondary-container border border-secondary-container/30'
@@ -41,15 +41,15 @@ const ProductCard = ({
       {/* Product Information Body */}
       <div className="p-6 md:p-8 flex flex-col justify-between flex-1 space-y-6">
         <div>
-          <span className="font-mono text-[9px] text-on-surface-variant/60 block uppercase tracking-wider mb-1">
+          <span className="text-[9px] text-on-surface-variant/60 block uppercase tracking-wider mb-1">
             {formatMessage({ id: 'app.products.card.label.origin' })}: {product.details.origin.split(',')[0]}
           </span>
           <Link to={`/products/${product.id}`} className="block hover:text-primary transition-colors">
-            <h3 className="font-serif text-xl md:text-2xl text-on-surface mb-3 tracking-tight font-medium">
+            <h3 className="text-xl md:text-2xl text-on-surface mb-3 tracking-tight font-medium">
               {product.title}
             </h3>
           </Link>
-          <p className="font-sans text-xs md:text-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+          <p className="text-xs md:text-sm text-on-surface-variant line-clamp-3 leading-relaxed">
             {product.description}
           </p>
         </div>
@@ -58,19 +58,19 @@ const ProductCard = ({
         {/* Dynamic Spec Badges */}
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/10 text-left">
-            <p className="font-sans text-[10px] font-semibold text-on-surface-variant uppercase tracking-wide mb-1">
+            <p className="text-[10px] font-semibold text-on-surface-variant uppercase tracking-wide mb-1">
               {product.specs.label1}
             </p>
-            <p className="font-mono text-sm font-bold text-primary tracking-tight">
+            <p className="text-sm font-bold text-primary tracking-tight">
               {product.specs.value1}
             </p>
           </div>
 
           <div className="bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/10 text-left">
-            <p className="font-sans text-[10px] font-semibold text-on-surface-variant uppercase tracking-wide mb-1">
+            <p className="text-[10px] font-semibold text-on-surface-variant uppercase tracking-wide mb-1">
               {product.specs.label2}
             </p>
-            <p className="font-mono text-sm font-bold text-primary tracking-tight">
+            <p className="text-sm font-bold text-primary tracking-tight">
               {product.specs.value2}
             </p>
           </div>

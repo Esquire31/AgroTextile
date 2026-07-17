@@ -65,7 +65,7 @@ export default function InquiryBasket({
                     <Briefcase className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-primary font-bold">
+                    <span className="text-[10px] uppercase tracking-wider text-primary font-bold">
                       {formatMessage({ id: 'app.products.inquiry.basket.title' })}
                     </span>
                     <h2 className="text-lg font-bold text-on-surface">
@@ -93,7 +93,7 @@ export default function InquiryBasket({
                     <FileSpreadsheet className="w-6 h-6 text-secondary" />
                   </div>
                   <div className="space-y-1">
-                    <h3 className="text-lg font-bold text-on-surface font-sans">
+                    <h3 className="text-lg font-bold text-on-surface">
                       {formatMessage({ id: 'app.products.inquiry.basket.success' })}
                     </h3>
                     <p className="text-xs text-on-surface-variant max-w-xs mx-auto">
@@ -101,8 +101,8 @@ export default function InquiryBasket({
                     </p>
                   </div>
                   <div className="bg-surface-container-low border border-outline-variant/10 rounded-lg p-3 max-w-[240px] mx-auto">
-                    <span className="text-[10px] font-mono text-on-surface-variant uppercase block">RFQ REFERENCE:</span>
-                    <span className="font-mono text-sm font-bold text-primary">{inquiryCode}</span>
+                    <span className="text-[10px] text-on-surface-variant uppercase block">RFQ REFERENCE:</span>
+                    <span className="text-sm font-bold text-primary">{inquiryCode}</span>
                   </div>
                 </motion.div>
               ) : basket.length === 0 ? (
@@ -136,10 +136,10 @@ export default function InquiryBasket({
                             className="w-10 h-10 object-cover rounded bg-surface-container"
                           />
                           <div>
-                            <h4 className="text-xs font-bold text-on-surface font-sans max-w-[180px] truncate">
+                            <h4 className="text-xs font-bold text-on-surface max-w-[180px] truncate">
                               {item.product.title}
                             </h4>
-                            <span className="text-[10px] font-mono text-on-surface-variant uppercase">
+                            <span className="text-[10px] text-on-surface-variant uppercase">
                               {item.product.specs.label1}: {item.product.specs.value1}
                             </span>
                           </div>
@@ -157,7 +157,7 @@ export default function InquiryBasket({
 
                       {/* Quantity Increments */}
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[10px] font-mono text-on-surface-variant uppercase">
+                        <span className="text-[10px] text-on-surface-variant uppercase">
                           {formatMessage({ id: 'app.products.inquiry.basket.quantity' })}:
                         </span>
                         <div className="flex items-center gap-1.5">
@@ -168,7 +168,7 @@ export default function InquiryBasket({
                           >
                             -
                           </button>
-                          <span className="font-mono text-xs font-bold text-primary w-8 text-center">
+                          <span className="text-xs font-bold text-primary w-8 text-center">
                             {item.quantity}
                           </span>
                           <button
@@ -183,7 +183,7 @@ export default function InquiryBasket({
 
                       {/* Custom specification comments */}
                       <div className="space-y-1">
-                        <label className="text-[9px] font-mono text-on-surface-variant uppercase block">
+                        <label className="text-[9px] text-on-surface-variant uppercase block">
                           Technical Customization / Notes:
                         </label>
                         <input

@@ -3,10 +3,12 @@
 import { Download, CheckCircle, Ship, ShoppingBag } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { useIntl } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 import LazyImage from '@/components/ui/LazyImage';
 
 export default function ProductHero({ product }) {
   const { formatMessage } = useIntl();
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(0);
 
   const images = useMemo(() => {
@@ -14,6 +16,19 @@ export default function ProductHero({ product }) {
       ? product.images 
       : [product.thumbnail || product.image];
   }, [product]);
+
+  const handleAddToInquiry = () => {
+    const searchParams = new URLSearchParams({
+      inquiryProduct: product.title,
+      inquiryCategory: product.category,
+      inquiryOrigin: product.details.origin,
+      inquiryMinOrder: product.details.minOrder,
+      inquiryLeadTime: product.details.leadTime,
+      inquiryShippingPort: product.details.shippingPorts,
+    });
+
+    navigate(`/contact?${searchParams.toString()}#procurement-form`);
+  };
 
   return (
     <section className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-12 mb-15">
@@ -89,7 +104,7 @@ export default function ProductHero({ product }) {
           <h1 className="type-display text-on-surface mb-4">
             {product.title}
           </h1>
-          <p className="type-badge text-on-surface-variant mb-4">
+          <p className="type-label text-on-surface-variant mb-4">
             {product.subtitle || (
               product.category === 'Textile' 
                 ? formatMessage({ id: 'app.products.listing.filter.textile' })
@@ -134,16 +149,12 @@ export default function ProductHero({ product }) {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="flex-1 bg-primary text-on-primary font-bold py-4 rounded-full text-sm hover:bg-primary/90 transition-all spring-hover flex items-center justify-center gap-2">
+          <button
+            onClick={handleAddToInquiry}
+            className="flex-1 w-full bg-primary text-on-primary font-bold py-4 rounded-full text-sm hover:bg-primary/90 transition-all spring-hover flex items-center justify-center gap-2"
+          >
             <ShoppingBag size={18} />
             {formatMessage({ id: 'app.products.overview.hero.btn.add_to_inquiry' })}
-          </button>
-          <button
-            className="flex-1 border font-bold py-4 rounded-full text-sm hover:bg-surface-container-high transition-all spring-hover flex items-center justify-center gap-2"
-            style={{ borderColor: 'var(--color-outline)' }}
-          >
-            <Download size={18} />
-            {formatMessage({ id: 'app.products.overview.hero.btn.technical_sheet' })}
           </button>
         </div>
       </div>

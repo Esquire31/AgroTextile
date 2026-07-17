@@ -44,7 +44,7 @@ export default function TechnicalSpecs({ product }) {
                 <IconComponent size={28} />
               </div>
               <div>
-                <p className="text-sm font-mono text-on-surface-variant uppercase tracking-wider mb-2">
+                <p className="text-sm text-on-surface-variant uppercase tracking-wider mb-2">
                   {specs[`label${i}`]}
                 </p>
                 <p className="text-2xl font-bold text-on-surface">

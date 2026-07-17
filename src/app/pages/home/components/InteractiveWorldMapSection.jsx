@@ -163,19 +163,6 @@ export default function InteractiveWorldMapSection() {
             animate="visible"
             className="z-10 max-w-5xl flex flex-col items-center"
           >
-            {/* Eyebrow Badge */}
-            <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
-              <span
-                className="inline-block type-badge px-4 py-2 rounded-full border"
-                style={{
-                  borderColor: 'var(--color-outline-variant)',
-                  color: 'var(--color-on-surface)',
-                }}
-              >
-                {formatMessage({ id: 'app.pages.home.hero.eyebrow' })}
-              </span>
-            </motion.div>
-
             {/* Main Heading */}
             <motion.h2
               variants={itemVariants}
