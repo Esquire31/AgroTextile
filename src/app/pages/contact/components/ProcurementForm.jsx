@@ -7,7 +7,7 @@ import { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'libphon
 import en from 'react-phone-number-input/locale/en.json';
 import { useIntl } from 'react-intl';
 
-const WEB3FORMS_ACCESS_KEY = '255374b3-86b9-472e-88b4-29837d932298';
+const WEB3FORMS_ACCESS_KEY = process.env.WEB3_ACCESS_KEY;
 
 const COUNTRY_LIST = getCountries()
   .map((isoCode) => ({
@@ -458,14 +458,14 @@ export default function ProcurementForm() {
                   className="procurement-field w-full bg-surface-container text-on-surface border rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none transition-all"
                   style={{ borderColor: 'color-mix(in srgb, var(--color-outline-variant) 30%, transparent)' }}
                 >
-                  <option value="Industrial Textiles & Garments">
+                  <option value="Textiles & Garments">
                     {formatMessage({ id: 'app.pages.contact.form.field.sector.option.industrial' })}
                   </option>
-                  <option value="Fresh Produce & Agro-Logistics">
+                  <option value="Fresh Produce & Agro Products">
                     {formatMessage({ id: 'app.pages.contact.form.field.sector.option.fresh_produce' })}
                   </option>
-                  <option value="Custom ESG Compliance Sourcing">
-                    {formatMessage({ id: 'app.pages.contact.form.field.sector.option.esg' })}
+                  <option value="Other">
+                    {formatMessage({ id: 'app.pages.contact.form.field.sector.option.other' })}
                   </option>
                 </select>
               </div>
