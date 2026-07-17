@@ -7,6 +7,16 @@ import Globe from '@/components/ui/Globe';
 export default function HeroSection() {
   const { formatMessage } = useIntl();
 
+  const handleDiscoverStoryClick = (event) => {
+    event.preventDefault();
+    const timelineSection = document.getElementById('timeline');
+    if (!timelineSection) {
+      return;
+    }
+
+    timelineSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   // Arcs draw the connecting lines between markers on the globe. Origins are
   // spread across different points on the sphere (not all from India) so the
   // lines fan out across top/bottom/sides instead of bunching into one dense
@@ -52,7 +62,7 @@ export default function HeroSection() {
           there's no seam where the hero meets the next section. The globe
           spins/drags on its own already — no extra zoom motion needed here,
           that was a leftover from when this slot held a static photo. */}
-      <div className="absolute inset-0 w-full h-full translate-y-2 sm:translate-y-4 md:translate-y-8">
+      <div className="absolute inset-0 w-full h-full -translate-y-2 sm:translate-y-4 md:translate-y-8">
         {/* No baseColor/markerColor passed here on purpose: Globe now
             auto-detects the site's light/dark theme and picks the
             matching sphere + marker colors from variables.scss. */}
@@ -83,36 +93,18 @@ export default function HeroSection() {
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       ></motion.div>
 
-      {/* Content Container — pt-32 sm:pt-40 matches the homepage hero exactly
-          so the title baseline lines up between pages. The eyebrow badge
-          above the title on this page used to push the title further down
-          than the homepage's; it now sits ABOVE that same pt-32/pt-40
-          anchor point (via negative margin) instead of adding to it, so the
-          h1 itself lands at the same spot the homepage h1 does. */}
-      <div className="relative z-10 h-full flex items-center justify-center pt-44 sm:pt-56 pointer-events-none">
+      {/* Content container spacing mirrors the home hero text overlay. */}
+      <div className="relative z-10 h-full flex items-center justify-center pt-8 sm:pt-16 pointer-events-none text-center px-2 sm:px-8">
         <motion.div
-          className="flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-12 pointer-events-none"
+          className="z-10 max-w-5xl flex flex-col items-center justify-center pointer-events-none"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Eyebrow */}
-          <motion.div variants={itemVariants} className="mb-4 sm:mb-6 pointer-events-auto">
-            <span
-              className="inline-block type-badge px-4 py-2 rounded-full border"
-              style={{
-                borderColor: 'var(--color-outline-variant)',
-                color: 'var(--color-on-surface)',
-              }}
-            >
-              {formatMessage({ id: 'app.pages.about.hero.eyebrow' })}
-            </span>
-          </motion.div>
-
           {/* Main Heading — same mb spacing pattern as homepage's h1 */}
           <motion.h1
             variants={itemVariants}
-            className="mb-8 max-w-4xl type-display text-text-primary"
+            className="mb-8 type-display text-text-primary"
           >
             {formatMessage({ id: 'app.pages.about.hero.title' })}
             <br />
@@ -130,39 +122,36 @@ export default function HeroSection() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mb-8 sm:mb-12 md:mb-16 max-w-2xl text-text-primary type-body-lg">
+            className="mb-10 max-w-3xl mx-auto text-text-primary type-body-lg">
             {formatMessage({ id: 'app.pages.about.hero.description' })}
           </motion.p>
 
-          {/* Scroll Indicator */}
-          {/* <motion.a
+          <motion.a
             href="#timeline"
+            onClick={handleDiscoverStoryClick}
             variants={itemVariants}
-            className="flex flex-col items-center gap-2 cursor-pointer group pointer-events-auto"
-            whileHover={{ y: 5 }}
-            transition={{ duration: 0.2 }}
+            className="group mt-6 sm:mt-8 inline-flex flex-col items-center gap-2 px-6 py-4 rounded-full bg-surface-container/40 cursor-pointer pointer-events-auto transition-colors hover:bg-surface-container/70"
+            whileHover={{ y: 4 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            aria-label={formatMessage({ id: 'app.pages.about.hero.scroll_indicator' })}
           >
+            <motion.span className="type-body text-text-primary font-semibold tracking-wide hover:text-primary transition-colors">
+              {formatMessage({ id: 'app.pages.about.hero.scroll_indicator' })}
+            </motion.span>
             <motion.svg
-              width="24"
-              height="24"
+              width="30"
+              height="30"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
-              className="group-hover:stroke-[3px] transition-all"
-              style={{ color: 'var(--color-primary)' }}
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              strokeWidth="2.2"
+              className="text-text-primary transition-transform duration-200 group-hover:translate-y-1 group-hover:scale-125 hover:text-primary transition-colors"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
             >
               <path d="M12 5v14M19 12l-7 7-7-7" />
             </motion.svg>
-            <span
-              className="type-label group-hover:scale-105 transition-transform"
-              style={{ color: 'var(--color-primary)' }}
-            >
-              {formatMessage({ id: 'app.pages.about.hero.scroll_indicator' })}
-            </span>
-          </motion.a> */}
+          </motion.a>
         </motion.div>
       </div>
     </section>

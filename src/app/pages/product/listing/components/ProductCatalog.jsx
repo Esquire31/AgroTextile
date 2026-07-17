@@ -33,7 +33,7 @@ export default function ProductCatalog({
   }, [selectedCategory, searchValue]);
 
   return (
-    <section className="px-6 md:px-16 max-w-7xl mx-auto mb-24 font-sans">
+    <section className="px-6 md:px-16 max-w-7xl mx-auto mb-24">
       <div>
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

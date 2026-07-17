@@ -13,34 +13,12 @@ export default function ProductListingHero({
   return (
     <section className="relative overflow-hidden pt-24 pb-12 px-6 md:px-16 max-w-7xl mx-auto">
       <div className="relative z-10 flex flex-col items-start">
-        {/* Pulsating Sync Pip */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6"
-        >
-          <span
-            className="inline-flex items-center gap-2 type-badge px-4 py-2 rounded-full border"
-            style={{
-              borderColor: 'var(--color-outline-variant)',
-              color: 'var(--color-on-surface)',
-            }}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
-            </span>
-            {formatMessage({ id: 'app.products.listing.hero.live_sync' })}
-          </span>
-        </motion.div>
-
         {/* Display Title */}
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="type-display text-on-background mb-6 max-w-3xl"
+          className="type-display text-on-background mb-8 max-w-3xl"
         >
           {formatMessage({ id: 'app.products.listing.hero.title' })}{' '}
           <span className="text-primary">{formatMessage({ id: 'app.products.listing.hero.title_italic' })}</span>
@@ -51,7 +29,7 @@ export default function ProductListingHero({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="type-body-lg text-on-surface-variant max-w-2xl mb-10"
+          className="type-body-lg text-on-surface-variant max-w-3xl mb-10"
         >
           {formatMessage({ id: 'app.products.listing.hero.description' })}
         </motion.p>

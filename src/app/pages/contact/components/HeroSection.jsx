@@ -119,23 +119,10 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-container-max mx-auto px-margin-mobile sm:px-margin-desktop w-full">
         {/* Headline block — centered, unambiguous, dominant */}
         <div className="flex flex-col items-center text-center mb-20">
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-block type-badge px-4 py-2 rounded-full border mb-7"
-            style={{
-              borderColor: 'var(--color-outline-variant)',
-              color: 'var(--color-on-surface)',
-            }}
-          >
-            {formatMessage({ id: 'app.pages.contact.hero.badge' })}
-          </motion.span>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="type-display text-on-surface mb-6"
           >
             {formatMessage({ id: 'app.pages.contact.hero.title' })}{' '}
@@ -145,7 +132,7 @@ export default function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="type-body-lg text-on-surface-variant max-w-xl"
           >
             {formatMessage({ id: 'app.pages.contact.hero.subtitle' })}

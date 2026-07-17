@@ -89,7 +89,7 @@ export default function ProductHero({ product }) {
           <h1 className="type-display text-on-surface mb-4">
             {product.title}
           </h1>
-          <p className="type-badge text-on-surface-variant mb-4">
+          <p className="type-label text-on-surface-variant mb-4">
             {product.subtitle || (
               product.category === 'Textile' 
                 ? formatMessage({ id: 'app.products.listing.filter.textile' })

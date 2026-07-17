@@ -6,7 +6,7 @@ import Designtestimonial from '@/components/ui/design-testimonial';
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="pt-20">
       <HeroSection />
       <TimelineSection />
       <ImpactSection />
