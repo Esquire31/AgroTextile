@@ -1,0 +1,62 @@
+# Agritex Global (7 Horse's Export)
+
+> Precision sourcing for sustainable scale — export of premium Indian agro commodities and handloom textiles to global markets.
+
+## Overview
+
+Agritex Global (trading as 7 Horse's Export) is an Indian export company specializing in two verticals:
+
+- **Agro** — Fresh produce and staples sourced directly from Indian farming regions (onions, lemons, chillies, mangoes, bananas, ginger, capsicum, basmati rice)
+- **Textile** — Handloom and artisan textiles including silk sarees, block-printed cotton, dyed sarees, and combed cotton fabrics
+
+## Key Pages
+
+| URL | Description |
+|-----|-------------|
+| [/](https://agritex.com/) | Home — landing page with hero, features, and overview |
+| [/about](https://agritex.com/about) | Company story, mission, and team |
+| [/products](https://agritex.com/products) | Full product catalog (filterable by Agro / Textile) |
+| [/contact](https://agritex.com/contact) | Contact form and procurement inquiry form |
+
+## Products
+
+### Agro
+
+| ID | Product | Origin | Min Order |
+|----|---------|--------|-----------|
+| agro-onion-red-01 | Premium Red Onions | Nashik, Maharashtra | 28 MT |
+| agro-lemon-acid-01 | Seedless Fresh Lemons | Andhra Pradesh | 5 MT |
+| agro-chilly-green-01 | Spicy Green Chillies | Guntur, Andhra Pradesh | 1 MT |
+| agro-mango-alphonso-01 | Alphonso Mangoes | Konkan, Maharashtra | 1.2 MT |
+| agro-banana-cavendish-01 | G9 Cavendish Bananas | Jalgaon, Maharashtra | 20 MT |
+| agro-ginger-fresh-01 | Fresh Rhizome Ginger | Kerala | 10 MT |
+| agro-capsicum-green-01 | Green Bell Peppers | Karnataka | 2 MT |
+| agro-rice-basmati-01 | 1121 Basmati Rice | Punjab / Haryana | 20 MT |
+
+### Textile
+
+| ID | Product | Origin | Min Order |
+|----|---------|--------|-----------|
+| tex-silk-saree-01 | Pure Mulberry Silk Saree | Kanchipuram, Tamil Nadu | 50 Units |
+| tex-print-saree-01 | Hand-Block Printed Saree | Jaipur, Rajasthan | 200 Units |
+| tex-dye-saree-01 | Artisan Dyed Saree | Surat, Gujarat | 1000 Meters |
+| tex-garment-fab-01 | Combed Cotton Fabrics | Ahmedabad, Gujarat | 5000 Meters |
+
+## Tech Stack
+
+- React 19 (SPA, client-side routing via react-router-dom v6)
+- Vite 8 build tool
+- Tailwind CSS v4
+- Framer Motion for animations
+- react-intl for i18n (English, Chinese, Arabic)
+- Web3Forms for contact/procurement form submissions
+
+## Contact
+
+- **Email:** info@agritex.com
+- **Phone:** +1 (555) 123-4567
+- **Address:** 123 Textile Street, Fashion City, FC 12345
+
+## Social
+
+- GitHub: https://github.com/anomalyco/opencode
