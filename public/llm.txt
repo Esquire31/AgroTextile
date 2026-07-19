@@ -13,10 +13,10 @@ Agritex Global (trading as 7 Horse's Export) is an Indian export company special
 
 | URL | Description |
 |-----|-------------|
-| [/](https://agritex.com/) | Home — landing page with hero, features, and overview |
-| [/about](https://agritex.com/about) | Company story, mission, and team |
-| [/products](https://agritex.com/products) | Full product catalog (filterable by Agro / Textile) |
-| [/contact](https://agritex.com/contact) | Contact form and procurement inquiry form |
+| [/](https://7horsesexport.com/) | Home — landing page with hero, features, and overview |
+| [/about](https://7horsesexport.com/about) | Company story, mission, and team |
+| [/products](https://7horsesexport.com/products) | Full product catalog (filterable by Agro / Textile) |
+| [/contact](https://7horsesexport.com/contact) | Contact form and procurement inquiry form |
 
 ## Products
 
@@ -53,10 +53,7 @@ Agritex Global (trading as 7 Horse's Export) is an Indian export company special
 
 ## Contact
 
-- **Email:** info@agritex.com
-- **Phone:** +1 (555) 123-4567
-- **Address:** 123 Textile Street, Fashion City, FC 12345
+- **Email:** info@7horsesexport.com
+- **Phone:** +91 76000 06560
+- **Address:** Surat, Gujrat, India
 
-## Social
-
-- GitHub: https://github.com/anomalyco/opencode
